@@ -27516,7 +27516,7 @@ Other versions of this operator: <a href="Changelog.md#RandomNormalLike-1">1</a>
   TensorProto message.
 
   The `generator` attribute selects the pseudo-random number generator algorithm.
-  With the default value "default", the choice of generator is left to the
+  With the default value "unspecified", the choice of generator is left to the
   implementation and no determinism guarantee is given: results may differ across
   implementations and even across runs of the same implementation, even when
   `seed` is specified. An implementation may produce reproducible results in this
@@ -27551,8 +27551,8 @@ Other versions of this operator: <a href="Changelog.md#RandomUniform-1">1</a>, <
 <dl>
 <dt><tt>dtype</tt> : int (default is 1)</dt>
 <dd>The data type for the elements of the output tensor. If not specified, default is TensorProto::FLOAT.</dd>
-<dt><tt>generator</tt> : string (default is default)</dt>
-<dd>(Optional) The pseudo-random number generator algorithm. "default" leaves the choice of generator to the implementation and provides no determinism guarantee: results may differ across implementations and even across runs of the same implementation, even when `seed` is specified (an implementation may produce reproducible results, but is not required to). "mersenne_twister" selects the fully specified MT19937 algorithm described in the operator documentation, making the output deterministic for a given `seed`. More algorithms may be added in future opset versions.</dd>
+<dt><tt>generator</tt> : string (default is unspecified)</dt>
+<dd>(Optional) The pseudo-random number generator algorithm. "unspecified" leaves the choice of generator to the implementation and provides no determinism guarantee: results may differ across implementations and even across runs of the same implementation, even when `seed` is specified (an implementation may produce reproducible results, but is not required to). "mersenne_twister" selects the fully specified MT19937 algorithm described in the operator documentation, making the output deterministic for a given `seed`. More algorithms may be added in future opset versions.</dd>
 <dt><tt>high</tt> : float (default is 1.0)</dt>
 <dd>Upper boundary of the output values.</dd>
 <dt><tt>low</tt> : float (default is 0.0)</dt>

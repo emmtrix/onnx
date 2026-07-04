@@ -163,7 +163,7 @@ be one of the data types specified in the 'DataType' enum field in the
 TensorProto message.
 
 The `generator` attribute selects the pseudo-random number generator algorithm.
-With the default value "default", the choice of generator is left to the
+With the default value "unspecified", the choice of generator is left to the
 implementation and no determinism guarantee is given: results may differ across
 implementations and even across runs of the same implementation, even when
 `seed` is specified. An implementation may produce reproducible results in this

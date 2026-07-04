@@ -2916,10 +2916,10 @@ class TestVersionConverter(unittest.TestCase):
         converted = self._randomuniform_converted(27, 28, seed=0.0)
         assert converted.opset_import[0].version == 28
 
-    # RandomUniform 28 -> 27: generator="default" matches the old unspecified
-    # behavior, so the attribute is dropped on downgrade
-    def test_randomuniform_28_27_default_generator_removed(self) -> None:
-        converted = self._randomuniform_converted(28, 27, generator="default")
+    # RandomUniform 28 -> 27: generator="unspecified" matches the old
+    # implementation-defined behavior, so the attribute is dropped on downgrade
+    def test_randomuniform_28_27_unspecified_generator_removed(self) -> None:
+        converted = self._randomuniform_converted(28, 27, generator="unspecified")
         assert converted.opset_import[0].version == 27
         node = next(n for n in converted.graph.node if n.op_type == "RandomUniform")
         assert not any(a.name == "generator" for a in node.attribute)

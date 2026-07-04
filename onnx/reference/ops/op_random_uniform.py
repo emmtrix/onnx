@@ -11,7 +11,7 @@ class RandomUniform(_CommonRandom):
         self, dtype=None, generator=None, high=None, low=None, seed=None, shape=None
     ):
         dtype = self._dtype(dtype=dtype)
-        if generator not in (None, "default"):
+        if generator not in (None, "unspecified"):
             res = self._deterministic_uniform(generator, seed, shape)
             res = res * (high - low) + low
             return (res.astype(dtype),)

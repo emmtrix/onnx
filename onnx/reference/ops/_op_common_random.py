@@ -115,13 +115,13 @@ class _CommonRandom(OpRun):
     def _deterministic_uniform(generator, seed, shape):
         """Draw uniform doubles in [0, 1) with the fully specified generator.
 
-        Unlike the "default" generator, the result is bit-identical across
+        Unlike the "unspecified" generator, the result is bit-identical across
         implementations for a given seed (see the operator specification).
         """
         if generator != "mersenne_twister":
             raise ValueError(
                 f"Unsupported value {generator!r} for attribute 'generator' "
-                f"(expected 'default' or 'mersenne_twister')."
+                f"(expected 'unspecified' or 'mersenne_twister')."
             )
         if seed is None or np.isnan(seed):
             raise ValueError(

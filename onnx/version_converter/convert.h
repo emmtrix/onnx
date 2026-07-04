@@ -989,7 +989,7 @@ class DefaultVersionConverter : public BaseVersionConverter {
     const std::vector<TensorProto_DataType> celu_28_unallowed_types = {
         TensorProto_DataType_FLOAT16, TensorProto_DataType_BFLOAT16, TensorProto_DataType_DOUBLE};
     registerAdapter(std::make_unique<TypeRestriction>("Celu", OpSetID(28), OpSetID(27), celu_28_unallowed_types));
-    // RandomUniform v28 added the generator attribute; only generator="default" can be downgraded.
+    // RandomUniform v28 added the generator attribute; only generator="unspecified" can be downgraded.
     registerAdapter(std::make_unique<RandomUniform_28_27>());
   }
 

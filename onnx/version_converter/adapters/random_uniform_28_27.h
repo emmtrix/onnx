@@ -21,14 +21,15 @@ class RandomUniform_28_27 final : public Adapter {
   Node* adapt(std::shared_ptr<Graph> /*graph*/, Node* node) const override {
     const Symbol generator("generator");
     if (node->hasAttribute(generator)) {
-      // "default" matches the unspecified behavior of RandomUniform v22, so the
-      // attribute can simply be dropped. Any other generator selects fully
-      // specified deterministic output, which older versions cannot express.
+      // "unspecified" matches the implementation-defined behavior of
+      // RandomUniform v22, so the attribute can simply be dropped. Any other
+      // generator selects fully specified deterministic output, which older
+      // versions cannot express.
       ONNX_ASSERTM(
-          node->s(generator) == "default",
+          node->s(generator) == "unspecified",
           "Attribute 'generator' of operator '",
           name(),
-          "' must be 'default' in Opset Version ",
+          "' must be 'unspecified' in Opset Version ",
           static_cast<int64_t>(target_version().version()),
           ".");
       node->removeAttribute(generator);

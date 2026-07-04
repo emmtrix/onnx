@@ -83,10 +83,10 @@ class TestSchema(unittest.TestCase):
         self.assertIn("generator", schema28.attributes)
         generator = schema28.attributes["generator"]
         self.assertEqual(generator.type, defs.OpSchema.AttrType.STRING)
-        self.assertEqual(generator.default_value.s, b"default")
+        self.assertEqual(generator.default_value.s, b"unspecified")
         self.assertFalse(generator.required)
         # The operator stays non-deterministic at the schema level: with the
-        # default generator the output is still implementation-defined.
+        # "unspecified" generator the output is still implementation-defined.
         self.assertTrue(schema28.non_deterministic)
         self.assertNotIn("generator", defs.get_schema("RandomUniform", 22).attributes)
 

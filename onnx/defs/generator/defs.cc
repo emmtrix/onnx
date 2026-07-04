@@ -163,7 +163,7 @@ ONNX_OPERATOR_SET_SCHEMA(
             OPTIONAL_VALUE)
         .Attr(
             "generator",
-            "(Optional) The pseudo-random number generator algorithm. \"default\" leaves the choice of "
+            "(Optional) The pseudo-random number generator algorithm. \"unspecified\" leaves the choice of "
             "generator to the implementation and provides no determinism guarantee: results may differ "
             "across implementations and even across runs of the same implementation, even when `seed` is "
             "specified (an implementation may produce reproducible results, but is not required to). "
@@ -171,7 +171,7 @@ ONNX_OPERATOR_SET_SCHEMA(
             "documentation, making the output deterministic for a given `seed`. More algorithms may be "
             "added in future opset versions.",
             AttributeProto::STRING,
-            std::string("default"))
+            std::string("unspecified"))
         .Attr(
             "dtype",
             "The data type for the elements of the output tensor. If not specified, default is TensorProto::FLOAT.",
@@ -185,11 +185,11 @@ ONNX_OPERATOR_SET_SCHEMA(
           const auto* generator_attr = ctx.getAttribute("generator");
           if (generator_attr != nullptr) {
             const std::string& generator = generator_attr->s();
-            if (generator != "default" && generator != "mersenne_twister") {
+            if (generator != "unspecified" && generator != "mersenne_twister") {
               fail_shape_inference(
-                  "Attribute 'generator' must be one of 'default' or 'mersenne_twister', got '", generator, "'.");
+                  "Attribute 'generator' must be one of 'unspecified' or 'mersenne_twister', got '", generator, "'.");
             }
-            if (generator != "default" && ctx.getAttribute("seed") == nullptr) {
+            if (generator != "unspecified" && ctx.getAttribute("seed") == nullptr) {
               fail_shape_inference("Attribute 'seed' must be specified when 'generator' is '", generator, "'.");
             }
           }

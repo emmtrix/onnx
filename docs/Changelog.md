@@ -20,9 +20,7 @@ For an operator input/output's differentiability, it can be differentiable,
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -79,9 +77,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -130,9 +126,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -179,9 +173,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -224,9 +216,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -287,9 +277,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -339,9 +327,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -407,9 +393,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -451,9 +435,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -493,9 +475,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -537,9 +517,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -577,9 +555,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -614,9 +590,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -681,9 +655,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -742,9 +714,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -801,9 +771,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -851,9 +819,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -900,9 +866,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -947,9 +911,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -993,9 +955,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -1035,9 +995,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -1077,9 +1035,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -1188,9 +1144,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -1295,9 +1249,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -1346,9 +1298,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -1400,9 +1350,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -1435,9 +1383,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -1477,9 +1423,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -1515,9 +1459,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -1563,9 +1505,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -1621,9 +1561,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -1661,9 +1599,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -1694,9 +1630,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -1743,9 +1677,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -1798,9 +1730,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -1923,9 +1853,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -1999,9 +1927,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -2046,9 +1972,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -2092,9 +2016,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -2146,9 +2068,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -2298,9 +2218,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -2349,9 +2267,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -2395,9 +2311,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -2443,9 +2357,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -2479,9 +2391,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -2540,9 +2450,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -2588,9 +2496,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -2633,9 +2539,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -2674,9 +2578,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -2733,9 +2635,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -2781,9 +2681,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -2821,9 +2719,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -2859,9 +2755,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -2908,9 +2802,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -2965,9 +2857,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -3030,9 +2920,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -3133,9 +3021,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -3205,9 +3091,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -3255,9 +3139,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -3308,9 +3190,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -3358,9 +3238,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -3408,9 +3286,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -3454,9 +3330,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -3502,9 +3376,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -3550,9 +3422,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -3598,9 +3468,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -3646,9 +3514,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -3694,9 +3560,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -3742,9 +3606,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -3790,9 +3652,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -3838,9 +3698,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -3886,9 +3744,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -3930,9 +3786,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -3976,9 +3830,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -4021,9 +3873,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -4065,9 +3915,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -4102,9 +3950,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -4142,9 +3988,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -4207,9 +4051,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -4265,9 +4107,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -4307,9 +4147,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -4340,9 +4178,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -4375,9 +4211,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -4418,9 +4252,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -4464,9 +4296,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -4507,9 +4337,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -4566,9 +4394,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -4613,9 +4439,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -4653,9 +4477,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -4693,9 +4515,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -4740,9 +4560,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -4795,9 +4613,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -4839,9 +4655,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -4897,9 +4711,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 #### Version
 
 No versioning maintained for experimental ops.
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -4946,9 +4758,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -4995,9 +4805,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 2 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -5039,9 +4847,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 2 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -5102,9 +4908,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 2 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -5148,9 +4952,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 2 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -5262,9 +5064,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 3 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -5331,9 +5131,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 4 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -5378,9 +5176,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 5 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -5416,9 +5212,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -5468,9 +5262,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -5517,9 +5309,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -5583,9 +5373,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -5627,9 +5415,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -5662,9 +5448,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -5726,9 +5510,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -5774,9 +5556,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -5821,9 +5601,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -5861,9 +5639,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -5896,9 +5672,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -5936,9 +5710,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -5990,9 +5762,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -6037,9 +5807,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -6083,9 +5851,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -6123,9 +5889,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -6157,9 +5921,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -6191,9 +5953,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -6225,9 +5985,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -6277,9 +6035,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -6323,9 +6079,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -6359,9 +6113,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -6396,9 +6148,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -6431,9 +6181,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -6467,9 +6215,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -6511,9 +6257,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -6546,9 +6290,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -6598,9 +6340,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -6643,9 +6383,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -6676,9 +6414,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -6711,9 +6447,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 6 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -6749,9 +6483,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -6784,9 +6516,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -6822,9 +6552,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -6859,9 +6587,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -6892,9 +6618,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -6946,9 +6670,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -7000,9 +6722,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -7060,9 +6780,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -7097,9 +6815,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -7137,9 +6853,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -7182,9 +6896,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -7291,9 +7003,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -7368,9 +7078,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -7421,9 +7129,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -7538,9 +7244,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -7613,9 +7317,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -7652,9 +7354,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -7688,9 +7388,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -7737,9 +7435,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -7778,9 +7474,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -7816,9 +7510,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -7911,9 +7603,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -7975,9 +7665,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -8010,9 +7698,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -8045,9 +7731,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -8080,9 +7764,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -8125,9 +7807,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 7 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -8170,9 +7850,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 8 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -8207,9 +7885,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 8 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -8261,9 +7937,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 8 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -8315,9 +7989,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 8 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -8350,9 +8022,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 8 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -8507,9 +8177,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 8 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -8557,9 +8225,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 8 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -8591,9 +8257,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -8624,9 +8288,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -8657,9 +8319,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -8699,9 +8359,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -8775,9 +8433,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -8820,9 +8476,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -8864,9 +8518,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -8900,9 +8552,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -8942,9 +8592,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -8975,9 +8623,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -9014,9 +8660,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -9060,9 +8704,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -9111,9 +8753,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -9164,9 +8804,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -9201,9 +8839,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -9239,9 +8875,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -9276,9 +8910,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -9328,9 +8960,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -9379,9 +9009,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -9423,9 +9051,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -9467,9 +9093,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -9519,9 +9143,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -9674,9 +9296,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -9754,9 +9374,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -9803,9 +9421,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -9846,9 +9462,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -9879,9 +9493,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -9938,9 +9550,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -9998,9 +9608,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -10045,9 +9653,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -10113,9 +9719,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -10164,9 +9768,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -10227,9 +9829,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (2 - 3)
 
@@ -10269,9 +9869,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -10313,9 +9911,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -10358,9 +9954,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (2 - 4)
 
@@ -10429,9 +10023,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -10497,9 +10089,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -10546,9 +10136,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -10596,9 +10184,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -10678,9 +10264,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -10731,9 +10315,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (2 - 3)
 
@@ -10772,9 +10354,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -10846,9 +10426,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -10900,9 +10478,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -10987,9 +10563,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (3 - 5)
 
@@ -11038,9 +10612,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -11082,9 +10654,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -11131,9 +10701,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -11192,9 +10760,7 @@ This version of the operator has been deprecated since version 10 of the default
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -11238,9 +10804,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -11314,9 +10878,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -11375,9 +10937,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -11419,9 +10979,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - 3)
 
@@ -11459,9 +11017,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -11503,9 +11059,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -11546,9 +11100,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -11591,9 +11143,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -11630,9 +11180,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -11697,9 +11245,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -11774,9 +11320,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -11846,9 +11390,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -11892,9 +11434,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -11951,9 +11491,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -11993,9 +11531,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -12032,9 +11568,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -12126,9 +11660,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -12224,9 +11756,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -12332,9 +11862,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -12379,9 +11907,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -12442,9 +11968,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -12482,9 +12006,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -12539,9 +12061,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -12711,9 +12231,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -12763,9 +12281,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -12839,9 +12355,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -12912,9 +12426,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -12969,9 +12481,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -13031,9 +12541,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -13153,9 +12661,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -13219,9 +12725,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Inputs
 
@@ -13261,9 +12765,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -13308,9 +12810,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -13355,9 +12855,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -13402,9 +12900,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -13450,9 +12946,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -13497,9 +12991,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -13545,9 +13037,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -13592,9 +13082,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -13639,9 +13127,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -13686,9 +13172,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -13730,9 +13214,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -13823,9 +13305,7 @@ x_original = length_resized > 1 ? start_x * (length_original - 1) + x_resized * 
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -13976,9 +13456,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -14136,9 +13614,7 @@ This version of the operator has been deprecated since version 11 of the default
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -14238,9 +13714,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -14277,9 +13751,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -14317,9 +13789,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -14352,9 +13822,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -14391,9 +13859,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - 2)
 
@@ -14432,9 +13898,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (2 - 3)
 
@@ -14473,9 +13937,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -14543,9 +14005,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (3 - 5)
 
@@ -14599,9 +14059,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -14641,9 +14099,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -14694,9 +14150,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -14745,9 +14199,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -14799,9 +14251,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -14945,9 +14395,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -15004,9 +14452,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -15051,9 +14497,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 12 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -15101,9 +14545,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 12 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -15151,9 +14593,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 12 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -15193,9 +14633,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 12 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - 3)
 
@@ -15231,9 +14669,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 12 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -15292,9 +14728,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 12 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -15366,9 +14800,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 12 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -15496,9 +14928,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 12 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -15541,9 +14971,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 12 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -15581,9 +15009,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 12 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -15620,9 +15046,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 12 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -15684,9 +15108,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 12 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -15742,9 +15164,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 12 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -15840,9 +15260,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 12 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -15891,9 +15309,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 12 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -15933,9 +15349,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 12 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -15980,9 +15394,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 12 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -16052,9 +15464,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 12 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -16105,9 +15515,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -16140,9 +15548,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -16181,9 +15587,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -16231,9 +15635,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -16309,9 +15711,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -16353,9 +15753,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -16390,9 +15788,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - 3)
 
@@ -16427,9 +15823,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -16468,9 +15862,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -16540,9 +15932,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -16586,9 +15976,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -16634,9 +16022,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -16680,9 +16066,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -16733,9 +16117,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -16770,9 +16152,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -16803,9 +16183,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -16843,9 +16221,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -16880,9 +16256,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -16922,9 +16296,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -17017,9 +16389,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -17111,9 +16481,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -17238,9 +16606,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -17291,9 +16657,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -17344,9 +16708,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -17387,9 +16749,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -17431,9 +16791,7 @@ from the back. Accepted range is [-r, r-1] where r = rank(input).
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -17464,9 +16822,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -17508,9 +16864,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -17552,9 +16906,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -17601,9 +16953,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -17638,9 +16988,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -17677,9 +17025,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -17855,9 +17201,7 @@ from the back. Accepted range is [-r, r-1] where r = rank(input).
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -17903,9 +17247,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -17940,9 +17282,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -17975,9 +17315,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -18009,9 +17347,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -18051,9 +17387,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -18100,9 +17434,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -18144,9 +17476,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -18181,9 +17511,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -18314,9 +17642,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -18366,9 +17692,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -18473,9 +17797,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -18520,9 +17842,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -18561,9 +17881,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -18609,9 +17927,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -18649,9 +17965,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -18698,9 +18012,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -18747,9 +18059,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -18796,9 +18106,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -18845,9 +18153,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -18894,9 +18200,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -18943,9 +18247,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -18992,9 +18294,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -19041,9 +18341,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -19092,9 +18390,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -19136,9 +18432,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -19175,9 +18469,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -19212,9 +18504,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -19339,9 +18629,7 @@ x_original = length_resized > 1 ? start_x * (length_original - 1) + x_resized * 
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -19441,9 +18729,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -19478,9 +18764,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -19515,9 +18799,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -19549,9 +18831,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -19582,9 +18862,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -19678,9 +18956,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (3 - 5)
 
@@ -19727,9 +19003,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -19810,9 +19084,7 @@ from the back. Accepted range is [-r, r-1] where r = rank(input).
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -19862,9 +19134,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -19904,9 +19174,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -19948,9 +19216,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -19984,9 +19250,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - 2)
 
@@ -20021,9 +19285,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -20058,9 +19320,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -20091,9 +19351,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -20126,9 +19384,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -20172,9 +19428,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -20221,9 +19475,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 13 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -20261,9 +19513,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 14 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -20334,9 +19584,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 14 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -20411,9 +19659,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 14 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -20462,9 +19708,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 14 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -20543,9 +19787,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 14 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -20613,9 +19855,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 14 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -20646,9 +19886,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 14 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -20728,9 +19966,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 14 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -20806,9 +20042,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 14 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -20880,9 +20114,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 14 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -20948,9 +20180,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 14 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -20993,9 +20223,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 14 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -21039,9 +20267,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 14 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -21085,9 +20311,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 14 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -21166,9 +20390,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 15 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -21231,9 +20453,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 15 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -21277,9 +20497,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 15 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -21315,9 +20533,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 15 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -21358,9 +20574,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 15 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -21393,9 +20607,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 15 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -21431,9 +20643,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 15 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -21505,9 +20715,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 15 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -21553,9 +20761,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 16 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -21602,9 +20808,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 16 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -21650,9 +20854,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 16 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -21683,9 +20885,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 16 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -21729,9 +20929,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 16 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -21772,9 +20970,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 16 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -21943,9 +21139,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 16 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -21994,9 +21188,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 16 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -22039,9 +21231,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 16 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -22215,9 +21405,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 16 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -22324,9 +21512,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 16 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -22437,9 +21623,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 16 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -22486,9 +21670,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 16 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -22526,9 +21708,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 17 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -22570,9 +21750,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 17 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -22618,9 +21796,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 17 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -22662,9 +21838,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 17 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -22746,9 +21920,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 17 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -22807,9 +21979,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 17 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -22859,9 +22029,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 17 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -22920,9 +22088,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 17 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -22968,9 +22134,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -23003,9 +22167,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -23039,9 +22201,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -23077,9 +22237,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -23125,9 +22283,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -23178,9 +22334,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -23270,9 +22424,7 @@ This version of the operator has been deprecated since version 18 of the default
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -23328,9 +22480,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -23363,9 +22513,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -23400,9 +22548,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (0 - 1)
 
@@ -23509,9 +22655,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -23564,9 +22708,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -23615,9 +22757,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -23666,9 +22806,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -23717,9 +22855,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -23768,9 +22904,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -23819,9 +22953,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -23870,9 +23002,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -23921,9 +23051,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -23972,9 +23100,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -24019,9 +23145,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -24183,9 +23307,7 @@ Note: `round_int` stands for computing the nearest integer value, rounding halfw
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -24305,9 +23427,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -24353,9 +23473,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -24429,9 +23547,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 19 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -24547,9 +23663,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 19 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -24593,9 +23707,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 19 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -24638,9 +23750,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 19 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -24689,9 +23799,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 19 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -24753,9 +23861,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 19 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -24802,9 +23908,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 19 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -24839,9 +23943,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 19 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -24872,9 +23974,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 19 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -25050,9 +24150,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 19 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -25197,9 +24295,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 19 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -25253,9 +24349,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 19 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -25313,9 +24407,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 19 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -25360,9 +24452,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 19 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -25611,9 +24701,7 @@ Note: `round_int` stands for computing the nearest integer value, rounding halfw
 
 This version of the operator has been available since version 19 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -25698,9 +24786,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 19 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -25742,9 +24828,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 19 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -25804,9 +24888,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 20 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -25848,9 +24930,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 20 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -25906,9 +24986,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 20 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -25960,9 +25038,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 20 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -26017,9 +25093,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 20 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -26087,9 +25161,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 20 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -26129,9 +25201,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 20 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -26173,9 +25243,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 20 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -26217,9 +25285,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 20 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -26270,9 +25336,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 20 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -26314,9 +25378,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 20 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -26356,9 +25418,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 20 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -26395,9 +25455,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 20 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -26510,9 +25568,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -26556,9 +25612,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -26601,9 +25655,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -26651,9 +25703,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -26701,9 +25751,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -26751,9 +25799,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -26813,9 +25859,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -26861,9 +25905,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -26894,9 +25936,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -27072,9 +26112,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -27219,9 +26257,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -27277,9 +26313,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -27350,9 +26384,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -27414,9 +26446,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -27576,9 +26606,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -27663,9 +26691,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -27707,9 +26733,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -27745,9 +26769,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - 2)
 
@@ -27789,9 +26811,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -27838,9 +26858,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 21 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -27874,9 +26892,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -27907,9 +26923,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -27940,9 +26954,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -27973,9 +26985,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -28006,9 +27016,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -28039,9 +27047,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -28103,9 +27109,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -28160,9 +27164,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -28205,9 +27207,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -28272,9 +27272,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -28330,9 +27328,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -28363,9 +27359,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -28397,9 +27391,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -28459,9 +27451,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -28503,9 +27493,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -28556,9 +27544,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -28602,9 +27588,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -28692,9 +27676,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -28762,9 +27744,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -28797,9 +27777,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -28839,9 +27817,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -28889,9 +27865,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -28939,9 +27913,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -28983,9 +27955,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -29021,9 +27991,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -29114,9 +28082,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -29191,9 +28157,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -29255,9 +28219,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -29338,9 +28300,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -29396,9 +28356,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -29457,9 +28415,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -29513,9 +28469,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -29547,9 +28501,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -29693,9 +28645,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -29780,9 +28730,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -29852,9 +28800,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -29902,9 +28848,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -29955,9 +28899,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -30005,9 +28947,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -30063,9 +29003,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -30132,9 +29070,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -30168,9 +29104,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -30210,9 +29144,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -30243,9 +29175,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -30278,9 +29208,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -30311,9 +29239,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -30344,9 +29270,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -30379,9 +29303,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 22 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -30462,9 +29384,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -30600,9 +29520,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -30646,9 +29564,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -30691,9 +29607,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -30741,9 +29655,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -30794,9 +29706,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -30848,9 +29758,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -30888,9 +29796,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -30921,9 +29827,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -31099,9 +30003,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -31246,9 +30148,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -31320,9 +30220,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -31403,9 +30301,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -31463,9 +30359,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -31604,9 +30498,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -31776,9 +30668,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -31863,9 +30753,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -31907,9 +30795,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -31945,9 +30831,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - 2)
 
@@ -31989,9 +30873,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -32038,9 +30920,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -32168,9 +31048,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -32323,9 +31201,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -32371,9 +31247,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -32418,9 +31292,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -32468,9 +31340,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -32521,9 +31391,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -32575,9 +31443,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -32615,9 +31481,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -32648,9 +31512,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -32826,9 +31688,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -32973,9 +31833,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -33047,9 +31905,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -33115,9 +31971,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -33277,9 +32131,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -33364,9 +32216,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -33408,9 +32258,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -33454,9 +32302,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -33505,9 +32351,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - 2)
 
@@ -33541,9 +32385,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -33606,9 +32448,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -33666,9 +32506,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -33725,9 +32563,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -33774,9 +32610,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -33891,9 +32725,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 25 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -33939,9 +32771,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 25 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -33986,9 +32816,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 25 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -34036,9 +32864,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 25 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -34089,9 +32915,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 25 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -34143,9 +32967,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 25 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -34183,9 +33005,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 25 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -34216,9 +33036,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 25 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -34394,9 +33212,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 25 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -34541,9 +33357,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 25 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -34617,9 +33431,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 25 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -34685,9 +33497,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 25 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -34847,9 +33657,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 25 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -34934,9 +33742,7 @@ This operator is **non-deterministic**: it may produce different outputs for ide
 
 This version of the operator has been available since version 25 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -34978,9 +33784,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 25 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -35016,9 +33820,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 25 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - 2)
 
@@ -35060,9 +33862,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 25 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -35109,9 +33909,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 25 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -35152,9 +33950,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 26 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -35213,9 +34009,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 26 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -35277,9 +34071,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 27 of the default ONNX operator set.
 
-#### Determinism
-
-The determinism of this operator is **unknown**: it depends on the operator's context-dependent function body.
+Determinism: **unknown** (context-dependent function body)
 
 #### Attributes
 
@@ -35348,9 +34140,7 @@ The determinism of this operator is **unknown**: it depends on the operator's co
 
 This version of the operator has been available since version 27 of the default ONNX operator set.
 
-#### Determinism
-
-The determinism of this operator is **unknown**: it depends on the operator's context-dependent function body.
+Determinism: **unknown** (context-dependent function body)
 
 #### Attributes
 
@@ -35438,9 +34228,7 @@ The determinism of this operator is **unknown**: it depends on the operator's co
 
 This version of the operator has been available since version 27 of the default ONNX operator set.
 
-#### Determinism
-
-The determinism of this operator is **unknown**: it depends on the operator's context-dependent function body.
+Determinism: **unknown** (context-dependent function body)
 
 #### Attributes
 
@@ -35489,9 +34277,7 @@ The determinism of this operator is **unknown**: it depends on the operator's co
 
 This version of the operator has been available since version 28 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -35572,9 +34358,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 #### Version
 
 No versioning maintained for experimental ops.
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -35673,9 +34457,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the 'ai.onnx.preview.training' operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -35785,9 +34567,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the 'ai.onnx.preview.training' operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -35963,9 +34743,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the 'ai.onnx.preview.training' operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -36068,9 +34846,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 1 of the 'ai.onnx.preview.training' operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 

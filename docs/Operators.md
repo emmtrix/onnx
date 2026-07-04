@@ -243,9 +243,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Abs-1">1</a>, <a href="Changelog.md#Abs-6">6</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -319,9 +317,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Acos-7">7</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -379,9 +375,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Acosh-9">9</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -443,9 +437,7 @@ This version of the operator has been available since version 14 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Add-1">1</a>, <a href="Changelog.md#Add-6">6</a>, <a href="Changelog.md#Add-7">7</a>, <a href="Changelog.md#Add-13">13</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -567,9 +559,7 @@ expect(node, inputs=[x, y], outputs=[x + y], name="test_add_bcast")
 
 This version of the operator has been available since version 20 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -683,9 +673,7 @@ This version of the operator has been available since version 7 of the default O
 
 Other versions of this operator: <a href="Changelog.md#And-1">1</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -807,9 +795,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#ArgMax-1">1</a>, <a href="Changelog.md#ArgMax-11">11</a>, <a href="Changelog.md#ArgMax-12">12</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -1136,9 +1122,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#ArgMin-1">1</a>, <a href="Changelog.md#ArgMin-11">11</a>, <a href="Changelog.md#ArgMin-12">12</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -1459,9 +1443,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Asin-7">7</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -1519,9 +1501,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Asinh-9">9</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -1579,9 +1559,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Atan-7">7</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -1639,9 +1617,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Atanh-9">9</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -1793,9 +1769,7 @@ This version of the operator has been available since version 24 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Attention-23">23</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -5045,9 +5019,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#AveragePool-1">1</a>, <a href="Changelog.md#AveragePool-7">7</a>, <a href="Changelog.md#AveragePool-10">10</a>, <a href="Changelog.md#AveragePool-11">11</a>, <a href="Changelog.md#AveragePool-19">19</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -5919,9 +5891,7 @@ This version of the operator has been available since version 15 of the default 
 
 Other versions of this operator: <a href="Changelog.md#BatchNormalization-1">1</a>, <a href="Changelog.md#BatchNormalization-6">6</a>, <a href="Changelog.md#BatchNormalization-7">7</a>, <a href="Changelog.md#BatchNormalization-9">9</a>, <a href="Changelog.md#BatchNormalization-14">14</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -6106,9 +6076,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Bernoulli-15">15</a>
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -6217,9 +6185,7 @@ expect(node, inputs=[x], outputs=[y], name="test_bernoulli")
 
 This version of the operator has been available since version 26 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -6468,9 +6434,7 @@ expect(node, inputs=[x], outputs=[y], name="test_bitcast_uint32_to_int32")
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -6652,9 +6616,7 @@ expect(node, inputs=[x, y], outputs=[z], name="test_bitshift_right_uint8")
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -6744,9 +6706,7 @@ expect(node, inputs=[x, y], outputs=[z], name="test_bitwise_and_ui8_bcast_4v3d")
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -6812,9 +6772,7 @@ expect(node, inputs=[x], outputs=[y], name="test_bitwise_not_4d")
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -6904,9 +6862,7 @@ expect(node, inputs=[x, y], outputs=[z], name="test_bitwise_or_ui8_bcast_4v3d")
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -6996,9 +6952,7 @@ expect(node, inputs=[x, y], outputs=[z], name="test_bitwise_xor_i16_3d")
 
 This version of the operator has been available since version 17 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -7176,9 +7130,7 @@ This version of the operator has been available since version 25 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Cast-1">1</a>, <a href="Changelog.md#Cast-6">6</a>, <a href="Changelog.md#Cast-9">9</a>, <a href="Changelog.md#Cast-13">13</a>, <a href="Changelog.md#Cast-19">19</a>, <a href="Changelog.md#Cast-21">21</a>, <a href="Changelog.md#Cast-23">23</a>, <a href="Changelog.md#Cast-24">24</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -7621,9 +7573,7 @@ This version of the operator has been available since version 25 of the default 
 
 Other versions of this operator: <a href="Changelog.md#CastLike-15">15</a>, <a href="Changelog.md#CastLike-19">19</a>, <a href="Changelog.md#CastLike-21">21</a>, <a href="Changelog.md#CastLike-23">23</a>, <a href="Changelog.md#CastLike-24">24</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -8003,9 +7953,7 @@ for from_type, to_type in test_cases:
 
 This version of the operator has been available since version 27 of the default ONNX operator set.
 
-#### Determinism
-
-The determinism of this operator is **unknown**: it depends on the operator's context-dependent function body.
+Determinism: **unknown** (context-dependent function body)
 
 #### Attributes
 
@@ -8445,9 +8393,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Ceil-1">1</a>, <a href="Changelog.md#Ceil-6">6</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -8511,9 +8457,7 @@ This version of the operator has been available since version 28 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Celu-12">12</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -8669,9 +8613,7 @@ expect(
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -8876,9 +8818,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Clip-1">1</a>, <a href="Changelog.md#Clip-6">6</a>, <a href="Changelog.md#Clip-11">11</a>, <a href="Changelog.md#Clip-12">12</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - 3)
 
@@ -9075,9 +9015,7 @@ expect(node, inputs=[x], outputs=[y], name="test_clip_default_int8_inbounds")
 
 This version of the operator has been available since version 18 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -9493,9 +9431,7 @@ This version of the operator has been available since version 11 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Compress-9">9</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -9653,9 +9589,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Concat-1">1</a>, <a href="Changelog.md#Concat-4">4</a>, <a href="Changelog.md#Concat-11">11</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -9744,9 +9678,7 @@ for test_case, values_ in test_cases.items():
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -9792,9 +9724,7 @@ This version of the operator has been available since version 25 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Constant-1">1</a>, <a href="Changelog.md#Constant-9">9</a>, <a href="Changelog.md#Constant-11">11</a>, <a href="Changelog.md#Constant-12">12</a>, <a href="Changelog.md#Constant-13">13</a>, <a href="Changelog.md#Constant-19">19</a>, <a href="Changelog.md#Constant-21">21</a>, <a href="Changelog.md#Constant-23">23</a>, <a href="Changelog.md#Constant-24">24</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -9870,9 +9800,7 @@ This version of the operator has been available since version 25 of the default 
 
 Other versions of this operator: <a href="Changelog.md#ConstantOfShape-9">9</a>, <a href="Changelog.md#ConstantOfShape-20">20</a>, <a href="Changelog.md#ConstantOfShape-21">21</a>, <a href="Changelog.md#ConstantOfShape-23">23</a>, <a href="Changelog.md#ConstantOfShape-24">24</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -9988,9 +9916,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Conv-1">1</a>, <a href="Changelog.md#Conv-11">11</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -10309,9 +10235,7 @@ expect(
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -10490,9 +10414,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#ConvTranspose-1">1</a>, <a href="Changelog.md#ConvTranspose-11">11</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -11127,9 +11049,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Cos-7">7</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -11187,9 +11107,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Cosh-9">9</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -11264,9 +11182,7 @@ expect(node, inputs=[x], outputs=[y], name="test_cosh")
 
 This version of the operator has been available since version 26 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -11505,9 +11421,7 @@ This version of the operator has been available since version 14 of the default 
 
 Other versions of this operator: <a href="Changelog.md#CumSum-11">11</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -11726,9 +11640,7 @@ This version of the operator has been available since version 20 of the default 
 
 Other versions of this operator: <a href="Changelog.md#DFT-17">17</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -11932,9 +11844,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#DeformConv-19">19</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -12184,9 +12094,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#DepthToSpace-1">1</a>, <a href="Changelog.md#DepthToSpace-11">11</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -12340,9 +12248,7 @@ This version of the operator has been available since version 25 of the default 
 
 Other versions of this operator: <a href="Changelog.md#DequantizeLinear-10">10</a>, <a href="Changelog.md#DequantizeLinear-13">13</a>, <a href="Changelog.md#DequantizeLinear-19">19</a>, <a href="Changelog.md#DequantizeLinear-21">21</a>, <a href="Changelog.md#DequantizeLinear-23">23</a>, <a href="Changelog.md#DequantizeLinear-24">24</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -12844,9 +12750,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Det-11">11</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -12925,9 +12829,7 @@ This version of the operator has been available since version 14 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Div-1">1</a>, <a href="Changelog.md#Div-6">6</a>, <a href="Changelog.md#Div-7">7</a>, <a href="Changelog.md#Div-13">13</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -13054,9 +12956,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Dropout-1">1</a>, <a href="Changelog.md#Dropout-6">6</a>, <a href="Changelog.md#Dropout-7">7</a>, <a href="Changelog.md#Dropout-10">10</a>, <a href="Changelog.md#Dropout-12">12</a>, <a href="Changelog.md#Dropout-13">13</a>
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -13382,9 +13282,7 @@ expect(
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -13512,9 +13410,7 @@ expect(
 
 This version of the operator has been available since version 12 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -13670,9 +13566,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Elu-1">1</a>, <a href="Changelog.md#Elu-6">6</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -13755,9 +13649,7 @@ This version of the operator has been available since version 19 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Equal-1">1</a>, <a href="Changelog.md#Equal-7">7</a>, <a href="Changelog.md#Equal-11">11</a>, <a href="Changelog.md#Equal-13">13</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -13901,9 +13793,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Erf-9">9</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -13957,9 +13847,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Exp-1">1</a>, <a href="Changelog.md#Exp-6">6</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -14024,9 +13912,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Expand-8">8</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -14136,9 +14022,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#EyeLike-9">9</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -14253,9 +14137,7 @@ This version of the operator has been available since version 25 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Flatten-1">1</a>, <a href="Changelog.md#Flatten-9">9</a>, <a href="Changelog.md#Flatten-11">11</a>, <a href="Changelog.md#Flatten-13">13</a>, <a href="Changelog.md#Flatten-21">21</a>, <a href="Changelog.md#Flatten-23">23</a>, <a href="Changelog.md#Flatten-24">24</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -14371,9 +14253,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Floor-1">1</a>, <a href="Changelog.md#Floor-6">6</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -14477,9 +14357,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#GRU-1">1</a>, <a href="Changelog.md#GRU-3">3</a>, <a href="Changelog.md#GRU-7">7</a>, <a href="Changelog.md#GRU-14">14</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -14782,9 +14660,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Gather-1">1</a>, <a href="Changelog.md#Gather-11">11</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -14984,9 +14860,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#GatherElements-11">11</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -15206,9 +15080,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#GatherND-11">11</a>, <a href="Changelog.md#GatherND-12">12</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -15336,9 +15208,7 @@ expect(
 
 This version of the operator has been available since version 20 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -15442,9 +15312,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Gemm-1">1</a>, <a href="Changelog.md#Gemm-6">6</a>, <a href="Changelog.md#Gemm-7">7</a>, <a href="Changelog.md#Gemm-9">9</a>, <a href="Changelog.md#Gemm-11">11</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -15692,9 +15560,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#GlobalAveragePool-1">1</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -15776,9 +15642,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#GlobalLpPool-1">1</a>, <a href="Changelog.md#GlobalLpPool-2">2</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -15821,9 +15685,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#GlobalMaxPool-1">1</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -15906,9 +15768,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Greater-1">1</a>, <a href="Changelog.md#Greater-7">7</a>, <a href="Changelog.md#Greater-9">9</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -16087,9 +15947,7 @@ This version of the operator has been available since version 16 of the default 
 
 Other versions of this operator: <a href="Changelog.md#GreaterOrEqual-12">12</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -16144,9 +16002,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#GridSample-16">16</a>, <a href="Changelog.md#GridSample-20">20</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -16844,9 +16700,7 @@ This version of the operator has been available since version 21 of the default 
 
 Other versions of this operator: <a href="Changelog.md#GroupNormalization-18">18</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -16955,9 +16809,7 @@ expect(
 
 This version of the operator has been available since version 17 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -17044,9 +16896,7 @@ expect(
 
 This version of the operator has been available since version 17 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -17134,9 +16984,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#HardSigmoid-1">1</a>, <a href="Changelog.md#HardSigmoid-6">6</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -17222,9 +17070,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#HardSwish-14">14</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -17284,9 +17130,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Hardmax-1">1</a>, <a href="Changelog.md#Hardmax-11">11</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -17418,9 +17262,7 @@ This version of the operator has been available since version 25 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Identity-1">1</a>, <a href="Changelog.md#Identity-13">13</a>, <a href="Changelog.md#Identity-14">14</a>, <a href="Changelog.md#Identity-16">16</a>, <a href="Changelog.md#Identity-19">19</a>, <a href="Changelog.md#Identity-21">21</a>, <a href="Changelog.md#Identity-23">23</a>, <a href="Changelog.md#Identity-24">24</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -17555,9 +17397,7 @@ This version of the operator has been available since version 25 of the default 
 
 Other versions of this operator: <a href="Changelog.md#If-1">1</a>, <a href="Changelog.md#If-11">11</a>, <a href="Changelog.md#If-13">13</a>, <a href="Changelog.md#If-16">16</a>, <a href="Changelog.md#If-19">19</a>, <a href="Changelog.md#If-21">21</a>, <a href="Changelog.md#If-23">23</a>, <a href="Changelog.md#If-24">24</a>
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -17834,9 +17674,7 @@ expect(
 
 This version of the operator has been available since version 20 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -18111,9 +17949,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#InstanceNormalization-1">1</a>, <a href="Changelog.md#InstanceNormalization-6">6</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -18212,9 +18048,7 @@ This version of the operator has been available since version 20 of the default 
 
 Other versions of this operator: <a href="Changelog.md#IsInf-10">10</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -18329,9 +18163,7 @@ This version of the operator has been available since version 20 of the default 
 
 Other versions of this operator: <a href="Changelog.md#IsNaN-9">9</a>, <a href="Changelog.md#IsNaN-13">13</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -18414,9 +18246,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#LRN-1">1</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -18582,9 +18412,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#LSTM-1">1</a>, <a href="Changelog.md#LSTM-7">7</a>, <a href="Changelog.md#LSTM-14">14</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -18873,9 +18701,7 @@ expect(
 
 This version of the operator has been available since version 17 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -19068,9 +18894,7 @@ This version of the operator has been available since version 16 of the default 
 
 Other versions of this operator: <a href="Changelog.md#LeakyRelu-1">1</a>, <a href="Changelog.md#LeakyRelu-6">6</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -19155,9 +18979,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Less-1">1</a>, <a href="Changelog.md#Less-7">7</a>, <a href="Changelog.md#Less-9">9</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -19336,9 +19158,7 @@ This version of the operator has been available since version 16 of the default 
 
 Other versions of this operator: <a href="Changelog.md#LessOrEqual-12">12</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -19397,9 +19217,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 27 of the default ONNX operator set.
 
-#### Determinism
-
-The determinism of this operator is **unknown**: it depends on the operator's context-dependent function body.
+Determinism: **unknown** (context-dependent function body)
 
 #### Attributes
 
@@ -20017,9 +19835,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Log-1">1</a>, <a href="Changelog.md#Log-6">6</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -20083,9 +19899,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#LogSoftmax-1">1</a>, <a href="Changelog.md#LogSoftmax-11">11</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -20351,9 +20165,7 @@ This version of the operator has been available since version 25 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Loop-1">1</a>, <a href="Changelog.md#Loop-11">11</a>, <a href="Changelog.md#Loop-13">13</a>, <a href="Changelog.md#Loop-16">16</a>, <a href="Changelog.md#Loop-19">19</a>, <a href="Changelog.md#Loop-21">21</a>, <a href="Changelog.md#Loop-23">23</a>, <a href="Changelog.md#Loop-24">24</a>
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -20862,9 +20674,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#LpNormalization-1">1</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -21035,9 +20845,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#LpPool-1">1</a>, <a href="Changelog.md#LpPool-2">2</a>, <a href="Changelog.md#LpPool-11">11</a>, <a href="Changelog.md#LpPool-18">18</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -21420,9 +21228,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#MatMul-1">1</a>, <a href="Changelog.md#MatMul-9">9</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -21515,9 +21321,7 @@ expect(node, inputs=[a, b], outputs=[c], name="test_matmul_1d_1d")
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (2 - 4)
 
@@ -21619,9 +21423,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Max-1">1</a>, <a href="Changelog.md#Max-6">6</a>, <a href="Changelog.md#Max-8">8</a>, <a href="Changelog.md#Max-12">12</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -21753,9 +21555,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#MaxPool-1">1</a>, <a href="Changelog.md#MaxPool-8">8</a>, <a href="Changelog.md#MaxPool-10">10</a>, <a href="Changelog.md#MaxPool-11">11</a>, <a href="Changelog.md#MaxPool-12">12</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -22637,9 +22437,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#MaxRoiPool-1">1</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -22701,9 +22499,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#MaxUnpool-9">9</a>, <a href="Changelog.md#MaxUnpool-11">11</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -22825,9 +22621,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Mean-1">1</a>, <a href="Changelog.md#Mean-6">6</a>, <a href="Changelog.md#Mean-8">8</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -22905,9 +22699,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#MeanVarianceNormalization-9">9</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -22998,9 +22790,7 @@ expect(node, inputs=[input_data], outputs=[expected_output], name="test_mvn")
 
 This version of the operator has been available since version 17 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -23141,9 +22931,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Min-1">1</a>, <a href="Changelog.md#Min-6">6</a>, <a href="Changelog.md#Min-8">8</a>, <a href="Changelog.md#Min-12">12</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -23250,9 +23038,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Mish-18">18</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -23321,9 +23107,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Mod-10">10</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -23615,9 +23399,7 @@ This version of the operator has been available since version 14 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Mul-1">1</a>, <a href="Changelog.md#Mul-6">6</a>, <a href="Changelog.md#Mul-7">7</a>, <a href="Changelog.md#Mul-13">13</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -23729,9 +23511,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Multinomial-7">7</a>
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -23780,9 +23560,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Neg-1">1</a>, <a href="Changelog.md#Neg-6">6</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -23940,9 +23718,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#NegativeLogLikelihoodLoss-12">12</a>, <a href="Changelog.md#NegativeLogLikelihoodLoss-13">13</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -24617,9 +24393,7 @@ This version of the operator has been available since version 11 of the default 
 
 Other versions of this operator: <a href="Changelog.md#NonMaxSuppression-10">10</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -25193,9 +24967,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#NonZero-9">9</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -25249,9 +25021,7 @@ expect(node, inputs=[condition], outputs=[result], name="test_nonzero_example")
 
 This version of the operator has been available since version 1 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -25331,9 +25101,7 @@ This version of the operator has been available since version 11 of the default 
 
 Other versions of this operator: <a href="Changelog.md#OneHot-9">9</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -25542,9 +25310,7 @@ expect(
 
 This version of the operator has been available since version 15 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -25589,9 +25355,7 @@ This version of the operator has been available since version 18 of the default 
 
 Other versions of this operator: <a href="Changelog.md#OptionalGetElement-15">15</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -25629,9 +25393,7 @@ This version of the operator has been available since version 18 of the default 
 
 Other versions of this operator: <a href="Changelog.md#OptionalHasElement-15">15</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (0 - 1)
 
@@ -25830,9 +25592,7 @@ This version of the operator has been available since version 7 of the default O
 
 Other versions of this operator: <a href="Changelog.md#Or-1">1</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -25951,9 +25711,7 @@ This version of the operator has been available since version 16 of the default 
 
 Other versions of this operator: <a href="Changelog.md#PRelu-1">1</a>, <a href="Changelog.md#PRelu-6">6</a>, <a href="Changelog.md#PRelu-7">7</a>, <a href="Changelog.md#PRelu-9">9</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -26130,9 +25888,7 @@ This version of the operator has been available since version 25 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Pad-1">1</a>, <a href="Changelog.md#Pad-2">2</a>, <a href="Changelog.md#Pad-11">11</a>, <a href="Changelog.md#Pad-13">13</a>, <a href="Changelog.md#Pad-18">18</a>, <a href="Changelog.md#Pad-19">19</a>, <a href="Changelog.md#Pad-21">21</a>, <a href="Changelog.md#Pad-23">23</a>, <a href="Changelog.md#Pad-24">24</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -26290,9 +26046,7 @@ This version of the operator has been available since version 15 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Pow-1">1</a>, <a href="Changelog.md#Pow-7">7</a>, <a href="Changelog.md#Pow-12">12</a>, <a href="Changelog.md#Pow-13">13</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -26444,9 +26198,7 @@ expect(node, inputs=[x, y], outputs=[z], name="test_pow_types_int32_int32")
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -26607,9 +26359,7 @@ This version of the operator has been available since version 21 of the default 
 
 Other versions of this operator: <a href="Changelog.md#QLinearMatMul-10">10</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -26836,9 +26586,7 @@ This version of the operator has been available since version 25 of the default 
 
 Other versions of this operator: <a href="Changelog.md#QuantizeLinear-10">10</a>, <a href="Changelog.md#QuantizeLinear-13">13</a>, <a href="Changelog.md#QuantizeLinear-19">19</a>, <a href="Changelog.md#QuantizeLinear-21">21</a>, <a href="Changelog.md#QuantizeLinear-23">23</a>, <a href="Changelog.md#QuantizeLinear-24">24</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -27485,9 +27233,7 @@ expect(
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -27707,9 +27453,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#RNN-1">1</a>, <a href="Changelog.md#RNN-7">7</a>, <a href="Changelog.md#RNN-14">14</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -27932,9 +27676,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#RandomNormal-1">1</a>
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -27985,9 +27727,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#RandomNormalLike-1">1</a>
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -28041,9 +27781,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#RandomUniform-1">1</a>
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -28094,9 +27832,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#RandomUniformLike-1">1</a>
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -28173,9 +27909,7 @@ This version of the operator has been available since version 27 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Range-11">11</a>
 
-#### Determinism
-
-The determinism of this operator is **unknown**: it depends on the operator's context-dependent function body.
+Determinism: **unknown** (context-dependent function body)
 
 #### Attributes
 
@@ -28337,9 +28071,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Reciprocal-1">1</a>, <a href="Changelog.md#Reciprocal-6">6</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -28404,9 +28136,7 @@ This version of the operator has been available since version 18 of the default 
 
 Other versions of this operator: <a href="Changelog.md#ReduceL1-1">1</a>, <a href="Changelog.md#ReduceL1-11">11</a>, <a href="Changelog.md#ReduceL1-13">13</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -28667,9 +28397,7 @@ This version of the operator has been available since version 18 of the default 
 
 Other versions of this operator: <a href="Changelog.md#ReduceL2-1">1</a>, <a href="Changelog.md#ReduceL2-11">11</a>, <a href="Changelog.md#ReduceL2-13">13</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -28948,9 +28676,7 @@ This version of the operator has been available since version 18 of the default 
 
 Other versions of this operator: <a href="Changelog.md#ReduceLogSum-1">1</a>, <a href="Changelog.md#ReduceLogSum-11">11</a>, <a href="Changelog.md#ReduceLogSum-13">13</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -29120,9 +28846,7 @@ This version of the operator has been available since version 18 of the default 
 
 Other versions of this operator: <a href="Changelog.md#ReduceLogSumExp-1">1</a>, <a href="Changelog.md#ReduceLogSumExp-11">11</a>, <a href="Changelog.md#ReduceLogSumExp-13">13</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -29389,9 +29113,7 @@ This version of the operator has been available since version 20 of the default 
 
 Other versions of this operator: <a href="Changelog.md#ReduceMax-1">1</a>, <a href="Changelog.md#ReduceMax-11">11</a>, <a href="Changelog.md#ReduceMax-12">12</a>, <a href="Changelog.md#ReduceMax-13">13</a>, <a href="Changelog.md#ReduceMax-18">18</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -29700,9 +29422,7 @@ This version of the operator has been available since version 18 of the default 
 
 Other versions of this operator: <a href="Changelog.md#ReduceMean-1">1</a>, <a href="Changelog.md#ReduceMean-11">11</a>, <a href="Changelog.md#ReduceMean-13">13</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -29944,9 +29664,7 @@ This version of the operator has been available since version 20 of the default 
 
 Other versions of this operator: <a href="Changelog.md#ReduceMin-1">1</a>, <a href="Changelog.md#ReduceMin-11">11</a>, <a href="Changelog.md#ReduceMin-12">12</a>, <a href="Changelog.md#ReduceMin-13">13</a>, <a href="Changelog.md#ReduceMin-18">18</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -30258,9 +29976,7 @@ This version of the operator has been available since version 18 of the default 
 
 Other versions of this operator: <a href="Changelog.md#ReduceProd-1">1</a>, <a href="Changelog.md#ReduceProd-11">11</a>, <a href="Changelog.md#ReduceProd-13">13</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -30519,9 +30235,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#ReduceSum-1">1</a>, <a href="Changelog.md#ReduceSum-11">11</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -30852,9 +30566,7 @@ This version of the operator has been available since version 18 of the default 
 
 Other versions of this operator: <a href="Changelog.md#ReduceSumSquare-1">1</a>, <a href="Changelog.md#ReduceSumSquare-11">11</a>, <a href="Changelog.md#ReduceSumSquare-13">13</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -31111,9 +30823,7 @@ expect(
 
 This version of the operator has been available since version 20 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -31234,9 +30944,7 @@ This version of the operator has been available since version 14 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Relu-1">1</a>, <a href="Changelog.md#Relu-6">6</a>, <a href="Changelog.md#Relu-13">13</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -31302,9 +31010,7 @@ This version of the operator has been available since version 25 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Reshape-1">1</a>, <a href="Changelog.md#Reshape-5">5</a>, <a href="Changelog.md#Reshape-13">13</a>, <a href="Changelog.md#Reshape-14">14</a>, <a href="Changelog.md#Reshape-19">19</a>, <a href="Changelog.md#Reshape-21">21</a>, <a href="Changelog.md#Reshape-23">23</a>, <a href="Changelog.md#Reshape-24">24</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -31424,9 +31130,7 @@ This version of the operator has been available since version 19 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Resize-10">10</a>, <a href="Changelog.md#Resize-11">11</a>, <a href="Changelog.md#Resize-13">13</a>, <a href="Changelog.md#Resize-18">18</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -33514,9 +33218,7 @@ expect(
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -33659,9 +33361,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#RoiAlign-10">10</a>, <a href="Changelog.md#RoiAlign-16">16</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -34134,9 +33834,7 @@ expect(
 
 This version of the operator has been available since version 23 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -34470,9 +34168,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Round-11">11</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -34562,9 +34258,7 @@ expect(node, inputs=[x], outputs=[y], name="test_round")
 
 This version of the operator has been available since version 17 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -34799,9 +34493,7 @@ This version of the operator has been available since version 25 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Scan-8">8</a>, <a href="Changelog.md#Scan-9">9</a>, <a href="Changelog.md#Scan-11">11</a>, <a href="Changelog.md#Scan-16">16</a>, <a href="Changelog.md#Scan-19">19</a>, <a href="Changelog.md#Scan-21">21</a>, <a href="Changelog.md#Scan-23">23</a>, <a href="Changelog.md#Scan-24">24</a>
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -35208,9 +34900,7 @@ This version of the operator has been available since version 18 of the default 
 
 Other versions of this operator: <a href="Changelog.md#ScatterElements-11">11</a>, <a href="Changelog.md#ScatterElements-13">13</a>, <a href="Changelog.md#ScatterElements-16">16</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -35549,9 +35239,7 @@ This version of the operator has been available since version 18 of the default 
 
 Other versions of this operator: <a href="Changelog.md#ScatterND-11">11</a>, <a href="Changelog.md#ScatterND-13">13</a>, <a href="Changelog.md#ScatterND-16">16</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -35820,9 +35508,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Selu-1">1</a>, <a href="Changelog.md#Selu-6">6</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -35916,9 +35602,7 @@ expect(node, inputs=[x], outputs=[y], name="test_selu_default")
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -35957,9 +35641,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -35993,9 +35675,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -36033,9 +35713,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - 2)
 
@@ -36075,9 +35753,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (2 - 3)
 
@@ -36170,9 +35846,7 @@ for test_name, test_inputs in test_cases.items():
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -36219,9 +35893,7 @@ This operator is **deterministic**: identical inputs always produce identical ou
 
 This version of the operator has been available since version 17 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **non-deterministic**: it may produce different outputs for identical inputs, for example because it depends on random number generation or on subgraphs.
+Determinism: **non-deterministic** (may depend on random number generation or subgraphs)
 
 #### Attributes
 
@@ -36633,9 +36305,7 @@ This version of the operator has been available since version 25 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Shape-1">1</a>, <a href="Changelog.md#Shape-13">13</a>, <a href="Changelog.md#Shape-15">15</a>, <a href="Changelog.md#Shape-19">19</a>, <a href="Changelog.md#Shape-21">21</a>, <a href="Changelog.md#Shape-23">23</a>, <a href="Changelog.md#Shape-24">24</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -36721,9 +36391,7 @@ test_shape("_start_greater_than_end", x, start=2, end=1)
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -36807,9 +36475,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Sigmoid-1">1</a>, <a href="Changelog.md#Sigmoid-6">6</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -36870,9 +36536,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Sign-9">9</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -36926,9 +36590,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Sin-7">7</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -36986,9 +36648,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Sinh-9">9</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -37046,9 +36706,7 @@ This version of the operator has been available since version 25 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Size-1">1</a>, <a href="Changelog.md#Size-13">13</a>, <a href="Changelog.md#Size-19">19</a>, <a href="Changelog.md#Size-21">21</a>, <a href="Changelog.md#Size-23">23</a>, <a href="Changelog.md#Size-24">24</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -37176,9 +36834,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Slice-1">1</a>, <a href="Changelog.md#Slice-10">10</a>, <a href="Changelog.md#Slice-11">11</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (3 - 5)
 
@@ -37444,9 +37100,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Softmax-1">1</a>, <a href="Changelog.md#Softmax-11">11</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -37616,9 +37270,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#SoftmaxCrossEntropyLoss-12">12</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -38937,9 +38589,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Softplus-1">1</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -38999,9 +38649,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Softsign-1">1</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -39061,9 +38709,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#SpaceToDepth-1">1</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -39176,9 +38822,7 @@ This version of the operator has been available since version 18 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Split-1">1</a>, <a href="Changelog.md#Split-2">2</a>, <a href="Changelog.md#Split-11">11</a>, <a href="Changelog.md#Split-13">13</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -39662,9 +39306,7 @@ This version of the operator has been available since version 24 of the default 
 
 Other versions of this operator: <a href="Changelog.md#SplitToSequence-11">11</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -39803,9 +39445,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Sqrt-1">1</a>, <a href="Changelog.md#Sqrt-6">6</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -39866,9 +39506,7 @@ This version of the operator has been available since version 25 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Squeeze-1">1</a>, <a href="Changelog.md#Squeeze-11">11</a>, <a href="Changelog.md#Squeeze-13">13</a>, <a href="Changelog.md#Squeeze-21">21</a>, <a href="Changelog.md#Squeeze-23">23</a>, <a href="Changelog.md#Squeeze-24">24</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - 2)
 
@@ -39941,9 +39579,7 @@ expect(node, inputs=[x, axes], outputs=[y], name="test_squeeze_negative_axes")
 
 This version of the operator has been available since version 20 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -40050,9 +39686,7 @@ expect(
 
 This version of the operator has been available since version 10 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -40271,9 +39905,7 @@ expect(
 
 This version of the operator has been available since version 20 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -40497,9 +40129,7 @@ This version of the operator has been available since version 14 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Sub-1">1</a>, <a href="Changelog.md#Sub-6">6</a>, <a href="Changelog.md#Sub-7">7</a>, <a href="Changelog.md#Sub-13">13</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -40612,9 +40242,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Sum-1">1</a>, <a href="Changelog.md#Sum-6">6</a>, <a href="Changelog.md#Sum-8">8</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs (1 - &#8734;)
 
@@ -40690,9 +40318,7 @@ expect(
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -40761,9 +40387,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Tan-7">7</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -40821,9 +40445,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Tanh-1">1</a>, <a href="Changelog.md#Tanh-6">6</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -40904,9 +40526,7 @@ expect(node, inputs=[x], outputs=[y], name="test_tanh")
 
 This version of the operator has been available since version 24 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -41159,9 +40779,7 @@ expect(
 
 This version of the operator has been available since version 9 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -41468,9 +41086,7 @@ This version of the operator has been available since version 22 of the default 
 
 Other versions of this operator: <a href="Changelog.md#ThresholdedRelu-10">10</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -41556,9 +41172,7 @@ This version of the operator has been available since version 13 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Tile-1">1</a>, <a href="Changelog.md#Tile-6">6</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -41650,9 +41264,7 @@ This version of the operator has been available since version 24 of the default 
 
 Other versions of this operator: <a href="Changelog.md#TopK-1">1</a>, <a href="Changelog.md#TopK-10">10</a>, <a href="Changelog.md#TopK-11">11</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -41992,9 +41604,7 @@ This version of the operator has been available since version 25 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Transpose-1">1</a>, <a href="Changelog.md#Transpose-13">13</a>, <a href="Changelog.md#Transpose-21">21</a>, <a href="Changelog.md#Transpose-23">23</a>, <a href="Changelog.md#Transpose-24">24</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -42091,9 +41701,7 @@ expect(node, inputs=[data], outputs=[transposed], name="test_transpose_default")
 
 This version of the operator has been available since version 14 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -42773,9 +42381,7 @@ expect(node, inputs=[x, k], outputs=[y], name="test_triu_zero")
 
 This version of the operator has been available since version 11 of the default ONNX operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -43080,9 +42686,7 @@ This version of the operator has been available since version 25 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Unsqueeze-1">1</a>, <a href="Changelog.md#Unsqueeze-11">11</a>, <a href="Changelog.md#Unsqueeze-13">13</a>, <a href="Changelog.md#Unsqueeze-21">21</a>, <a href="Changelog.md#Unsqueeze-23">23</a>, <a href="Changelog.md#Unsqueeze-24">24</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -43300,9 +42904,7 @@ This version of the operator has been available since version 16 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Where-9">9</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -43389,9 +42991,7 @@ This version of the operator has been available since version 7 of the default O
 
 Other versions of this operator: <a href="Changelog.md#Xor-1">1</a>
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Inputs
 
@@ -43547,9 +43147,7 @@ expect(node, inputs=[x, y], outputs=[z], name="test_xor_bcast4v4d")
 #### Version
 
 No versioning maintained for experimental ops.
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -44106,9 +43704,7 @@ expect(
 
 This version of the operator has been available since version 1 of the 'ai.onnx.preview.training' operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -44322,9 +43918,7 @@ expect(
 
 This version of the operator has been available since version 1 of the 'ai.onnx.preview.training' operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -44611,9 +44205,7 @@ expect(
 
 This version of the operator has been available since version 1 of the 'ai.onnx.preview.training' operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 
@@ -44828,9 +44420,7 @@ expect(
 
 This version of the operator has been available since version 1 of the 'ai.onnx.preview.training' operator set.
 
-#### Determinism
-
-This operator is **deterministic**: identical inputs always produce identical outputs.
+Determinism: **deterministic**
 
 #### Attributes
 

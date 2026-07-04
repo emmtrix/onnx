@@ -150,16 +150,26 @@ ONNX_OPERATOR_SET_SCHEMA(
 
 ONNX_OPERATOR_SET_SCHEMA(
     RandomUniform,
-    22,
+    28,
     OpSchema()
-        .SetDoc(kDoc_RandomUniform_ver1)
+        .SetDoc(kDoc_RandomUniform_ver28)
         .Attr("low", "Lower boundary of the output values.", AttributeProto::FLOAT, 0.0f)
         .Attr("high", "Upper boundary of the output values.", AttributeProto::FLOAT, 1.0f)
         .Attr(
             "seed",
-            "(Optional) Seed to the random generator, if not specified we will auto generate one.",
+            "(Optional) Seed to the random generator, if not specified we will auto generate one. "
+            "Must be specified when `generator` is \"mersenne_twister\".",
             AttributeProto::FLOAT,
             OPTIONAL_VALUE)
+        .Attr(
+            "generator",
+            "(Optional) The pseudo-random number generator algorithm. \"default\" leaves the choice of "
+            "generator to the implementation; results are then not reproducible across implementations, "
+            "even when `seed` is specified. \"mersenne_twister\" selects the fully specified MT19937 "
+            "algorithm described in the operator documentation, making the output deterministic for a "
+            "given `seed`. More algorithms may be added in future opset versions.",
+            AttributeProto::STRING,
+            std::string("default"))
         .Attr(
             "dtype",
             "The data type for the elements of the output tensor. If not specified, default is TensorProto::FLOAT.",
@@ -170,6 +180,17 @@ ONNX_OPERATOR_SET_SCHEMA(
         .TypeConstraint("T", OpSchema::all_float_types_ir4(), "Constrain output types to float tensors.")
         .SetNodeDeterminism(OpSchema::NodeDeterminism::NonDeterministic)
         .TypeAndShapeInferenceFunction([](InferenceContext& ctx) {
+          const auto* generator_attr = ctx.getAttribute("generator");
+          if (generator_attr != nullptr) {
+            const std::string& generator = generator_attr->s();
+            if (generator != "default" && generator != "mersenne_twister") {
+              fail_shape_inference(
+                  "Attribute 'generator' must be one of 'default' or 'mersenne_twister', got '", generator, "'.");
+            }
+            if (generator != "default" && ctx.getAttribute("seed") == nullptr) {
+              fail_shape_inference("Attribute 'seed' must be specified when 'generator' is '", generator, "'.");
+            }
+          }
           propagateElemTypeFromAttributeToOutput(ctx, "dtype", 0, TensorProto::FLOAT);
           propagateShapeFromAttributeToOutput(ctx, "shape", 0);
         }));

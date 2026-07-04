@@ -78,6 +78,18 @@ class TestSchema(unittest.TestCase):
         self.assertTrue(celu28.has_function)
         self.assertEqual(allowed(defs.get_schema("Celu", 12)), {"tensor(float)"})
 
+    def test_randomuniform_generator_attribute(self) -> None:
+        schema28 = defs.get_schema("RandomUniform", 28)
+        self.assertIn("generator", schema28.attributes)
+        generator = schema28.attributes["generator"]
+        self.assertEqual(generator.type, defs.OpSchema.AttrType.STRING)
+        self.assertEqual(generator.default_value.s, b"default")
+        self.assertFalse(generator.required)
+        # The operator stays non-deterministic at the schema level: with the
+        # default generator the output is still implementation-defined.
+        self.assertTrue(schema28.non_deterministic)
+        self.assertNotIn("generator", defs.get_schema("RandomUniform", 22).attributes)
+
     def test_range_supported_types(self) -> None:
         """Test Range operator supports all expected numeric types."""
         range_schema = defs.get_schema("Range")

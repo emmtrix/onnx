@@ -1545,7 +1545,9 @@ class TestReferenceEvaluator(unittest.TestCase):
     def test_mt19937_canonical_test_vector(self):
         # The 10000th output of MT19937 seeded with init_genrand(5489) is
         # 4123659995 (Matsumoto & Nishimura; also std::mt19937 in C++11).
-        from onnx.reference.ops._op_common_random import _MT19937
+        from onnx.reference.ops._op_common_random import (  # noqa: PLC0415
+            _MT19937,
+        )
 
         gen = _MT19937(5489)
         for _ in range(9999):

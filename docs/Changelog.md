@@ -33093,6 +33093,75 @@ This version of the operator has been available since version 28 of the default 
 <dd>Constrain input and output types to float tensors.</dd>
 </dl>
 
+### <a name="RandomUniform-28"></a>**RandomUniform-28**</a>
+
+  Generate a tensor with random values drawn from a uniform distribution. The shape
+  of the tensor is specified by the `shape` argument and the range by `low` and `high`.
+
+  The data type is specified by the 'dtype' argument. The 'dtype' argument must
+  be one of the data types specified in the 'DataType' enum field in the
+  TensorProto message.
+
+  The `generator` attribute selects the pseudo-random number generator algorithm.
+  With the default value "default", the choice of generator is left to the
+  implementation and results are generally not reproducible across implementations,
+  even when `seed` is specified. Setting `generator` to "mersenne_twister" fully
+  specifies the generated values: given the same `seed`, every conforming
+  implementation must produce bit-identical results, which makes the operator
+  deterministic and testable. More algorithms may be added in future opset versions.
+
+  When `generator` is "mersenne_twister", the `seed` attribute must be specified
+  and the output is computed as follows:
+  1. Initialize a standard 32-bit Mersenne Twister (MT19937) state using the
+     `init_genrand` seeding routine from the reference implementation of Matsumoto
+     and Nishimura (the seeding also used by C++ `std::mt19937`), with the seed
+     value obtained by truncating `seed` toward zero and converting it to an
+     unsigned 32-bit integer (modulo 2^32).
+  2. For each output element, in row-major order, draw two consecutive 32-bit
+     outputs `a` and `b` from the generator and form the double-precision value
+     `r = (floor(a / 2^5) * 2^26 + floor(b / 2^6)) / 2^53` (the `genrand_res53`
+     method), which lies in the interval [0, 1).
+  3. The element value is `low + r * (high - low)`, computed in double precision
+     and then cast to `dtype`.
+
+#### Version
+
+This version of the operator has been available since version 28 of the default ONNX operator set.
+
+#### Attributes
+
+<dl>
+<dt><tt>dtype</tt> : int (default is 1)</dt>
+<dd>The data type for the elements of the output tensor. If not specified, default is TensorProto::FLOAT.</dd>
+<dt><tt>generator</tt> : string (default is default)</dt>
+<dd>(Optional) The pseudo-random number generator algorithm. "default" leaves the choice of generator to the implementation; results are then not reproducible across implementations, even when `seed` is specified. "mersenne_twister" selects the fully specified MT19937 algorithm described in the operator documentation, making the output deterministic for a given `seed`. More algorithms may be added in future opset versions.</dd>
+<dt><tt>high</tt> : float (default is 1.0)</dt>
+<dd>Upper boundary of the output values.</dd>
+<dt><tt>low</tt> : float (default is 0.0)</dt>
+<dd>Lower boundary of the output values.</dd>
+<dt><tt>seed</tt> : float</dt>
+<dd>(Optional) Seed to the random generator, if not specified we will auto generate one. Must be specified when `generator` is "mersenne_twister".</dd>
+<dt><tt>shape</tt> : list of ints (required)</dt>
+<dd>The shape of the output tensor.</dd>
+</dl>
+
+#### Inputs
+
+
+#### Outputs
+
+<dl>
+<dt><tt>output</tt> : T</dt>
+<dd>Output tensor of random values drawn from uniform distribution</dd>
+</dl>
+
+#### Type Constraints
+
+<dl>
+<dt><tt>T</tt> : tensor(bfloat16), tensor(float16), tensor(float), tensor(double)</dt>
+<dd>Constrain output types to float tensors.</dd>
+</dl>
+
 # ai.onnx.preview
 ## Version 1 of the 'ai.onnx.preview' operator set
 ### <a name="ai.onnx.preview.FlexAttention-1"></a>**ai.onnx.preview.FlexAttention-1**</a>

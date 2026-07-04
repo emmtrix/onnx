@@ -38,7 +38,11 @@ class _MT19937:
         mt = self._mt
         for i in range(self._N):
             y = (mt[i] & self._UPPER_MASK) | (mt[(i + 1) % self._N] & self._LOWER_MASK)
-            mt[i] = mt[(i + self._M) % self._N] ^ (y >> 1) ^ (self._MATRIX_A if y & 1 else 0)
+            mt[i] = (
+                mt[(i + self._M) % self._N]
+                ^ (y >> 1)
+                ^ (self._MATRIX_A if y & 1 else 0)
+            )
         self._index = 0
 
     def next_uint32(self) -> int:

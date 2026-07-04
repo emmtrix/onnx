@@ -65,6 +65,20 @@ class _MT19937:
             res[k] = (a * 67108864.0 + b) * (1.0 / 9007199254740992.0)
         return res
 
+    def random_res(self, num: int, precision: int) -> np.ndarray:
+        """Draw `num` values in [0, 1) with `precision` significand bits.
+
+        Each value uses one 32-bit output: ``(next_uint32() >> (32 - p)) / 2^p``.
+        The results are exactly representable in any binary float type with at
+        least `precision` significand bits.
+        """
+        res = np.empty(num, dtype=np.float64)
+        shift = 32 - precision
+        scale = 1.0 / (1 << precision)
+        for k in range(num):
+            res[k] = (self.next_uint32() >> shift) * scale
+        return res
+
 
 class _CommonRandom(OpRun):
     def __init__(self, onnx_node, run_params):
@@ -112,11 +126,15 @@ class _CommonRandom(OpRun):
         return state
 
     @staticmethod
-    def _deterministic_uniform(generator, seed, shape):
-        """Draw uniform doubles in [0, 1) with the fully specified generator.
+    def _deterministic_uniform(generator, seed, shape, dtype):
+        """Draw uniform values in [0, 1) with the fully specified generator.
 
         Unlike the "unspecified" generator, the result is bit-identical across
         implementations for a given seed (see the operator specification).
+        The resolution of the values matches the precision of `dtype`: double
+        uses the two-word genrand_res53 method, all other float types use one
+        32-bit output per element, keeping every value exactly representable
+        in `dtype`.
         """
         if generator != "mersenne_twister":
             raise ValueError(
@@ -130,4 +148,9 @@ class _CommonRandom(OpRun):
             )
         state = _MT19937(int(seed) & 0xFFFFFFFF)
         num = int(np.prod(shape))
-        return state.random_res53(num).reshape(shape)
+        if np.dtype(dtype) == np.float64:
+            res = state.random_res53(num)
+        else:
+            precision = np.finfo(dtype).nmant + 1
+            res = state.random_res(num, precision)
+        return res.reshape(shape).astype(dtype)

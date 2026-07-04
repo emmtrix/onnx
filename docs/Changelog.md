@@ -33120,12 +33120,21 @@ This version of the operator has been available since version 28 of the default 
      and Nishimura (the seeding also used by C++ `std::mt19937`), with the seed
      value obtained by truncating `seed` toward zero and converting it to an
      unsigned 32-bit integer (modulo 2^32).
-  2. For each output element, in row-major order, draw two consecutive 32-bit
-     outputs `a` and `b` from the generator and form the double-precision value
-     `r = (floor(a / 2^5) * 2^26 + floor(b / 2^6)) / 2^53` (the `genrand_res53`
-     method), which lies in the interval [0, 1).
-  3. The element value is `low + r * (high - low)`, computed in double precision
-     and then cast to `dtype`.
+  2. For each output element, in row-major order, draw a value `r` in the
+     interval [0, 1) whose resolution matches the precision of `dtype`. Let `p`
+     be the number of significand bits of `dtype`, including the implicit bit
+     (8 for bfloat16, 11 for float16, 24 for float, 53 for double):
+     - If `dtype` is double, draw two consecutive 32-bit outputs `a` and `b` and
+       form `r = (floor(a / 2^5) * 2^26 + floor(b / 2^6)) / 2^53` (the
+       `genrand_res53` method).
+     - Otherwise, draw one 32-bit output `a` and form
+       `r = floor(a / 2^(32-p)) / 2^p`, which is exactly representable in
+       `dtype`.
+  3. The element value is `low + r * (high - low)`, where `low` and `high` are
+     first converted to `dtype` and the subtraction, multiplication, and
+     addition are performed in `dtype` with IEEE 754 round-to-nearest-even
+     semantics. Note that due to this rounding, the result may equal `high` for
+     low-precision types.
 
 #### Version
 

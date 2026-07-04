@@ -1492,15 +1492,16 @@ class TestReferenceEvaluator(unittest.TestCase):
         check_model(onnx_model)
         sess = ReferenceEvaluator(onnx_model)
         got = sess.run(None, {})[0]
-        # First six genrand_res53 doubles of MT19937 seeded with
-        # init_genrand(42), as produced by C++ std::mt19937.
+        # For float32, each element uses one 32-bit output of MT19937 seeded
+        # with init_genrand(42): r = (a >> 8) / 2^24, as produced by C++
+        # std::mt19937.
         expected = np.array(
             [
-                [0.3745401188473625, 0.9507143064099162, 0.7319939418114051],
-                [0.5986584841970366, 0.15601864044243652, 0.15599452033620265],
+                [0.374540091, 0.796542943, 0.95071429],
+                [0.183434784, 0.731993914, 0.779690981],
             ],
-            dtype=np.float64,
-        ).astype(np.float32)
+            dtype=np.float32,
+        )
         assert_allclose(got, expected, rtol=0, atol=0)
         self.assertEqual(got.dtype, np.float32)
         # A second run must produce bit-identical values.

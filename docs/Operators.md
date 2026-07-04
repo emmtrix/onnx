@@ -27533,12 +27533,21 @@ Other versions of this operator: <a href="Changelog.md#RandomNormalLike-1">1</a>
      and Nishimura (the seeding also used by C++ `std::mt19937`), with the seed
      value obtained by truncating `seed` toward zero and converting it to an
      unsigned 32-bit integer (modulo 2^32).
-  2. For each output element, in row-major order, draw two consecutive 32-bit
-     outputs `a` and `b` from the generator and form the double-precision value
-     `r = (floor(a / 2^5) * 2^26 + floor(b / 2^6)) / 2^53` (the `genrand_res53`
-     method), which lies in the interval [0, 1).
-  3. The element value is `low + r * (high - low)`, computed in double precision
-     and then cast to `dtype`.
+  2. For each output element, in row-major order, draw a value `r` in the
+     interval [0, 1) whose resolution matches the precision of `dtype`. Let `p`
+     be the number of significand bits of `dtype`, including the implicit bit
+     (8 for bfloat16, 11 for float16, 24 for float, 53 for double):
+     - If `dtype` is double, draw two consecutive 32-bit outputs `a` and `b` and
+       form `r = (floor(a / 2^5) * 2^26 + floor(b / 2^6)) / 2^53` (the
+       `genrand_res53` method).
+     - Otherwise, draw one 32-bit output `a` and form
+       `r = floor(a / 2^(32-p)) / 2^p`, which is exactly representable in
+       `dtype`.
+  3. The element value is `low + r * (high - low)`, where `low` and `high` are
+     first converted to `dtype` and the subtraction, multiplication, and
+     addition are performed in `dtype` with IEEE 754 round-to-nearest-even
+     semantics. Note that due to this rounding, the result may equal `high` for
+     low-precision types.
 
 #### Version
 
@@ -27596,7 +27605,7 @@ node = onnx.helper.make_node(
     generator="mersenne_twister",
 )
 
-y = mersenne_twister_uniform(42, (3, 4)).astype(np.float32)
+y = mersenne_twister_uniform(42, (3, 4), np.float32)
 expect(
     node,
     inputs=[],
@@ -27622,7 +27631,7 @@ node = onnx.helper.make_node(
     generator="mersenne_twister",
 )
 
-y = mersenne_twister_uniform(123, (2, 4))
+y = mersenne_twister_uniform(123, (2, 4), np.float64)
 expect(
     node,
     inputs=[],
@@ -27648,7 +27657,7 @@ node = onnx.helper.make_node(
     generator="mersenne_twister",
 )
 
-y = mersenne_twister_uniform(7, (10,)).astype(np.float16)
+y = mersenne_twister_uniform(7, (10,), np.float16)
 expect(
     node,
     inputs=[],
@@ -27675,7 +27684,7 @@ node = onnx.helper.make_node(
     generator="mersenne_twister",
 )
 
-y = mersenne_twister_uniform(0, (2, 3), low=5.0, high=10.0).astype(np.float32)
+y = mersenne_twister_uniform(0, (2, 3), np.float32, low=5.0, high=10.0)
 expect(
     node,
     inputs=[],

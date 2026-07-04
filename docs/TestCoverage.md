@@ -19861,7 +19861,7 @@ node = onnx.helper.make_node(
     generator="mersenne_twister",
 )
 
-y = mersenne_twister_uniform(42, (3, 4)).astype(np.float32)
+y = mersenne_twister_uniform(42, (3, 4), np.float32)
 expect(
     node,
     inputs=[],
@@ -19885,7 +19885,7 @@ node = onnx.helper.make_node(
     generator="mersenne_twister",
 )
 
-y = mersenne_twister_uniform(123, (2, 4))
+y = mersenne_twister_uniform(123, (2, 4), np.float64)
 expect(
     node,
     inputs=[],
@@ -19909,7 +19909,7 @@ node = onnx.helper.make_node(
     generator="mersenne_twister",
 )
 
-y = mersenne_twister_uniform(7, (10,)).astype(np.float16)
+y = mersenne_twister_uniform(7, (10,), np.float16)
 expect(
     node,
     inputs=[],
@@ -19934,7 +19934,7 @@ node = onnx.helper.make_node(
     generator="mersenne_twister",
 )
 
-y = mersenne_twister_uniform(0, (2, 3), low=5.0, high=10.0).astype(np.float32)
+y = mersenne_twister_uniform(0, (2, 3), np.float32, low=5.0, high=10.0)
 expect(
     node,
     inputs=[],

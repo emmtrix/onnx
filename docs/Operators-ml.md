@@ -42,6 +42,10 @@ For an operator input/output's differentiability, it can be differentiable,
 
 This version of the operator has been available since version 1 of the 'ai.onnx.ml' operator set.
 
+#### Determinism
+
+This operator is **deterministic**: identical inputs always produce identical outputs.
+
 #### Inputs
 
 <dl>
@@ -100,6 +104,10 @@ expect(
 #### Version
 
 This version of the operator has been available since version 1 of the 'ai.onnx.ml' operator set.
+
+#### Determinism
+
+This operator is **deterministic**: identical inputs always produce identical outputs.
 
 #### Attributes
 
@@ -163,6 +171,10 @@ expect(node, inputs=[x], outputs=[y], name="test_ai_onnx_ml_binarizer")
 
 This version of the operator has been available since version 1 of the 'ai.onnx.ml' operator set.
 
+#### Determinism
+
+This operator is **deterministic**: identical inputs always produce identical outputs.
+
 #### Attributes
 
 <dl>
@@ -212,6 +224,10 @@ This version of the operator has been available since version 1 of the 'ai.onnx.
 #### Version
 
 This version of the operator has been available since version 1 of the 'ai.onnx.ml' operator set.
+
+#### Determinism
+
+This operator is **deterministic**: identical inputs always produce identical outputs.
 
 #### Attributes
 
@@ -269,6 +285,10 @@ This version of the operator has been available since version 1 of the 'ai.onnx.
 
 This version of the operator has been available since version 1 of the 'ai.onnx.ml' operator set.
 
+#### Determinism
+
+This operator is **deterministic**: identical inputs always produce identical outputs.
+
 #### Attributes
 
 <dl>
@@ -313,6 +333,10 @@ This version of the operator has been available since version 1 of the 'ai.onnx.
 
 This version of the operator has been available since version 1 of the 'ai.onnx.ml' operator set.
 
+#### Determinism
+
+This operator is **deterministic**: identical inputs always produce identical outputs.
+
 #### Attributes
 
 <dl>
@@ -356,6 +380,10 @@ This version of the operator has been available since version 1 of the 'ai.onnx.
 #### Version
 
 This version of the operator has been available since version 1 of the 'ai.onnx.ml' operator set.
+
+#### Determinism
+
+This operator is **deterministic**: identical inputs always produce identical outputs.
 
 #### Attributes
 
@@ -419,6 +447,10 @@ This version of the operator has been available since version 1 of the 'ai.onnx.
 This version of the operator has been available since version 4 of the 'ai.onnx.ml' operator set.
 
 Other versions of this operator: <a href="Changelog-ml.md#ai.onnx.ml.LabelEncoder-1">1</a>, <a href="Changelog-ml.md#ai.onnx.ml.LabelEncoder-2">2</a>
+
+#### Determinism
+
+This operator is **deterministic**: identical inputs always produce identical outputs.
 
 #### Attributes
 
@@ -583,6 +615,10 @@ expect(
 
 This version of the operator has been available since version 1 of the 'ai.onnx.ml' operator set.
 
+#### Determinism
+
+This operator is **deterministic**: identical inputs always produce identical outputs.
+
 #### Attributes
 
 <dl>
@@ -639,6 +675,10 @@ This version of the operator has been available since version 1 of the 'ai.onnx.
 
 This version of the operator has been available since version 1 of the 'ai.onnx.ml' operator set.
 
+#### Determinism
+
+This operator is **deterministic**: identical inputs always produce identical outputs.
+
 #### Attributes
 
 <dl>
@@ -691,6 +731,10 @@ This version of the operator has been available since version 1 of the 'ai.onnx.
 
 This version of the operator has been available since version 1 of the 'ai.onnx.ml' operator set.
 
+#### Determinism
+
+This operator is **deterministic**: identical inputs always produce identical outputs.
+
 #### Attributes
 
 <dl>
@@ -735,6 +779,10 @@ This version of the operator has been available since version 1 of the 'ai.onnx.
 
 This version of the operator has been available since version 1 of the 'ai.onnx.ml' operator set.
 
+#### Determinism
+
+This operator is **deterministic**: identical inputs always produce identical outputs.
+
 #### Attributes
 
 <dl>
@@ -775,6 +823,10 @@ This version of the operator has been available since version 1 of the 'ai.onnx.
 #### Version
 
 This version of the operator has been available since version 1 of the 'ai.onnx.ml' operator set.
+
+#### Determinism
+
+This operator is **deterministic**: identical inputs always produce identical outputs.
 
 #### Attributes
 
@@ -837,6 +889,10 @@ This version of the operator has been available since version 1 of the 'ai.onnx.
 
 This version of the operator has been available since version 1 of the 'ai.onnx.ml' operator set.
 
+#### Determinism
+
+This operator is **deterministic**: identical inputs always produce identical outputs.
+
 #### Attributes
 
 <dl>
@@ -888,6 +944,10 @@ This version of the operator has been available since version 1 of the 'ai.onnx.
 
 This version of the operator has been available since version 1 of the 'ai.onnx.ml' operator set.
 
+#### Determinism
+
+This operator is **deterministic**: identical inputs always produce identical outputs.
+
 #### Attributes
 
 <dl>
@@ -938,6 +998,10 @@ This version of the operator has been available since version 1 of the 'ai.onnx.
 #### Version
 
 This version of the operator has been available since version 5 of the 'ai.onnx.ml' operator set.
+
+#### Determinism
+
+This operator is **deterministic**: identical inputs always produce identical outputs.
 
 #### Attributes
 
@@ -1180,6 +1244,10 @@ Other versions of this operator: <a href="Changelog-ml.md#ai.onnx.ml.TreeEnsembl
 #### Version
 
 This version of the operator has been available since version 1 of the 'ai.onnx.ml' operator set.
+
+#### Determinism
+
+This operator is **deterministic**: identical inputs always produce identical outputs.
 
 #### Attributes
 

@@ -141,6 +141,25 @@ def display_schema(
     if schema.deprecated:
         return s
 
+    # determinism
+    s += "\n#### Determinism\n"
+    if schema.node_determinism == OpSchema.NodeDeterminism.NonDeterministic:
+        s += (
+            "\nThis operator is **non-deterministic**: it may produce different"
+            " outputs for identical inputs, for example because it depends on"
+            " random number generation or on subgraphs.\n"
+        )
+    elif schema.node_determinism == OpSchema.NodeDeterminism.Deterministic:
+        s += (
+            "\nThis operator is **deterministic**: identical inputs always"
+            " produce identical outputs.\n"
+        )
+    else:
+        s += (
+            "\nThe determinism of this operator is **unknown**: it depends on"
+            " the operator's context-dependent function body.\n"
+        )
+
     # attributes
     if schema.attributes:
         s += "\n#### Attributes\n\n"

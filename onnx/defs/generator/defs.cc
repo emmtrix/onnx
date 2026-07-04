@@ -164,10 +164,12 @@ ONNX_OPERATOR_SET_SCHEMA(
         .Attr(
             "generator",
             "(Optional) The pseudo-random number generator algorithm. \"default\" leaves the choice of "
-            "generator to the implementation; results are then not reproducible across implementations, "
-            "even when `seed` is specified. \"mersenne_twister\" selects the fully specified MT19937 "
-            "algorithm described in the operator documentation, making the output deterministic for a "
-            "given `seed`. More algorithms may be added in future opset versions.",
+            "generator to the implementation and provides no determinism guarantee: results may differ "
+            "across implementations and even across runs of the same implementation, even when `seed` is "
+            "specified (an implementation may produce reproducible results, but is not required to). "
+            "\"mersenne_twister\" selects the fully specified MT19937 algorithm described in the operator "
+            "documentation, making the output deterministic for a given `seed`. More algorithms may be "
+            "added in future opset versions.",
             AttributeProto::STRING,
             std::string("default"))
         .Attr(

@@ -164,11 +164,14 @@ TensorProto message.
 
 The `generator` attribute selects the pseudo-random number generator algorithm.
 With the default value "default", the choice of generator is left to the
-implementation and results are generally not reproducible across implementations,
-even when `seed` is specified. Setting `generator` to "mersenne_twister" fully
-specifies the generated values: given the same `seed`, every conforming
-implementation must produce bit-identical results, which makes the operator
-deterministic and testable. More algorithms may be added in future opset versions.
+implementation and no determinism guarantee is given: results may differ across
+implementations and even across runs of the same implementation, even when
+`seed` is specified. An implementation may produce reproducible results in this
+mode (for example for a fixed `seed`), but it is not required to. Setting
+`generator` to "mersenne_twister" fully specifies the generated values: given
+the same `seed`, every conforming implementation must produce bit-identical
+results, which makes the operator deterministic and testable. More algorithms
+may be added in future opset versions.
 
 When `generator` is "mersenne_twister", the `seed` attribute must be specified
 and the output is computed as follows:

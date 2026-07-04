@@ -33104,11 +33104,14 @@ This version of the operator has been available since version 28 of the default 
 
   The `generator` attribute selects the pseudo-random number generator algorithm.
   With the default value "default", the choice of generator is left to the
-  implementation and results are generally not reproducible across implementations,
-  even when `seed` is specified. Setting `generator` to "mersenne_twister" fully
-  specifies the generated values: given the same `seed`, every conforming
-  implementation must produce bit-identical results, which makes the operator
-  deterministic and testable. More algorithms may be added in future opset versions.
+  implementation and no determinism guarantee is given: results may differ across
+  implementations and even across runs of the same implementation, even when
+  `seed` is specified. An implementation may produce reproducible results in this
+  mode (for example for a fixed `seed`), but it is not required to. Setting
+  `generator` to "mersenne_twister" fully specifies the generated values: given
+  the same `seed`, every conforming implementation must produce bit-identical
+  results, which makes the operator deterministic and testable. More algorithms
+  may be added in future opset versions.
 
   When `generator` is "mersenne_twister", the `seed` attribute must be specified
   and the output is computed as follows:
@@ -33134,7 +33137,7 @@ This version of the operator has been available since version 28 of the default 
 <dt><tt>dtype</tt> : int (default is 1)</dt>
 <dd>The data type for the elements of the output tensor. If not specified, default is TensorProto::FLOAT.</dd>
 <dt><tt>generator</tt> : string (default is default)</dt>
-<dd>(Optional) The pseudo-random number generator algorithm. "default" leaves the choice of generator to the implementation; results are then not reproducible across implementations, even when `seed` is specified. "mersenne_twister" selects the fully specified MT19937 algorithm described in the operator documentation, making the output deterministic for a given `seed`. More algorithms may be added in future opset versions.</dd>
+<dd>(Optional) The pseudo-random number generator algorithm. "default" leaves the choice of generator to the implementation and provides no determinism guarantee: results may differ across implementations and even across runs of the same implementation, even when `seed` is specified (an implementation may produce reproducible results, but is not required to). "mersenne_twister" selects the fully specified MT19937 algorithm described in the operator documentation, making the output deterministic for a given `seed`. More algorithms may be added in future opset versions.</dd>
 <dt><tt>high</tt> : float (default is 1.0)</dt>
 <dd>Upper boundary of the output values.</dd>
 <dt><tt>low</tt> : float (default is 0.0)</dt>

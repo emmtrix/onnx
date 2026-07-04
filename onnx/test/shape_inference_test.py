@@ -4404,6 +4404,59 @@ class TestShapeInference(TestShapeInferenceHelper):
             graph, [make_tensor_value_info("out", TensorProto.DOUBLE, (3, 4, 5))]
         )
 
+    def test_random_uniform_mersenne_twister(self) -> None:
+        graph = self._make_graph(
+            [],
+            [
+                make_node(
+                    "RandomUniform",
+                    [],
+                    ["out"],
+                    dtype=TensorProto.DOUBLE,
+                    shape=(3, 4),
+                    seed=42.0,
+                    generator="mersenne_twister",
+                )
+            ],
+            [],
+        )
+        self._assert_inferred(
+            graph, [make_tensor_value_info("out", TensorProto.DOUBLE, (3, 4))]
+        )
+
+    def test_random_uniform_unknown_generator_fails(self) -> None:
+        graph = self._make_graph(
+            [],
+            [
+                make_node(
+                    "RandomUniform",
+                    [],
+                    ["out"],
+                    shape=(3, 4),
+                    seed=0.0,
+                    generator="xorshift",
+                )
+            ],
+            [],
+        )
+        self.assertRaises(onnx.shape_inference.InferenceError, self._inferred, graph)
+
+    def test_random_uniform_mersenne_twister_without_seed_fails(self) -> None:
+        graph = self._make_graph(
+            [],
+            [
+                make_node(
+                    "RandomUniform",
+                    [],
+                    ["out"],
+                    shape=(3, 4),
+                    generator="mersenne_twister",
+                )
+            ],
+            [],
+        )
+        self.assertRaises(onnx.shape_inference.InferenceError, self._inferred, graph)
+
     def test_random_normal_like(self) -> None:
         graph = self._make_graph(
             [("X", TensorProto.FLOAT, (2, 3, 4))],

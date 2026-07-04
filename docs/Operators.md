@@ -113,7 +113,7 @@ For an operator input/output's differentiability, it can be differentiable,
 |<a href="#RNN">RNN</a>|<a href="Changelog.md#RNN-22">22</a>, <a href="Changelog.md#RNN-14">14</a>, <a href="Changelog.md#RNN-7">7</a>, <a href="Changelog.md#RNN-1">1</a>|
 |<a href="#RandomNormal">RandomNormal</a>|<a href="Changelog.md#RandomNormal-22">22</a>, <a href="Changelog.md#RandomNormal-1">1</a>|
 |<a href="#RandomNormalLike">RandomNormalLike</a>|<a href="Changelog.md#RandomNormalLike-22">22</a>, <a href="Changelog.md#RandomNormalLike-1">1</a>|
-|<a href="#RandomUniform">RandomUniform</a>|<a href="Changelog.md#RandomUniform-22">22</a>, <a href="Changelog.md#RandomUniform-1">1</a>|
+|<a href="#RandomUniform">RandomUniform</a>|<a href="Changelog.md#RandomUniform-28">28</a>, <a href="Changelog.md#RandomUniform-22">22</a>, <a href="Changelog.md#RandomUniform-1">1</a>|
 |<a href="#RandomUniformLike">RandomUniformLike</a>|<a href="Changelog.md#RandomUniformLike-22">22</a>, <a href="Changelog.md#RandomUniformLike-1">1</a>|
 |<a href="#Reciprocal">Reciprocal</a>|<a href="Changelog.md#Reciprocal-13">13</a>, <a href="Changelog.md#Reciprocal-6">6</a>, <a href="Changelog.md#Reciprocal-1">1</a>|
 |<a href="#ReduceMax">ReduceMax</a>|<a href="Changelog.md#ReduceMax-20">20</a>, <a href="Changelog.md#ReduceMax-18">18</a>, <a href="Changelog.md#ReduceMax-13">13</a>, <a href="Changelog.md#ReduceMax-12">12</a>, <a href="Changelog.md#ReduceMax-11">11</a>, <a href="Changelog.md#ReduceMax-1">1</a>|
@@ -27515,23 +27515,59 @@ Other versions of this operator: <a href="Changelog.md#RandomNormalLike-1">1</a>
   be one of the data types specified in the 'DataType' enum field in the
   TensorProto message.
 
+  The `generator` attribute selects the pseudo-random number generator algorithm.
+  With the default value "unspecified", the choice of generator is left to the
+  implementation and no determinism guarantee is given: results may differ across
+  implementations and even across runs of the same implementation, even when
+  `seed` is specified. An implementation may produce reproducible results in this
+  mode (for example for a fixed `seed`), but it is not required to. Setting
+  `generator` to "mersenne_twister" fully specifies the generated values: given
+  the same `seed`, every conforming implementation must produce bit-identical
+  results, which makes the operator deterministic and testable. More algorithms
+  may be added in future opset versions.
+
+  When `generator` is "mersenne_twister", the `seed` attribute must be specified
+  and the output is computed as follows:
+  1. Initialize a standard 32-bit Mersenne Twister (MT19937) state using the
+     `init_genrand` seeding routine from the reference implementation of Matsumoto
+     and Nishimura (the seeding also used by C++ `std::mt19937`), with the seed
+     value obtained by truncating `seed` toward zero and converting it to an
+     unsigned 32-bit integer (modulo 2^32).
+  2. For each output element, in row-major order, draw a value `r` in the
+     interval [0, 1) whose resolution matches the precision of `dtype`. Let `p`
+     be the number of significand bits of `dtype`, including the implicit bit
+     (8 for bfloat16, 11 for float16, 24 for float, 53 for double):
+     - If `dtype` is double, draw two consecutive 32-bit outputs `a` and `b` and
+       form `r = (floor(a / 2^5) * 2^26 + floor(b / 2^6)) / 2^53` (the
+       `genrand_res53` method).
+     - Otherwise, draw one 32-bit output `a` and form
+       `r = floor(a / 2^(32-p)) / 2^p`, which is exactly representable in
+       `dtype`.
+  3. The element value is `low + r * (high - low)`, where `low` and `high` are
+     first converted to `dtype` and the subtraction, multiplication, and
+     addition are performed in `dtype` with IEEE 754 round-to-nearest-even
+     semantics. Note that due to this rounding, the result may equal `high` for
+     low-precision types.
+
 #### Version
 
-This version of the operator has been available since version 22 of the default ONNX operator set.
+This version of the operator has been available since version 28 of the default ONNX operator set.
 
-Other versions of this operator: <a href="Changelog.md#RandomUniform-1">1</a>
+Other versions of this operator: <a href="Changelog.md#RandomUniform-1">1</a>, <a href="Changelog.md#RandomUniform-22">22</a>
 
 #### Attributes
 
 <dl>
 <dt><tt>dtype</tt> : int (default is 1)</dt>
 <dd>The data type for the elements of the output tensor. If not specified, default is TensorProto::FLOAT.</dd>
+<dt><tt>generator</tt> : string (default is unspecified)</dt>
+<dd>(Optional) The pseudo-random number generator algorithm. "unspecified" leaves the choice of generator to the implementation and provides no determinism guarantee: results may differ across implementations and even across runs of the same implementation, even when `seed` is specified (an implementation may produce reproducible results, but is not required to). "mersenne_twister" selects the fully specified MT19937 algorithm described in the operator documentation, making the output deterministic for a given `seed`. More algorithms may be added in future opset versions.</dd>
 <dt><tt>high</tt> : float (default is 1.0)</dt>
 <dd>Upper boundary of the output values.</dd>
 <dt><tt>low</tt> : float (default is 0.0)</dt>
 <dd>Lower boundary of the output values.</dd>
 <dt><tt>seed</tt> : float</dt>
-<dd>(Optional) Seed to the random generator, if not specified we will auto generate one.</dd>
+<dd>(Optional) Seed to the random generator, if not specified we will auto generate one. Must be specified when `generator` is "mersenne_twister".</dd>
 <dt><tt>shape</tt> : list of ints (required)</dt>
 <dd>The shape of the output tensor.</dd>
 </dl>
@@ -27552,6 +27588,112 @@ Other versions of this operator: <a href="Changelog.md#RandomUniform-1">1</a>
 <dt><tt>T</tt> : tensor(bfloat16), tensor(float16), tensor(float), tensor(double)</dt>
 <dd>Constrain output types to float tensors.</dd>
 </dl>
+
+
+#### Examples
+
+<details>
+<summary>randomuniform_mersenne_twister</summary>
+
+```python
+node = onnx.helper.make_node(
+    "RandomUniform",
+    inputs=[],
+    outputs=["y"],
+    shape=[3, 4],
+    seed=42.0,
+    generator="mersenne_twister",
+)
+
+y = mersenne_twister_uniform(42, (3, 4), np.float32)
+expect(
+    node,
+    inputs=[],
+    outputs=[y],
+    name="test_randomuniform_mersenne_twister",
+)
+```
+
+</details>
+
+
+<details>
+<summary>randomuniform_mersenne_twister_double</summary>
+
+```python
+node = onnx.helper.make_node(
+    "RandomUniform",
+    inputs=[],
+    outputs=["y"],
+    dtype=onnx.TensorProto.DOUBLE,
+    shape=[2, 4],
+    seed=123.0,
+    generator="mersenne_twister",
+)
+
+y = mersenne_twister_uniform(123, (2, 4), np.float64)
+expect(
+    node,
+    inputs=[],
+    outputs=[y],
+    name="test_randomuniform_mersenne_twister_double",
+)
+```
+
+</details>
+
+
+<details>
+<summary>randomuniform_mersenne_twister_float16</summary>
+
+```python
+node = onnx.helper.make_node(
+    "RandomUniform",
+    inputs=[],
+    outputs=["y"],
+    dtype=onnx.TensorProto.FLOAT16,
+    shape=[10],
+    seed=7.0,
+    generator="mersenne_twister",
+)
+
+y = mersenne_twister_uniform(7, (10,), np.float16)
+expect(
+    node,
+    inputs=[],
+    outputs=[y],
+    name="test_randomuniform_mersenne_twister_float16",
+)
+```
+
+</details>
+
+
+<details>
+<summary>randomuniform_mersenne_twister_low_high</summary>
+
+```python
+node = onnx.helper.make_node(
+    "RandomUniform",
+    inputs=[],
+    outputs=["y"],
+    low=5.0,
+    high=10.0,
+    shape=[2, 3],
+    seed=0.0,
+    generator="mersenne_twister",
+)
+
+y = mersenne_twister_uniform(0, (2, 3), np.float32, low=5.0, high=10.0)
+expect(
+    node,
+    inputs=[],
+    outputs=[y],
+    name="test_randomuniform_mersenne_twister_low_high",
+)
+```
+
+</details>
 
 
 ### <a name="RandomUniformLike"></a><a name="randomuniformlike">**RandomUniformLike**</a>

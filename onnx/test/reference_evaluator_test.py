@@ -1477,6 +1477,84 @@ class TestReferenceEvaluator(unittest.TestCase):
         self.assertGreater(got.min(), 0)
         self.assertLess(got.max(), 1)
 
+    def test_onnxt_runtime_random_uniform_mersenne_twister(self):
+        Y = make_tensor_value_info("Y", TensorProto.FLOAT, [None])
+        node1 = make_node(
+            "RandomUniform",
+            [],
+            ["Y"],
+            seed=42.0,
+            shape=[2, 3],
+            generator="mersenne_twister",
+        )
+        graph = make_graph([node1], "g", [], [Y])
+        onnx_model = make_model(graph)
+        check_model(onnx_model)
+        sess = ReferenceEvaluator(onnx_model)
+        got = sess.run(None, {})[0]
+        # For float32, each element uses one 32-bit output of MT19937 seeded
+        # with init_genrand(42): r = (a >> 8) / 2^24, as produced by C++
+        # std::mt19937.
+        expected = np.array(
+            [
+                [0.374540091, 0.796542943, 0.95071429],
+                [0.183434784, 0.731993914, 0.779690981],
+            ],
+            dtype=np.float32,
+        )
+        assert_allclose(got, expected, rtol=0, atol=0)
+        self.assertEqual(got.dtype, np.float32)
+        # A second run must produce bit-identical values.
+        assert_allclose(sess.run(None, {})[0], expected, rtol=0, atol=0)
+
+    def test_onnxt_runtime_random_uniform_mersenne_twister_low_high(self):
+        Y = make_tensor_value_info("Y", TensorProto.DOUBLE, [None])
+        node1 = make_node(
+            "RandomUniform",
+            [],
+            ["Y"],
+            seed=42.0,
+            low=5.0,
+            high=10.0,
+            dtype=TensorProto.DOUBLE,
+            shape=[3],
+            generator="mersenne_twister",
+        )
+        graph = make_graph([node1], "g", [], [Y])
+        onnx_model = make_model(graph)
+        check_model(onnx_model)
+        sess = ReferenceEvaluator(onnx_model)
+        got = sess.run(None, {})[0]
+        expected = 5.0 + np.array(
+            [0.3745401188473625, 0.9507143064099162, 0.7319939418114051],
+            dtype=np.float64,
+        ) * (10.0 - 5.0)
+        assert_allclose(got, expected, rtol=0, atol=0)
+        self.assertEqual(got.dtype, np.float64)
+
+    def test_onnxt_runtime_random_uniform_mersenne_twister_no_seed_raises(self):
+        Y = make_tensor_value_info("Y", TensorProto.FLOAT, [None])
+        node1 = make_node(
+            "RandomUniform", [], ["Y"], shape=[2, 3], generator="mersenne_twister"
+        )
+        graph = make_graph([node1], "g", [], [Y])
+        onnx_model = make_model(graph)
+        sess = ReferenceEvaluator(onnx_model)
+        with self.assertRaises(ValueError):
+            sess.run(None, {})
+
+    def test_mt19937_canonical_test_vector(self):
+        # The 10000th output of MT19937 seeded with init_genrand(5489) is
+        # 4123659995 (Matsumoto & Nishimura; also std::mt19937 in C++11).
+        from onnx.reference.ops._op_common_random import (  # noqa: PLC0415
+            _MT19937,
+        )
+
+        gen = _MT19937(5489)
+        for _ in range(9999):
+            gen.next_uint32()
+        self.assertEqual(gen.next_uint32(), 4123659995)
+
     def test_onnxt_runtime_random_uniform_like(self):
         X = make_tensor_value_info("X", TensorProto.FLOAT, [None])
         Y = make_tensor_value_info("Y", TensorProto.FLOAT, [None])

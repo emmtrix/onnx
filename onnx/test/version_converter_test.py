@@ -2900,3 +2900,36 @@ class TestVersionConverter(unittest.TestCase):
     )
     def test_celu_28_27_unsupported_type_fails(self, _: str, dtype: int) -> None:
         self.assertRaises(RuntimeError, lambda: self._celu_converted(dtype, 28, 27))
+
+    def _randomuniform_converted(self, src: int, dst: int, **attrs) -> ModelProto:
+        node = helper.make_node("RandomUniform", [], ["Y"], shape=[2, 3], **attrs)
+        graph = helper.make_graph(
+            [node],
+            "randomuniform",
+            [],
+            [helper.make_tensor_value_info("Y", TensorProto.FLOAT, [2, 3])],
+        )
+        return self._converted(graph, helper.make_operatorsetid("", src), dst)
+
+    # RandomUniform 27 -> 28: CompatibleAdapter (generator attribute has a default)
+    def test_randomuniform_27_28(self) -> None:
+        converted = self._randomuniform_converted(27, 28, seed=0.0)
+        assert converted.opset_import[0].version == 28
+
+    # RandomUniform 28 -> 27: generator="unspecified" matches the old
+    # implementation-defined behavior, so the attribute is dropped on downgrade
+    def test_randomuniform_28_27_unspecified_generator_removed(self) -> None:
+        converted = self._randomuniform_converted(28, 27, generator="unspecified")
+        assert converted.opset_import[0].version == 27
+        node = next(n for n in converted.graph.node if n.op_type == "RandomUniform")
+        assert not any(a.name == "generator" for a in node.attribute)
+
+    # RandomUniform 28 -> 27: a deterministic generator cannot be expressed in
+    # older opsets and must be rejected
+    def test_randomuniform_28_27_mersenne_twister_fails(self) -> None:
+        self.assertRaises(
+            RuntimeError,
+            lambda: self._randomuniform_converted(
+                28, 27, generator="mersenne_twister", seed=42.0
+            ),
+        )

@@ -154,6 +154,49 @@ be one of the data types specified in the 'DataType' enum field in the
 TensorProto message.
 )DOC";
 
+const char kDoc_RandomUniform_ver28[] = R"DOC(
+Generate a tensor with random values drawn from a uniform distribution. The shape
+of the tensor is specified by the `shape` argument and the range by `low` and `high`.
+
+The data type is specified by the 'dtype' argument. The 'dtype' argument must
+be one of the data types specified in the 'DataType' enum field in the
+TensorProto message.
+
+The `generator` attribute selects the pseudo-random number generator algorithm.
+With the default value "unspecified", the choice of generator is left to the
+implementation and no determinism guarantee is given: results may differ across
+implementations and even across runs of the same implementation, even when
+`seed` is specified. An implementation may produce reproducible results in this
+mode (for example for a fixed `seed`), but it is not required to. Setting
+`generator` to "mersenne_twister" fully specifies the generated values: given
+the same `seed`, every conforming implementation must produce bit-identical
+results, which makes the operator deterministic and testable. More algorithms
+may be added in future opset versions.
+
+When `generator` is "mersenne_twister", the `seed` attribute must be specified
+and the output is computed as follows:
+1. Initialize a standard 32-bit Mersenne Twister (MT19937) state using the
+   `init_genrand` seeding routine from the reference implementation of Matsumoto
+   and Nishimura (the seeding also used by C++ `std::mt19937`), with the seed
+   value obtained by truncating `seed` toward zero and converting it to an
+   unsigned 32-bit integer (modulo 2^32).
+2. For each output element, in row-major order, draw a value `r` in the
+   interval [0, 1) whose resolution matches the precision of `dtype`. Let `p`
+   be the number of significand bits of `dtype`, including the implicit bit
+   (8 for bfloat16, 11 for float16, 24 for float, 53 for double):
+   - If `dtype` is double, draw two consecutive 32-bit outputs `a` and `b` and
+     form `r = (floor(a / 2^5) * 2^26 + floor(b / 2^6)) / 2^53` (the
+     `genrand_res53` method).
+   - Otherwise, draw one 32-bit output `a` and form
+     `r = floor(a / 2^(32-p)) / 2^p`, which is exactly representable in
+     `dtype`.
+3. The element value is `low + r * (high - low)`, where `low` and `high` are
+   first converted to `dtype` and the subtraction, multiplication, and
+   addition are performed in `dtype` with IEEE 754 round-to-nearest-even
+   semantics. Note that due to this rounding, the result may equal `high` for
+   low-precision types.
+)DOC";
+
 const char kDoc_DequantizeLinear_ver24[] = R"DOC(
 The linear dequantization operator. It consumes a quantized tensor, a scale, and a zero point to compute the
 full-precision tensor. The dequantization formula is `y = (x - x_zero_point) * x_scale`. `x_scale` and `x_zero_point`
@@ -1318,6 +1361,7 @@ const char kDoc_Squeeze_ver24[] = "";
 const char kDoc_MaxUnpool_ver11[] = "";
 const char kDoc_Size_ver24[] = "";
 const char kDoc_RandomUniform_ver1[] = "";
+const char kDoc_RandomUniform_ver28[] = "";
 const char kDoc_Range_ver11[] = "";
 const char kDoc_Range_ver27[] = "";
 const char kDoc_DequantizeLinear_ver24[] = "";

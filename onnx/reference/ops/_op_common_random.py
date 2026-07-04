@@ -9,6 +9,77 @@ from onnx.helper import tensor_dtype_to_np_dtype
 from onnx.reference.op_run import OpRun
 
 
+class _MT19937:
+    """Standard 32-bit Mersenne Twister (MT19937).
+
+    Implements the ``init_genrand`` seeding routine and the ``genrand_res53``
+    double generation method from the reference implementation of Matsumoto
+    and Nishimura (mt19937ar.c). The 32-bit output stream matches C++
+    ``std::mt19937`` seeded with the same value. This is the algorithm
+    selected by the ``generator="mersenne_twister"`` attribute of the random
+    operators, which fully specifies their output for a given seed.
+    """
+
+    _N = 624
+    _M = 397
+    _MATRIX_A = 0x9908B0DF
+    _UPPER_MASK = 0x80000000
+    _LOWER_MASK = 0x7FFFFFFF
+
+    def __init__(self, seed: int):
+        mt = [0] * self._N
+        mt[0] = seed & 0xFFFFFFFF
+        for i in range(1, self._N):
+            mt[i] = (1812433253 * (mt[i - 1] ^ (mt[i - 1] >> 30)) + i) & 0xFFFFFFFF
+        self._mt = mt
+        self._index = self._N
+
+    def _twist(self) -> None:
+        mt = self._mt
+        for i in range(self._N):
+            y = (mt[i] & self._UPPER_MASK) | (mt[(i + 1) % self._N] & self._LOWER_MASK)
+            mt[i] = (
+                mt[(i + self._M) % self._N]
+                ^ (y >> 1)
+                ^ (self._MATRIX_A if y & 1 else 0)
+            )
+        self._index = 0
+
+    def next_uint32(self) -> int:
+        if self._index >= self._N:
+            self._twist()
+        y = self._mt[self._index]
+        self._index += 1
+        y ^= y >> 11
+        y ^= (y << 7) & 0x9D2C5680
+        y ^= (y << 15) & 0xEFC60000
+        y ^= y >> 18
+        return y & 0xFFFFFFFF
+
+    def random_res53(self, num: int) -> np.ndarray:
+        """Draw `num` doubles in [0, 1) with 53-bit resolution (genrand_res53)."""
+        res = np.empty(num, dtype=np.float64)
+        for k in range(num):
+            a = self.next_uint32() >> 5
+            b = self.next_uint32() >> 6
+            res[k] = (a * 67108864.0 + b) * (1.0 / 9007199254740992.0)
+        return res
+
+    def random_res(self, num: int, precision: int) -> np.ndarray:
+        """Draw `num` values in [0, 1) with `precision` significand bits.
+
+        Each value uses one 32-bit output: ``(next_uint32() >> (32 - p)) / 2^p``.
+        The results are exactly representable in any binary float type with at
+        least `precision` significand bits.
+        """
+        res = np.empty(num, dtype=np.float64)
+        shift = 32 - precision
+        scale = 1.0 / (1 << precision)
+        for k in range(num):
+            res[k] = (self.next_uint32() >> shift) * scale
+        return res
+
+
 class _CommonRandom(OpRun):
     def __init__(self, onnx_node, run_params):
         OpRun.__init__(self, onnx_node, run_params)
@@ -53,3 +124,33 @@ class _CommonRandom(OpRun):
         else:
             state = np.random.RandomState(seed=int(seed))
         return state
+
+    @staticmethod
+    def _deterministic_uniform(generator, seed, shape, dtype):
+        """Draw uniform values in [0, 1) with the fully specified generator.
+
+        Unlike the "unspecified" generator, the result is bit-identical across
+        implementations for a given seed (see the operator specification).
+        The resolution of the values matches the precision of `dtype`: double
+        uses the two-word genrand_res53 method, all other float types use one
+        32-bit output per element, keeping every value exactly representable
+        in `dtype`.
+        """
+        if generator != "mersenne_twister":
+            raise ValueError(
+                f"Unsupported value {generator!r} for attribute 'generator' "
+                f"(expected 'unspecified' or 'mersenne_twister')."
+            )
+        if seed is None or np.isnan(seed):
+            raise ValueError(
+                "Attribute 'seed' must be specified when 'generator' is "
+                "'mersenne_twister'."
+            )
+        state = _MT19937(int(seed) & 0xFFFFFFFF)
+        num = int(np.prod(shape))
+        if np.dtype(dtype) == np.float64:
+            res = state.random_res53(num)
+        else:
+            precision = np.finfo(dtype).nmant + 1
+            res = state.random_res(num, precision)
+        return res.reshape(shape).astype(dtype)

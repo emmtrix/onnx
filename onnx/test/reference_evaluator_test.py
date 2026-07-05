@@ -1590,6 +1590,53 @@ class TestReferenceEvaluator(unittest.TestCase):
         other_seed = run_philox([13, 2], 100.0)
         self.assertFalse(np.array_equal(large, other_seed))
 
+    def test_onnxt_runtime_random_uniform_philox_offset_streaming(self):
+        # Intent: streaming — chaining runs through next_offset must yield a
+        # fresh, disjoint stream per run, while each run individually stays
+        # deterministic and replayable; omitting the offset input must equal
+        # offset = 0.
+        offset_in = make_tensor_value_info("offset", TensorProto.INT64, [])
+        Y = make_tensor_value_info("Y", TensorProto.FLOAT, [None])
+        next_out = make_tensor_value_info("next_offset", TensorProto.INT64, [])
+        node1 = make_node(
+            "RandomUniform",
+            ["offset"],
+            ["Y", "next_offset"],
+            seed=42.0,
+            shape=[2, 3],
+            generator="philox4x32_10",
+        )
+        graph = make_graph([node1], "g", [offset_in], [Y, next_out])
+        onnx_model = make_model(graph)
+        check_model(onnx_model)
+        sess = ReferenceEvaluator(onnx_model)
+
+        # Run 1 with offset 0, run 2 fed with next_offset of run 1.
+        y0, next0 = sess.run(None, {"offset": np.array(0, dtype=np.int64)})
+        self.assertEqual(next0, np.array(1, dtype=np.int64))
+        y1, next1 = sess.run(None, {"offset": next0})
+        self.assertEqual(next1, np.array(2, dtype=np.int64))
+        # Different offsets select disjoint streams: no value reappears.
+        self.assertFalse(np.intersect1d(y0, y1).size)
+        # Each run is individually replayable.
+        y0_again, _ = sess.run(None, {"offset": np.array(0, dtype=np.int64)})
+        assert_allclose(y0_again, y0, rtol=0, atol=0)
+
+        # A model without the offset input behaves like offset = 0.
+        node2 = make_node(
+            "RandomUniform",
+            [],
+            ["Y"],
+            seed=42.0,
+            shape=[2, 3],
+            generator="philox4x32_10",
+        )
+        graph2 = make_graph([node2], "g", [], [Y])
+        model2 = make_model(graph2)
+        check_model(model2)
+        y_default = ReferenceEvaluator(model2).run(None, {})[0]
+        assert_allclose(y_default, y0, rtol=0, atol=0)
+
     def test_onnxt_runtime_random_uniform_philox_no_seed_raises(self):
         Y = make_tensor_value_info("Y", TensorProto.FLOAT, [None])
         node1 = make_node(

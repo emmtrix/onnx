@@ -28,10 +28,16 @@ class _Philox4x32:
     _W0 = 0x9E3779B9
     _W1 = 0xBB67AE85
 
-    def __init__(self, seed: int):
+    def __init__(self, seed: int, offset: int = 0):
         seed &= 0xFFFFFFFFFFFFFFFF
         self._key0 = seed & 0xFFFFFFFF
         self._key1 = seed >> 32
+        # The stream offset occupies counter words c2/c3 (two's complement
+        # bits interpreted as unsigned), so different offsets select disjoint
+        # streams regardless of how many blocks are consumed.
+        offset &= 0xFFFFFFFFFFFFFFFF
+        self._offset0 = offset & 0xFFFFFFFF
+        self._offset1 = offset >> 32
 
     @classmethod
     def philox4x32_10(cls, c0, c1, c2, c3, key0: int, key1: int):
@@ -69,15 +75,15 @@ class _Philox4x32:
     def _blocks(self, num_blocks: int):
         """Output words of counter blocks 0 .. num_blocks-1.
 
-        Block ``b`` uses the counter ``(lo32(b), hi32(b), 0, 0)``.
+        Block ``b`` uses the counter ``(lo32(b), hi32(b), lo32(offset),
+        hi32(offset))``.
         """
         b = np.arange(num_blocks, dtype=np.uint64)
-        zero = np.zeros(num_blocks, dtype=np.uint64)
         return self.philox4x32_10(
             b & np.uint64(0xFFFFFFFF),
             b >> np.uint64(32),
-            zero,
-            zero,
+            np.full(num_blocks, self._offset0, dtype=np.uint64),
+            np.full(num_blocks, self._offset1, dtype=np.uint64),
             self._key0,
             self._key1,
         )
@@ -156,15 +162,15 @@ class _CommonRandom(OpRun):
         return state
 
     @staticmethod
-    def _deterministic_uniform(generator, seed, shape, dtype):
+    def _deterministic_uniform(generator, seed, shape, dtype, offset=0):
         """Draw uniform values in [0, 1) with the fully specified generator.
 
         Unlike the "unspecified" generator, the result is bit-identical across
-        implementations for a given seed (see the operator specification).
-        The resolution of the values matches the precision of `dtype`: double
-        combines two 32-bit output words per element, all other float types
-        use one word per element, keeping every value exactly representable
-        in `dtype`.
+        implementations for a given seed and offset (see the operator
+        specification). The resolution of the values matches the precision of
+        `dtype`: double combines two 32-bit output words per element, all
+        other float types use one word per element, keeping every value
+        exactly representable in `dtype`.
         """
         if generator != "philox4x32_10":
             raise ValueError(
@@ -176,7 +182,7 @@ class _CommonRandom(OpRun):
                 "Attribute 'seed' must be specified when 'generator' is "
                 "'philox4x32_10'."
             )
-        state = _Philox4x32(int(seed))
+        state = _Philox4x32(int(seed), offset)
         num = int(np.prod(shape))
         if np.dtype(dtype) == np.float64:
             res = state.random_res53(num)
@@ -185,3 +191,11 @@ class _CommonRandom(OpRun):
             precision = ml_dtypes.finfo(dtype).nmant + 1
             res = state.random_res(num, precision)
         return res.reshape(shape).astype(dtype)
+
+    @staticmethod
+    def _next_offset(offset: int) -> np.ndarray:
+        """Scalar int64 ``offset + 1``, wrapping on unsigned 64-bit overflow."""
+        nxt = (int(offset) + 1) & 0xFFFFFFFFFFFFFFFF
+        if nxt >= 0x8000000000000000:
+            nxt -= 0x10000000000000000
+        return np.array(nxt, dtype=np.int64)

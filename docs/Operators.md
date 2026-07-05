@@ -27536,7 +27536,10 @@ Other versions of this operator: <a href="Changelog.md#RandomNormalLike-1">1</a>
      unsigned 64-bit integer (modulo 2^64): `key0 = seed & 0xFFFFFFFF` and
      `key1 = (seed >> 32) & 0xFFFFFFFF`.
   2. Counter block `b` (a 64-bit block index) is the 128-bit counter
-     `(c0, c1, c2, c3) = (b & 0xFFFFFFFF, (b >> 32) & 0xFFFFFFFF, 0, 0)`. It is
+     `(c0, c1, c2, c3) = (b & 0xFFFFFFFF, (b >> 32) & 0xFFFFFFFF,
+     offset & 0xFFFFFFFF, (offset >> 32) & 0xFFFFFFFF)`, where `offset` is the
+     value of the optional `offset` input (0 if not provided) with its two's
+     complement bits interpreted as an unsigned 64-bit integer. The counter is
      encrypted to four 32-bit output words `w0, w1, w2, w3` by applying the
      Philox round function 10 times with round keys `(k0, k1)`, starting at
      `(key0, key1)` and incremented by `(W0, W1)` before every round except the
@@ -27560,9 +27563,19 @@ Other versions of this operator: <a href="Changelog.md#RandomNormalLike-1">1</a>
      semantics. Note that due to this rounding, the result may equal `high` for
      low-precision types.
 
-  Because Philox is counter-based, each output element depends only on `seed`
-  and its position `i`: elements can be computed independently, in any order,
-  or in parallel.
+  Because Philox is counter-based, each output element depends only on `seed`,
+  `offset`, and its position `i`: elements can be computed independently, in any
+  order, or in parallel. The block index occupies counter words `c0`/`c1` and the
+  offset occupies `c2`/`c3`, so the streams of different offsets never overlap,
+  regardless of the output size.
+
+  The optional `next_offset` output returns `offset + 1` (wrapping around on
+  unsigned 64-bit overflow, independent of `generator`). A model run is a pure
+  function of its inputs: with a constant (or absent) `offset`, every run draws
+  the same values, which makes the operator testable. For streaming inference,
+  feed `next_offset` of one run as `offset` of the next run — each run then draws
+  a fresh, disjoint stream while remaining individually deterministic and
+  replayable.
 
 #### Version
 
@@ -27587,14 +27600,20 @@ Other versions of this operator: <a href="Changelog.md#RandomUniform-1">1</a>, <
 <dd>The shape of the output tensor.</dd>
 </dl>
 
-#### Inputs
+#### Inputs (0 - 1)
 
+<dl>
+<dt><tt>offset</tt> (optional) : T2</dt>
+<dd>(Optional) Scalar 64-bit stream offset, 0 if not provided. Each offset value selects an independent random stream: with `generator` = "philox4x32_10" it is placed in the counter words `c2`/`c3` (its two's complement bits interpreted as unsigned), so the streams of different offsets never overlap, regardless of the output size. For streaming inference, feed `next_offset` of one run as `offset` of the next run to draw fresh, yet reproducible, values in every run; feed a constant (or omit the input) to draw the same values in every run. When `generator` is "unspecified", the effect of `offset` on the generated values is implementation-defined.</dd>
+</dl>
 
-#### Outputs
+#### Outputs (1 - 2)
 
 <dl>
 <dt><tt>output</tt> : T</dt>
 <dd>Output tensor of random values drawn from uniform distribution</dd>
+<dt><tt>next_offset</tt> (optional) : T2</dt>
+<dd>(Optional) Scalar offset for a subsequent run: `offset + 1`, wrapping around on unsigned 64-bit overflow. Chaining runs through this value yields a disjoint random stream per run while each individual run remains deterministic and replayable.</dd>
 </dl>
 
 #### Type Constraints
@@ -27602,6 +27621,8 @@ Other versions of this operator: <a href="Changelog.md#RandomUniform-1">1</a>, <
 <dl>
 <dt><tt>T</tt> : tensor(bfloat16), tensor(float16), tensor(float), tensor(double)</dt>
 <dd>Constrain output types to float tensors.</dd>
+<dt><tt>T2</tt> : tensor(int64)</dt>
+<dd>Constrain the stream offset to int64.</dd>
 </dl>
 
 
@@ -27611,6 +27632,10 @@ Other versions of this operator: <a href="Changelog.md#RandomUniform-1">1</a>, <
 <summary>randomuniform_philox</summary>
 
 ```python
+"""Intent: base case for the deterministic generator — default range
+[0, 1), default dtype (float32), 12 elements spanning three full
+Philox counter blocks.
+"""
 node = onnx.helper.make_node(
     "RandomUniform",
     inputs=[],
@@ -27633,9 +27658,44 @@ expect(
 
 
 <details>
+<summary>randomuniform_philox_bfloat16</summary>
+
+```python
+"""Intent: lowest-precision type — r uses only the top 8 bits of an
+output word (p=8) and every value must be exactly representable in
+bfloat16.
+"""
+node = onnx.helper.make_node(
+    "RandomUniform",
+    inputs=[],
+    outputs=["y"],
+    dtype=onnx.TensorProto.BFLOAT16,
+    shape=[10],
+    seed=3.0,
+    generator="philox4x32_10",
+)
+
+y = philox_uniform(3, (10,), ml_dtypes.bfloat16)
+expect(
+    node,
+    inputs=[],
+    outputs=[y],
+    name="test_randomuniform_philox_bfloat16",
+)
+```
+
+</details>
+
+
+<details>
 <summary>randomuniform_philox_double</summary>
 
 ```python
+"""Intent: the double path — each element combines two output words
+of the same block via the res53 scheme (words 0/1 for even, 2/3 for
+odd elements), unlike the one-word-per-element mapping of the other
+types.
+"""
 node = onnx.helper.make_node(
     "RandomUniform",
     inputs=[],
@@ -27662,6 +27722,10 @@ expect(
 <summary>randomuniform_philox_float16</summary>
 
 ```python
+"""Intent: reduced-precision type — r uses the top 11 bits of an
+output word (p=11) and every value must be exactly representable in
+float16.
+"""
 node = onnx.helper.make_node(
     "RandomUniform",
     inputs=[],
@@ -27688,6 +27752,10 @@ expect(
 <summary>randomuniform_philox_low_high</summary>
 
 ```python
+"""Intent: non-default range — verifies that low + r * (high - low)
+is evaluated in the target data type (float32) with the specified
+rounding, not in double precision.
+"""
 node = onnx.helper.make_node(
     "RandomUniform",
     inputs=[],
@@ -27705,6 +27773,104 @@ expect(
     inputs=[],
     outputs=[y],
     name="test_randomuniform_philox_low_high",
+)
+```
+
+</details>
+
+
+<details>
+<summary>randomuniform_philox_multi_block</summary>
+
+```python
+"""Intent: stress the counter-block logic — 35 elements span nine
+Philox blocks, with the last block only partially consumed (35 = 8*4
++ 3), so incorrect block increments, word ordering, or padding
+handling become visible.
+"""
+node = onnx.helper.make_node(
+    "RandomUniform",
+    inputs=[],
+    outputs=["y"],
+    shape=[5, 7],
+    seed=2024.0,
+    generator="philox4x32_10",
+)
+
+y = philox_uniform(2024, (5, 7), np.float32)
+expect(
+    node,
+    inputs=[],
+    outputs=[y],
+    name="test_randomuniform_philox_multi_block",
+)
+```
+
+</details>
+
+
+<details>
+<summary>randomuniform_philox_nd_shape</summary>
+
+```python
+"""Intent: non-trivial output shape — a 4-D shape with a singleton
+dimension and a negative `low` checks that the row-major element
+ordering is independent of the tensor's rank and that sign handling
+in low + r * (high - low) is correct. (A dynamic output shape is not
+expressible for RandomUniform: `shape` is a required attribute and
+the operator has no inputs; data-dependent shapes are the domain of
+RandomUniformLike.)
+"""
+node = onnx.helper.make_node(
+    "RandomUniform",
+    inputs=[],
+    outputs=["y"],
+    low=-1.0,
+    high=1.0,
+    shape=[2, 3, 1, 5],
+    seed=11.0,
+    generator="philox4x32_10",
+)
+
+y = philox_uniform(11, (2, 3, 1, 5), np.float32, low=-1.0, high=1.0)
+expect(
+    node,
+    inputs=[],
+    outputs=[y],
+    name="test_randomuniform_philox_nd_shape",
+)
+```
+
+</details>
+
+
+<details>
+<summary>randomuniform_philox_offset</summary>
+
+```python
+"""Intent: streaming support — the offset input keys counter words
+c2/c3, selecting a stream disjoint from offset 0, and next_offset
+must return offset + 1 so consecutive runs can be chained (feeding
+next_offset back as offset) to draw fresh, yet reproducible, values
+per run.
+"""
+node = onnx.helper.make_node(
+    "RandomUniform",
+    inputs=["offset"],
+    outputs=["y", "next_offset"],
+    shape=[2, 3],
+    seed=42.0,
+    generator="philox4x32_10",
+)
+
+offset = np.array(5, dtype=np.int64)
+y = philox_uniform(42, (2, 3), np.float32, offset=5)
+next_offset = np.array(6, dtype=np.int64)
+expect(
+    node,
+    inputs=[offset],
+    outputs=[y, next_offset],
+    name="test_randomuniform_philox_offset",
 )
 ```
 

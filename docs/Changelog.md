@@ -33123,7 +33123,10 @@ This version of the operator has been available since version 28 of the default 
      unsigned 64-bit integer (modulo 2^64): `key0 = seed & 0xFFFFFFFF` and
      `key1 = (seed >> 32) & 0xFFFFFFFF`.
   2. Counter block `b` (a 64-bit block index) is the 128-bit counter
-     `(c0, c1, c2, c3) = (b & 0xFFFFFFFF, (b >> 32) & 0xFFFFFFFF, 0, 0)`. It is
+     `(c0, c1, c2, c3) = (b & 0xFFFFFFFF, (b >> 32) & 0xFFFFFFFF,
+     offset & 0xFFFFFFFF, (offset >> 32) & 0xFFFFFFFF)`, where `offset` is the
+     value of the optional `offset` input (0 if not provided) with its two's
+     complement bits interpreted as an unsigned 64-bit integer. The counter is
      encrypted to four 32-bit output words `w0, w1, w2, w3` by applying the
      Philox round function 10 times with round keys `(k0, k1)`, starting at
      `(key0, key1)` and incremented by `(W0, W1)` before every round except the
@@ -33147,9 +33150,19 @@ This version of the operator has been available since version 28 of the default 
      semantics. Note that due to this rounding, the result may equal `high` for
      low-precision types.
 
-  Because Philox is counter-based, each output element depends only on `seed`
-  and its position `i`: elements can be computed independently, in any order,
-  or in parallel.
+  Because Philox is counter-based, each output element depends only on `seed`,
+  `offset`, and its position `i`: elements can be computed independently, in any
+  order, or in parallel. The block index occupies counter words `c0`/`c1` and the
+  offset occupies `c2`/`c3`, so the streams of different offsets never overlap,
+  regardless of the output size.
+
+  The optional `next_offset` output returns `offset + 1` (wrapping around on
+  unsigned 64-bit overflow, independent of `generator`). A model run is a pure
+  function of its inputs: with a constant (or absent) `offset`, every run draws
+  the same values, which makes the operator testable. For streaming inference,
+  feed `next_offset` of one run as `offset` of the next run — each run then draws
+  a fresh, disjoint stream while remaining individually deterministic and
+  replayable.
 
 #### Version
 
@@ -33172,14 +33185,20 @@ This version of the operator has been available since version 28 of the default 
 <dd>The shape of the output tensor.</dd>
 </dl>
 
-#### Inputs
+#### Inputs (0 - 1)
 
+<dl>
+<dt><tt>offset</tt> (optional) : T2</dt>
+<dd>(Optional) Scalar 64-bit stream offset, 0 if not provided. Each offset value selects an independent random stream: with `generator` = "philox4x32_10" it is placed in the counter words `c2`/`c3` (its two's complement bits interpreted as unsigned), so the streams of different offsets never overlap, regardless of the output size. For streaming inference, feed `next_offset` of one run as `offset` of the next run to draw fresh, yet reproducible, values in every run; feed a constant (or omit the input) to draw the same values in every run. When `generator` is "unspecified", the effect of `offset` on the generated values is implementation-defined.</dd>
+</dl>
 
-#### Outputs
+#### Outputs (1 - 2)
 
 <dl>
 <dt><tt>output</tt> : T</dt>
 <dd>Output tensor of random values drawn from uniform distribution</dd>
+<dt><tt>next_offset</tt> (optional) : T2</dt>
+<dd>(Optional) Scalar offset for a subsequent run: `offset + 1`, wrapping around on unsigned 64-bit overflow. Chaining runs through this value yields a disjoint random stream per run while each individual run remains deterministic and replayable.</dd>
 </dl>
 
 #### Type Constraints
@@ -33187,6 +33206,8 @@ This version of the operator has been available since version 28 of the default 
 <dl>
 <dt><tt>T</tt> : tensor(bfloat16), tensor(float16), tensor(float), tensor(double)</dt>
 <dd>Constrain output types to float tensors.</dd>
+<dt><tt>T2</tt> : tensor(int64)</dt>
+<dd>Constrain the stream offset to int64.</dd>
 </dl>
 
 # ai.onnx.preview

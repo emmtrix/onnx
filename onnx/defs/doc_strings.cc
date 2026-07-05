@@ -183,7 +183,10 @@ W1 = 0xBB67AE85. All arithmetic on counter, key, and output words is unsigned
    unsigned 64-bit integer (modulo 2^64): `key0 = seed & 0xFFFFFFFF` and
    `key1 = (seed >> 32) & 0xFFFFFFFF`.
 2. Counter block `b` (a 64-bit block index) is the 128-bit counter
-   `(c0, c1, c2, c3) = (b & 0xFFFFFFFF, (b >> 32) & 0xFFFFFFFF, 0, 0)`. It is
+   `(c0, c1, c2, c3) = (b & 0xFFFFFFFF, (b >> 32) & 0xFFFFFFFF,
+   offset & 0xFFFFFFFF, (offset >> 32) & 0xFFFFFFFF)`, where `offset` is the
+   value of the optional `offset` input (0 if not provided) with its two's
+   complement bits interpreted as an unsigned 64-bit integer. The counter is
    encrypted to four 32-bit output words `w0, w1, w2, w3` by applying the
    Philox round function 10 times with round keys `(k0, k1)`, starting at
    `(key0, key1)` and incremented by `(W0, W1)` before every round except the
@@ -207,9 +210,19 @@ W1 = 0xBB67AE85. All arithmetic on counter, key, and output words is unsigned
    semantics. Note that due to this rounding, the result may equal `high` for
    low-precision types.
 
-Because Philox is counter-based, each output element depends only on `seed`
-and its position `i`: elements can be computed independently, in any order,
-or in parallel.
+Because Philox is counter-based, each output element depends only on `seed`,
+`offset`, and its position `i`: elements can be computed independently, in any
+order, or in parallel. The block index occupies counter words `c0`/`c1` and the
+offset occupies `c2`/`c3`, so the streams of different offsets never overlap,
+regardless of the output size.
+
+The optional `next_offset` output returns `offset + 1` (wrapping around on
+unsigned 64-bit overflow, independent of `generator`). A model run is a pure
+function of its inputs: with a constant (or absent) `offset`, every run draws
+the same values, which makes the operator testable. For streaming inference,
+feed `next_offset` of one run as `offset` of the next run — each run then draws
+a fresh, disjoint stream while remaining individually deterministic and
+replayable.
 )DOC";
 
 const char kDoc_DequantizeLinear_ver24[] = R"DOC(

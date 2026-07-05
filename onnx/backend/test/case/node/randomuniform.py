@@ -11,13 +11,13 @@ from onnx.backend.test.case.base import Base
 from onnx.backend.test.case.node import expect
 
 
-def philox_uniform(seed, shape, dtype, low=0.0, high=1.0):
+def philox_uniform(seed, shape, dtype, low=0.0, high=1.0, offset=0):
     """Independent implementation of RandomUniform with generator="philox4x32_10".
 
     Follows the operator specification: Philox-4x32-10 keyed with the 64-bit
-    seed, counter block b = (lo32(b), hi32(b), 0, 0), per-element values in
-    [0, 1) with a resolution matching the precision of `dtype` (two output
-    words per element for double, one otherwise), and
+    seed, counter block b = (lo32(b), hi32(b), lo32(offset), hi32(offset)),
+    per-element values in [0, 1) with a resolution matching the precision of
+    `dtype` (two output words per element for double, one otherwise), and
     ``low + r * (high - low)`` evaluated in `dtype`. Kept separate from
     onnx.reference so the generated test data cross-checks the reference
     implementation.
@@ -26,9 +26,10 @@ def philox_uniform(seed, shape, dtype, low=0.0, high=1.0):
     w0, w1 = 0x9E3779B9, 0xBB67AE85
     seed = int(seed) & 0xFFFFFFFFFFFFFFFF
     key0, key1 = seed & 0xFFFFFFFF, seed >> 32
+    offset = int(offset) & 0xFFFFFFFFFFFFFFFF
 
     def block(b):
-        c = [b & 0xFFFFFFFF, (b >> 32) & 0xFFFFFFFF, 0, 0]
+        c = [b & 0xFFFFFFFF, (b >> 32) & 0xFFFFFFFF, offset & 0xFFFFFFFF, offset >> 32]
         k0, k1 = key0, key1
         for r in range(10):
             if r > 0:
@@ -209,6 +210,33 @@ class RandomUniform(Base):
             inputs=[],
             outputs=[y],
             name="test_randomuniform_philox_bfloat16",
+        )
+
+    @staticmethod
+    def export_randomuniform_philox_offset() -> None:
+        """Intent: streaming support — the offset input keys counter words
+        c2/c3, selecting a stream disjoint from offset 0, and next_offset
+        must return offset + 1 so consecutive runs can be chained (feeding
+        next_offset back as offset) to draw fresh, yet reproducible, values
+        per run.
+        """
+        node = onnx.helper.make_node(
+            "RandomUniform",
+            inputs=["offset"],
+            outputs=["y", "next_offset"],
+            shape=[2, 3],
+            seed=42.0,
+            generator="philox4x32_10",
+        )
+
+        offset = np.array(5, dtype=np.int64)
+        y = philox_uniform(42, (2, 3), np.float32, offset=5)
+        next_offset = np.array(6, dtype=np.int64)
+        expect(
+            node,
+            inputs=[offset],
+            outputs=[y, next_offset],
+            name="test_randomuniform_philox_offset",
         )
 
     @staticmethod

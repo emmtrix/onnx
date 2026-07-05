@@ -19,6 +19,22 @@ class RandomUniform_28_27 final : public Adapter {
   RandomUniform_28_27() : Adapter("RandomUniform", OpSetID(28), OpSetID(27)) {}
 
   Node* adapt(std::shared_ptr<Graph> /*graph*/, Node* node) const override {
+    // The offset input and next_offset output do not exist in RandomUniform
+    // v22 and cannot be expressed in older opsets.
+    ONNX_ASSERTM(
+        node->inputs().empty(),
+        "Operator '",
+        name(),
+        "' with an 'offset' input is not supported in Opset Version ",
+        static_cast<int64_t>(target_version().version()),
+        ".");
+    ONNX_ASSERTM(
+        node->outputs().size() == 1,
+        "Operator '",
+        name(),
+        "' with a 'next_offset' output is not supported in Opset Version ",
+        static_cast<int64_t>(target_version().version()),
+        ".");
     const Symbol generator("generator");
     if (node->hasAttribute(generator)) {
       // "unspecified" matches the implementation-defined behavior of

@@ -19847,7 +19847,7 @@ expect(
 
 
 ### RandomUniform
-There are 7 test cases, listed as following:
+There are 8 test cases, listed as following:
 <details>
 <summary>randomuniform_philox</summary>
 
@@ -20046,6 +20046,37 @@ expect(
     inputs=[],
     outputs=[y],
     name="test_randomuniform_philox_nd_shape",
+)
+```
+
+</details>
+<details>
+<summary>randomuniform_philox_offset</summary>
+
+```python
+"""Intent: streaming support — the offset input keys counter words
+c2/c3, selecting a stream disjoint from offset 0, and next_offset
+must return offset + 1 so consecutive runs can be chained (feeding
+next_offset back as offset) to draw fresh, yet reproducible, values
+per run.
+"""
+node = onnx.helper.make_node(
+    "RandomUniform",
+    inputs=["offset"],
+    outputs=["y", "next_offset"],
+    shape=[2, 3],
+    seed=42.0,
+    generator="philox4x32_10",
+)
+
+offset = np.array(5, dtype=np.int64)
+y = philox_uniform(42, (2, 3), np.float32, offset=5)
+next_offset = np.array(6, dtype=np.int64)
+expect(
+    node,
+    inputs=[offset],
+    outputs=[y, next_offset],
+    name="test_randomuniform_philox_offset",
 )
 ```
 

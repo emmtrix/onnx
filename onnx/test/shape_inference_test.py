@@ -4424,6 +4424,29 @@ class TestShapeInference(TestShapeInferenceHelper):
             graph, [make_tensor_value_info("out", TensorProto.DOUBLE, (3, 4))]
         )
 
+    def test_random_uniform_offset_next_offset(self) -> None:
+        graph = self._make_graph(
+            [("offset", TensorProto.INT64, ())],
+            [
+                make_node(
+                    "RandomUniform",
+                    ["offset"],
+                    ["out", "next_offset"],
+                    shape=(3, 4),
+                    seed=0.0,
+                    generator="philox4x32_10",
+                )
+            ],
+            [],
+        )
+        self._assert_inferred(
+            graph,
+            [
+                make_tensor_value_info("out", TensorProto.FLOAT, (3, 4)),
+                make_tensor_value_info("next_offset", TensorProto.INT64, ()),
+            ],
+        )
+
     def test_random_uniform_unknown_generator_fails(self) -> None:
         graph = self._make_graph(
             [],

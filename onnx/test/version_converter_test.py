@@ -2933,3 +2933,23 @@ class TestVersionConverter(unittest.TestCase):
                 28, 27, generator="philox4x32_10", seed=42.0
             ),
         )
+
+    # RandomUniform 28 -> 27: the offset input / next_offset output cannot be
+    # expressed in older opsets and must be rejected
+    def test_randomuniform_28_27_offset_fails(self) -> None:
+        node = helper.make_node(
+            "RandomUniform", ["offset"], ["Y", "next_offset"], shape=[2, 3], seed=1.0
+        )
+        graph = helper.make_graph(
+            [node],
+            "randomuniform_offset",
+            [helper.make_tensor_value_info("offset", TensorProto.INT64, [])],
+            [
+                helper.make_tensor_value_info("Y", TensorProto.FLOAT, [2, 3]),
+                helper.make_tensor_value_info("next_offset", TensorProto.INT64, []),
+            ],
+        )
+        self.assertRaises(
+            RuntimeError,
+            lambda: self._converted(graph, helper.make_operatorsetid("", 28), 27),
+        )

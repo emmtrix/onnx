@@ -96,6 +96,7 @@ def _get_ops_template():
 - **function**: `{{sch.has_function or sch.has_context_dependent_function}}`
 - **support_level**: `{{sch.support_level}}`
 - **shape inference**: `{{sch.has_type_and_shape_inference_function}}`
+- **determinism**: `{{str(sch.node_determinism).split('.')[-1]}}`
 
 {% if sch.support_level == OpSchema.SupportType.EXPERIMENTAL %}
 No versioning maintained for experimental ops.

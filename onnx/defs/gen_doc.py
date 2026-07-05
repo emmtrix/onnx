@@ -141,6 +141,15 @@ def display_schema(
     if schema.deprecated:
         return s
 
+    # determinism
+    if schema.node_determinism == OpSchema.NodeDeterminism.NonDeterministic:
+        determinism = "**non-deterministic** (may depend on random number generation or subgraphs)"
+    elif schema.node_determinism == OpSchema.NodeDeterminism.Deterministic:
+        determinism = "**deterministic**"
+    else:
+        determinism = "**unknown** (cannot be statically determined)"
+    s += f"\nDeterminism: {determinism}\n"
+
     # attributes
     if schema.attributes:
         s += "\n#### Attributes\n\n"

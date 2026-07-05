@@ -162,11 +162,11 @@ class _CommonRandom(OpRun):
         return state
 
     @staticmethod
-    def _deterministic_uniform(generator, seed, shape, dtype, offset=0):
+    def _deterministic_uniform(generator, seed_int64, shape, dtype, offset=0):
         """Draw uniform values in [0, 1) with the fully specified generator.
 
         Unlike the "unspecified" generator, the result is bit-identical across
-        implementations for a given seed and offset (see the operator
+        implementations for a given seed_int64 and offset (see the operator
         specification). The resolution of the values matches the precision of
         `dtype`: double combines two 32-bit output words per element, all
         other float types use one word per element, keeping every value
@@ -177,12 +177,12 @@ class _CommonRandom(OpRun):
                 f"Unsupported value {generator!r} for attribute 'generator' "
                 f"(expected 'unspecified' or 'philox4x32_10')."
             )
-        if seed is None or np.isnan(seed):
+        if seed_int64 is None:
             raise ValueError(
-                "Attribute 'seed' must be specified when 'generator' is "
+                "Attribute 'seed_int64' must be specified when 'generator' is "
                 "'philox4x32_10'."
             )
-        state = _Philox4x32(int(seed), offset)
+        state = _Philox4x32(int(seed_int64), offset)
         num = int(np.prod(shape))
         if np.dtype(dtype) == np.float64:
             res = state.random_res53(num)

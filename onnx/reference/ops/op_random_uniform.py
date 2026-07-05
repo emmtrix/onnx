@@ -17,13 +17,14 @@ class RandomUniform(_CommonRandom):
         high=None,
         low=None,
         seed=None,
+        seed_int64=None,
         shape=None,
     ):
         dtype = self._dtype(dtype=dtype)
         offset_value = 0 if offset is None else int(np.asarray(offset).item())
         if generator not in (None, "unspecified"):
             res = self._deterministic_uniform(
-                generator, seed, shape, dtype, offset_value
+                generator, seed_int64, shape, dtype, offset_value
             )
             # low + r * (high - low), evaluated in the target data type
             low_t = np.asarray(low, dtype=dtype)

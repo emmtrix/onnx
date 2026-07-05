@@ -2930,8 +2930,16 @@ class TestVersionConverter(unittest.TestCase):
         self.assertRaises(
             RuntimeError,
             lambda: self._randomuniform_converted(
-                28, 27, generator="philox4x32_10", seed=42.0
+                28, 27, generator="philox4x32_10", seed_int64=42
             ),
+        )
+
+    # RandomUniform 28 -> 27: the seed_int64 attribute cannot be expressed in
+    # older opsets and must be rejected
+    def test_randomuniform_28_27_seed_int64_fails(self) -> None:
+        self.assertRaises(
+            RuntimeError,
+            lambda: self._randomuniform_converted(28, 27, seed_int64=5),
         )
 
     # RandomUniform 28 -> 27: the offset input cannot be expressed in older

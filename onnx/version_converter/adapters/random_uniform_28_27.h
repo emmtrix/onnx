@@ -28,6 +28,14 @@ class RandomUniform_28_27 final : public Adapter {
         "' with an 'offset' input is not supported in Opset Version ",
         static_cast<int64_t>(target_version().version()),
         ".");
+    // seed_int64 does not exist in RandomUniform v22.
+    ONNX_ASSERTM(
+        !node->hasAttribute(Symbol("seed_int64")),
+        "Attribute 'seed_int64' of operator '",
+        name(),
+        "' is not supported in Opset Version ",
+        static_cast<int64_t>(target_version().version()),
+        ".");
     const Symbol generator("generator");
     if (node->hasAttribute(generator)) {
       // "unspecified" matches the implementation-defined behavior of

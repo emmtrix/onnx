@@ -33105,23 +33105,24 @@ This version of the operator has been available since version 28 of the default 
   The `generator` attribute selects the pseudo-random number generator algorithm.
   With the default value "unspecified", the choice of generator is left to the
   implementation and no determinism guarantee is given: results may differ across
-  implementations and even across runs of the same implementation, even when
-  `seed` is specified. An implementation may produce reproducible results in this
+  implementations and even across runs of the same implementation, even when a
+  seed is specified. An implementation may produce reproducible results in this
   mode (for example for a fixed `seed`), but it is not required to. Setting
   `generator` to "philox4x32_10" fully specifies the generated values: given
-  the same `seed`, every conforming implementation must produce bit-identical
+  the same `seed_int64`, every conforming implementation must produce bit-identical
   results, which makes the operator deterministic and testable. More algorithms
   may be added in future opset versions.
 
-  When `generator` is "philox4x32_10", the `seed` attribute must be specified and
-  the output is computed with the Philox-4x32 counter-based generator with 10
-  rounds (Salmon et al., "Parallel random numbers: as easy as 1, 2, 3", SC'11),
-  using the standard constants M0 = 0xD2511F53, M1 = 0xCD9E8D57, W0 = 0x9E3779B9,
-  W1 = 0xBB67AE85. All arithmetic on counter, key, and output words is unsigned
-  32-bit modular arithmetic:
-  1. The key is derived from `seed`, truncated toward zero and converted to an
-     unsigned 64-bit integer (modulo 2^64): `key0 = seed & 0xFFFFFFFF` and
-     `key1 = (seed >> 32) & 0xFFFFFFFF`.
+  When `generator` is "philox4x32_10", the `seed_int64` attribute must be specified
+  (the float `seed` attribute must not be used) and the output is computed with
+  the Philox-4x32 counter-based generator with 10 rounds (Salmon et al.,
+  "Parallel random numbers: as easy as 1, 2, 3", SC'11), using the standard
+  constants M0 = 0xD2511F53, M1 = 0xCD9E8D57, W0 = 0x9E3779B9, W1 = 0xBB67AE85.
+  All arithmetic on counter, key, and output words is unsigned 32-bit modular
+  arithmetic:
+  1. The key is the value of `seed_int64` with its two's complement bits interpreted
+     as an unsigned 64-bit integer: `key0 = seed_int64 & 0xFFFFFFFF` and
+     `key1 = (seed_int64 >> 32) & 0xFFFFFFFF`.
   2. Counter block `b` (a 64-bit block index) is the 128-bit counter
      `(c0, c1, c2, c3) = (b & 0xFFFFFFFF, (b >> 32) & 0xFFFFFFFF,
      offset & 0xFFFFFFFF, (offset >> 32) & 0xFFFFFFFF)`, where `offset` is the
@@ -33150,7 +33151,7 @@ This version of the operator has been available since version 28 of the default 
      semantics. Note that due to this rounding, the result may equal `high` for
      low-precision types.
 
-  Because Philox is counter-based, each output element depends only on `seed`,
+  Because Philox is counter-based, each output element depends only on `seed_int64`,
   `offset`, and its position `i`: elements can be computed independently, in any
   order, or in parallel. The block index occupies counter words `c0`/`c1` and the
   offset occupies `c2`/`c3`, so the streams of different offsets never overlap,
@@ -33175,13 +33176,15 @@ This version of the operator has been available since version 28 of the default 
 <dt><tt>dtype</tt> : int (default is 1)</dt>
 <dd>The data type for the elements of the output tensor. If not specified, default is TensorProto::FLOAT.</dd>
 <dt><tt>generator</tt> : string (default is unspecified)</dt>
-<dd>(Optional) The pseudo-random number generator algorithm. "unspecified" leaves the choice of generator to the implementation and provides no determinism guarantee: results may differ across implementations and even across runs of the same implementation, even when `seed` is specified (an implementation may produce reproducible results, but is not required to). "philox4x32_10" selects the fully specified Philox-4x32-10 counter-based algorithm described in the operator documentation, making the output deterministic for a given `seed`. More algorithms may be added in future opset versions.</dd>
+<dd>(Optional) The pseudo-random number generator algorithm. "unspecified" leaves the choice of generator to the implementation and provides no determinism guarantee: results may differ across implementations and even across runs of the same implementation, even when a seed is specified (an implementation may produce reproducible results, but is not required to). "philox4x32_10" selects the fully specified Philox-4x32-10 counter-based algorithm described in the operator documentation, making the output deterministic for a given `seed_int64`. More algorithms may be added in future opset versions.</dd>
 <dt><tt>high</tt> : float (default is 1.0)</dt>
 <dd>Upper boundary of the output values.</dd>
 <dt><tt>low</tt> : float (default is 0.0)</dt>
 <dd>Lower boundary of the output values.</dd>
 <dt><tt>seed</tt> : float</dt>
-<dd>(Optional) Seed to the random generator, if not specified we will auto generate one. Must be specified when `generator` is "philox4x32_10".</dd>
+<dd>(Optional) Seed to the random generator, if not specified we will auto generate one. Used only when `generator` is "unspecified" (with implementation-defined effect); must not be specified together with a deterministic generator, which uses `seed_int64` instead.</dd>
+<dt><tt>seed_int64</tt> : int</dt>
+<dd>(Optional) 64-bit seed for the fully specified generators; its two's complement bits are interpreted as an unsigned 64-bit integer. Must be specified when `generator` is "philox4x32_10" (the float `seed` attribute is not used in that case). When `generator` is "unspecified", the effect of `seed_int64` is implementation-defined.</dd>
 <dt><tt>shape</tt> : list of ints (required)</dt>
 <dd>The shape of the output tensor.</dd>
 </dl>

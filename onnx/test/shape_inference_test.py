@@ -4414,7 +4414,7 @@ class TestShapeInference(TestShapeInferenceHelper):
                     ["out"],
                     dtype=TensorProto.DOUBLE,
                     shape=(3, 4),
-                    seed=42.0,
+                    seed_int64=42,
                     generator="philox4x32_10",
                 )
             ],
@@ -4423,6 +4423,24 @@ class TestShapeInference(TestShapeInferenceHelper):
         self._assert_inferred(
             graph, [make_tensor_value_info("out", TensorProto.DOUBLE, (3, 4))]
         )
+
+    def test_random_uniform_philox_with_float_seed_fails(self) -> None:
+        graph = self._make_graph(
+            [],
+            [
+                make_node(
+                    "RandomUniform",
+                    [],
+                    ["out"],
+                    shape=(3, 4),
+                    seed=42.0,
+                    seed_int64=42,
+                    generator="philox4x32_10",
+                )
+            ],
+            [],
+        )
+        self.assertRaises(onnx.shape_inference.InferenceError, self._inferred, graph)
 
     def test_random_uniform_offset(self) -> None:
         graph = self._make_graph(
@@ -4433,7 +4451,7 @@ class TestShapeInference(TestShapeInferenceHelper):
                     ["offset"],
                     ["out"],
                     shape=(3, 4),
-                    seed=0.0,
+                    seed_int64=0,
                     generator="philox4x32_10",
                 )
             ],

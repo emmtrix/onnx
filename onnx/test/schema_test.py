@@ -85,10 +85,17 @@ class TestSchema(unittest.TestCase):
         self.assertEqual(generator.type, defs.OpSchema.AttrType.STRING)
         self.assertEqual(generator.default_value.s, b"unspecified")
         self.assertFalse(generator.required)
+        # The 64-bit seed for deterministic generators is a separate INT
+        # attribute; the legacy float seed only applies to "unspecified".
+        seed_int64 = schema28.attributes["seed_int64"]
+        self.assertEqual(seed_int64.type, defs.OpSchema.AttrType.INT)
+        self.assertFalse(seed_int64.required)
         # The operator stays non-deterministic at the schema level: with the
         # "unspecified" generator the output is still implementation-defined.
         self.assertTrue(schema28.non_deterministic)
-        self.assertNotIn("generator", defs.get_schema("RandomUniform", 22).attributes)
+        schema22 = defs.get_schema("RandomUniform", 22)
+        self.assertNotIn("generator", schema22.attributes)
+        self.assertNotIn("seed_int64", schema22.attributes)
 
     def test_range_supported_types(self) -> None:
         """Test Range operator supports all expected numeric types."""

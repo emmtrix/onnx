@@ -19861,7 +19861,7 @@ node = onnx.helper.make_node(
     inputs=[],
     outputs=["y"],
     shape=[3, 4],
-    seed=42.0,
+    seed_int64=42,
     generator="philox4x32_10",
 )
 
@@ -19889,7 +19889,7 @@ node = onnx.helper.make_node(
     outputs=["y"],
     dtype=onnx.TensorProto.BFLOAT16,
     shape=[10],
-    seed=3.0,
+    seed_int64=3,
     generator="philox4x32_10",
 )
 
@@ -19918,7 +19918,7 @@ node = onnx.helper.make_node(
     outputs=["y"],
     dtype=onnx.TensorProto.DOUBLE,
     shape=[2, 4],
-    seed=123.0,
+    seed_int64=123,
     generator="philox4x32_10",
 )
 
@@ -19946,7 +19946,7 @@ node = onnx.helper.make_node(
     outputs=["y"],
     dtype=onnx.TensorProto.FLOAT16,
     shape=[10],
-    seed=7.0,
+    seed_int64=7,
     generator="philox4x32_10",
 )
 
@@ -19975,7 +19975,7 @@ node = onnx.helper.make_node(
     low=5.0,
     high=10.0,
     shape=[2, 3],
-    seed=0.0,
+    seed_int64=0,
     generator="philox4x32_10",
 )
 
@@ -20003,7 +20003,7 @@ node = onnx.helper.make_node(
     inputs=[],
     outputs=["y"],
     shape=[5, 7],
-    seed=2024.0,
+    seed_int64=2024,
     generator="philox4x32_10",
 )
 
@@ -20036,7 +20036,7 @@ node = onnx.helper.make_node(
     low=-1.0,
     high=1.0,
     shape=[2, 3, 1, 5],
-    seed=11.0,
+    seed_int64=11,
     generator="philox4x32_10",
 )
 
@@ -20064,7 +20064,7 @@ node = onnx.helper.make_node(
     inputs=["offset"],
     outputs=["y"],
     shape=[2, 3],
-    seed=42.0,
+    seed_int64=42,
     generator="philox4x32_10",
 )
 

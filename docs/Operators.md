@@ -27820,8 +27820,8 @@ dimension and a negative `low` checks that the row-major element
 ordering is independent of the tensor's rank and that sign handling
 in low + r * (high - low) is correct. (A dynamic output shape is not
 expressible for RandomUniform: `shape` is a required attribute and
-the operator has no inputs; data-dependent shapes are the domain of
-RandomUniformLike.)
+the operator's only optional input is the stream offset, not a shape
+tensor; data-dependent shapes are the domain of RandomUniformLike.)
 """
 node = onnx.helper.make_node(
     "RandomUniform",

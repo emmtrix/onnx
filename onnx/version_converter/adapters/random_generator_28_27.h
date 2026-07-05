@@ -11,8 +11,10 @@
 #include <memory>
 #include <string>
 #include <utility>
+#include <vector>
 
 #include "onnx/version_converter/adapters/adapter.h"
+#include "onnx/version_converter/helper.h"
 
 namespace ONNX_NAMESPACE {
 namespace version_conversion {
@@ -22,23 +24,23 @@ class RandomGenerator_28_27 final : public Adapter {
   RandomGenerator_28_27(std::string op_name, size_t num_legacy_inputs)
       : Adapter(std::move(op_name), OpSetID(28), OpSetID(27)), num_legacy_inputs_(num_legacy_inputs) {}
 
-  Node* adapt(std::shared_ptr<Graph> /*graph*/, Node* node) const override {
+  Node* adapt(std::shared_ptr<Graph> graph, Node* node) const override {
     // The optional offset input (the first input after the operator's legacy
-    // inputs) does not exist before version 28 and cannot be expressed in
-    // older opsets. An omitted optional input may still be present as an
-    // empty string, which the proto importer materializes as a kUndefined
-    // placeholder; drop the placeholder so the node satisfies the old
-    // schema's input arity.
+    // inputs) does not exist before version 28. It can be removed without
+    // changing semantics when it is omitted — possibly spelled as an empty
+    // string, which the proto importer materializes as a kUndefined
+    // placeholder — or when it is a constant 0, the documented pattern for
+    // storing the stream position in the model. Any other offset selects a
+    // stream that older versions cannot express.
     if (node->inputs().size() > num_legacy_inputs_) {
       ONNX_ASSERTM(
-          node->inputs().size() == num_legacy_inputs_ + 1 &&
-              node->inputs()[num_legacy_inputs_]->node()->kind() == kUndefined,
+          node->inputs().size() == num_legacy_inputs_ + 1 && IsRemovableOffset(graph, node),
           "Operator '",
           name(),
           "' with an 'offset' input is not supported in Opset Version ",
           static_cast<int64_t>(target_version().version()),
-          ".");
-      node->removeInput(num_legacy_inputs_);
+          " (only an omitted offset or a constant offset of 0 can be removed).");
+      RemoveOffsetInput(graph, node);
     }
     // seed_int64 does not exist before version 28.
     ONNX_ASSERTM(
@@ -68,6 +70,42 @@ class RandomGenerator_28_27 final : public Adapter {
 
  private:
   size_t num_legacy_inputs_;
+
+  bool IsRemovableOffset(const std::shared_ptr<Graph>& graph, Node* node) const {
+    const Value* offset_val = node->inputs()[num_legacy_inputs_];
+    const Node* offset_node = offset_val->node();
+    if (offset_node->kind() == kUndefined) {
+      return true;
+    }
+    if (offset_node->kind() == kConstant) {
+      const std::vector<int64_t> values = ReadInt64Tensor(offset_node->t(kvalue));
+      return values.size() == 1 && values[0] == 0;
+    }
+    if (graph->is_constant_initializer(offset_val)) {
+      for (const auto& initializer : graph->initializers()) {
+        if (initializer.name() == offset_val->uniqueName()) {
+          const std::vector<int64_t> values = ReadInt64Tensor(initializer);
+          return values.size() == 1 && values[0] == 0;
+        }
+      }
+    }
+    return false;
+  }
+
+  void RemoveOffsetInput(const std::shared_ptr<Graph>& graph, Node* node) const {
+    Value* offset_val = node->inputs()[num_legacy_inputs_];
+    Node* offset_node = offset_val->node();
+    const std::string initializer_name = offset_val->uniqueName();
+    const bool is_initializer = graph->is_constant_initializer(offset_val);
+    node->removeInput(num_legacy_inputs_);
+    if (offset_val->uses().empty()) {
+      if (is_initializer) {
+        graph->eraseInitializer(initializer_name);
+      } else if (offset_node->kind() == kConstant) {
+        offset_node->destroy();
+      }
+    }
+  }
 };
 
 } // namespace version_conversion

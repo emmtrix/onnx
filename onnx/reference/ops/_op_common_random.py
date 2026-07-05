@@ -122,8 +122,15 @@ class _Philox4x32:
 class _CommonRandom(OpRun):
     def __init__(self, onnx_node, run_params):
         OpRun.__init__(self, onnx_node, run_params)
-        if hasattr(self, "shape") and len(self.shape) == 0:
-            raise ValueError(  # pragma: no cover
+        if (
+            hasattr(self, "shape")
+            and len(self.shape) == 0
+            # An empty shape (scalar output) is fully specified for the
+            # deterministic generators; only the legacy "unspecified" path
+            # of this implementation does not support it.
+            and getattr(self, "generator", None) in (None, "unspecified")
+        ):
+            raise ValueError(
                 f"shape cannot be empty for operator {self.__class__.__name__}."
             )
 

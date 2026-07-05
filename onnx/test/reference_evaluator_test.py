@@ -1635,6 +1635,25 @@ class TestReferenceEvaluator(unittest.TestCase):
         y_default = ReferenceEvaluator(model2).run(None, {})[0]
         assert_allclose(y_default, y0, rtol=0, atol=0)
 
+    def test_onnxt_runtime_random_uniform_philox_scalar_shape(self):
+        # An empty shape attribute produces a scalar output, which is fully
+        # specified for the deterministic generator: the single element uses
+        # word 0 of block 0.
+        Y = make_tensor_value_info("Y", TensorProto.FLOAT, [])
+        node1 = make_node(
+            "RandomUniform", [], ["Y"], seed_int64=42, generator="philox4x32_10"
+        )
+        node1.attribute.append(
+            onnx.helper.make_attribute("shape", [], attr_type=AttributeProto.INTS)
+        )
+        graph = make_graph([node1], "g", [], [Y])
+        onnx_model = make_model(graph)
+        check_model(onnx_model)
+        got = ReferenceEvaluator(onnx_model).run(None, {})[0]
+        self.assertEqual(got.shape, ())
+        self.assertEqual(got.dtype, np.float32)
+        assert_allclose(got, np.float32(0.61295986), rtol=0, atol=0)
+
     def test_onnxt_runtime_random_uniform_philox_no_seed_raises(self):
         Y = make_tensor_value_info("Y", TensorProto.FLOAT, [None])
         node1 = make_node(

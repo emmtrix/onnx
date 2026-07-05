@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
+import ml_dtypes
 import numpy as np
 
 from onnx.helper import tensor_dtype_to_np_dtype
@@ -180,6 +181,7 @@ class _CommonRandom(OpRun):
         if np.dtype(dtype) == np.float64:
             res = state.random_res53(num)
         else:
-            precision = np.finfo(dtype).nmant + 1
+            # ml_dtypes.finfo also covers non-native types such as bfloat16
+            precision = ml_dtypes.finfo(dtype).nmant + 1
             res = state.random_res(num, precision)
         return res.reshape(shape).astype(dtype)

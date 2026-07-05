@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
+import ml_dtypes
 import numpy as np
 
 import onnx
@@ -51,7 +52,7 @@ def philox_uniform(seed, shape, dtype, low=0.0, high=1.0):
             a, b = w[2 * (i % 2)], w[2 * (i % 2) + 1]
             r.append(((a >> 5) * 67108864.0 + (b >> 6)) / 9007199254740992.0)
     else:
-        p = np.finfo(dtype).nmant + 1
+        p = ml_dtypes.finfo(dtype).nmant + 1
         r = [(block(i // 4)[i % 4] >> (32 - p)) / (1 << p) for i in range(num)]
     r = np.array(r, dtype=np.float64).reshape(shape).astype(dtype)
     low = np.asarray(low, dtype=dtype)
@@ -118,6 +119,26 @@ class RandomUniform(Base):
             inputs=[],
             outputs=[y],
             name="test_randomuniform_philox_double",
+        )
+
+    @staticmethod
+    def export_randomuniform_philox_bfloat16() -> None:
+        node = onnx.helper.make_node(
+            "RandomUniform",
+            inputs=[],
+            outputs=["y"],
+            dtype=onnx.TensorProto.BFLOAT16,
+            shape=[10],
+            seed=3.0,
+            generator="philox4x32_10",
+        )
+
+        y = philox_uniform(3, (10,), ml_dtypes.bfloat16)
+        expect(
+            node,
+            inputs=[],
+            outputs=[y],
+            name="test_randomuniform_philox_bfloat16",
         )
 
     @staticmethod

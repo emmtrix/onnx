@@ -1535,6 +1535,31 @@ class TestReferenceEvaluator(unittest.TestCase):
         assert_allclose(got, expected, rtol=0, atol=0)
         self.assertEqual(got.dtype, np.float64)
 
+    def test_onnxt_runtime_random_uniform_philox_bfloat16(self):
+        Y = make_tensor_value_info("Y", TensorProto.BFLOAT16, [None])
+        node1 = make_node(
+            "RandomUniform",
+            [],
+            ["Y"],
+            seed=3.0,
+            dtype=TensorProto.BFLOAT16,
+            shape=[4],
+            generator="philox4x32_10",
+        )
+        graph = make_graph([node1], "g", [], [Y])
+        onnx_model = make_model(graph)
+        check_model(onnx_model)
+        sess = ReferenceEvaluator(onnx_model)
+        got = sess.run(None, {})[0]
+        # For bfloat16 (p=8), element i uses word (i mod 4) of Philox-4x32-10
+        # block (i // 4) with key (3, 0): r = (w >> 24) / 2^8. Word stream
+        # produced by the canonical Random123 implementation; every value is
+        # exactly representable in bfloat16 (and in float32).
+        expected = np.array(
+            [0.81640625, 0.11328125, 0.65234375, 0.76171875], dtype=np.float32
+        )
+        assert_allclose(got.astype(np.float32), expected, rtol=0, atol=0)
+
     def test_onnxt_runtime_random_uniform_philox_no_seed_raises(self):
         Y = make_tensor_value_info("Y", TensorProto.FLOAT, [None])
         node1 = make_node(

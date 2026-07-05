@@ -19847,7 +19847,7 @@ expect(
 
 
 ### RandomUniform
-There are 4 test cases, listed as following:
+There are 5 test cases, listed as following:
 <details>
 <summary>randomuniform_philox</summary>
 
@@ -19867,6 +19867,30 @@ expect(
     inputs=[],
     outputs=[y],
     name="test_randomuniform_philox",
+)
+```
+
+</details>
+<details>
+<summary>randomuniform_philox_bfloat16</summary>
+
+```python
+node = onnx.helper.make_node(
+    "RandomUniform",
+    inputs=[],
+    outputs=["y"],
+    dtype=onnx.TensorProto.BFLOAT16,
+    shape=[10],
+    seed=3.0,
+    generator="philox4x32_10",
+)
+
+y = philox_uniform(3, (10,), ml_dtypes.bfloat16)
+expect(
+    node,
+    inputs=[],
+    outputs=[y],
+    name="test_randomuniform_philox_bfloat16",
 )
 ```
 

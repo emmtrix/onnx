@@ -788,12 +788,27 @@ def make_tensor_type_proto(
     elem_type: int,
     shape: Sequence[str | int | None] | None,
     shape_denotation: list[str] | None = None,
+    max_string_length: int | None = None,
 ) -> TypeProto:
-    """Makes a Tensor TypeProto based on the data type and shape."""
+    """Makes a Tensor TypeProto based on the data type and shape.
+
+    The optional max_string_length argument sets an upper bound (in bytes of
+    the UTF-8 encoding) on the length of each string element and is only
+    allowed when elem_type is TensorProto.STRING.
+    """
     type_proto = TypeProto()
     tensor_type_proto = type_proto.tensor_type
     tensor_type_proto.elem_type = elem_type
     tensor_shape_proto = tensor_type_proto.shape
+
+    if max_string_length is not None:
+        if elem_type != TensorProto.STRING:
+            raise ValueError(
+                "max_string_length is only allowed for elem_type TensorProto.STRING."
+            )
+        if max_string_length <= 0:
+            raise ValueError("max_string_length must be a positive integer.")
+        tensor_type_proto.max_string_length = max_string_length
 
     if shape is not None:
         # You might think this is a no-op (extending a normal Python
@@ -835,6 +850,7 @@ def make_tensor_value_info(
     shape: Sequence[str | int | None] | None,
     doc_string: str = "",
     shape_denotation: list[str] | None = None,
+    max_string_length: int | None = None,
 ) -> ValueInfoProto:
     """Makes a ValueInfoProto based on the data type and shape."""
     value_info_proto = ValueInfoProto()
@@ -842,7 +858,9 @@ def make_tensor_value_info(
     if doc_string:
         value_info_proto.doc_string = doc_string
 
-    tensor_type_proto = make_tensor_type_proto(elem_type, shape, shape_denotation)
+    tensor_type_proto = make_tensor_type_proto(
+        elem_type, shape, shape_denotation, max_string_length
+    )
     value_info_proto.type.CopyFrom(tensor_type_proto)
     return value_info_proto
 

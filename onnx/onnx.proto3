@@ -839,6 +839,14 @@ message TypeProto {
     // This field MUST be present for this version of the IR.
     int32 elem_type = 1;
     TensorShapeProto shape = 2;
+
+    // An optional upper bound on the length of each string element of the
+    // tensor, measured in bytes of the UTF-8 encoding.
+    // This field MAY be set only when elem_type is STRING, and when set it
+    // MUST be a positive value. Every string element of a runtime value of
+    // this type MUST NOT be longer than this bound. When this field is
+    // absent, the length of string elements is unbounded.
+    int64 max_string_length = 3;
   }
 
   // repeated T

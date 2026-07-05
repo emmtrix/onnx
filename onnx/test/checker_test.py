@@ -346,6 +346,25 @@ class TestChecker(unittest.TestCase):
 
         checker.check_model(model)
 
+    def test_check_value_info_max_string_length(self) -> None:
+        vi = helper.make_tensor_value_info("X", TensorProto.STRING, [1, 2])
+        vi.type.tensor_type.max_string_length = 16
+        checker.check_value_info(vi)
+
+        # max_string_length is only allowed for string tensors
+        vi = helper.make_tensor_value_info("X", TensorProto.FLOAT, [1, 2])
+        vi.type.tensor_type.max_string_length = 16
+        self.assertRaises(checker.ValidationError, checker.check_value_info, vi)
+
+        # max_string_length must be positive
+        vi = helper.make_tensor_value_info("X", TensorProto.STRING, [1, 2])
+        vi.type.tensor_type.max_string_length = 0
+        self.assertRaises(checker.ValidationError, checker.check_value_info, vi)
+
+        vi = helper.make_tensor_value_info("X", TensorProto.STRING, [1, 2])
+        vi.type.tensor_type.max_string_length = -5
+        self.assertRaises(checker.ValidationError, checker.check_value_info, vi)
+
     def test_check_tensor(self) -> None:
         tensor = self._sample_float_tensor
         checker.check_tensor(tensor)

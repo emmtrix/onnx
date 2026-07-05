@@ -463,6 +463,7 @@ Which is referenced by the Tensor type message:
   message Tensor {
     optional TensorProto.DataType elem_type = 1;
     optional TensorShapeProto shape = 2;
+    optional int64 max_string_length = 3;
   }
 ```
 
@@ -484,6 +485,10 @@ ONNX supports types such as Sequences of Tensors. The global scoping of dimensio
 For example, a graph that performs matrix cross-product may be defined as taking two inputs of shape [K,M] and [M,N], and producing an output of shape [K,N].
 
 Shapes MAY be defined using a combination of integers and variables.
+
+#### String length bounds
+
+Tensors with element type string MAY declare a **static** upper bound on the length of their string elements using the optional `max_string_length` field of the Tensor type message. The bound is measured in bytes of the UTF-8 encoding. When present, the field MUST be a positive value and MUST only be used when the element type is string; every string element of a runtime value of that type MUST NOT be longer than the bound. When the field is absent, the length of string elements is unbounded. Consumers that do not make use of the bound (for example, runtimes that allocate strings dynamically) MAY ignore it, while consumers that require statically-sized storage (for example, code generators targeting embedded systems) MAY rely on it.
 
 _Historical Notes_: The following extensions were considered early on, but were never implemented or supported.
 

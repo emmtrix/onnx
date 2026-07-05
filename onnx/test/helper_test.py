@@ -792,6 +792,25 @@ class TestHelperTensorFunctions(unittest.TestCase):
         vi = helper.make_tensor_value_info("Y", TensorProto.FLOAT, ())
         checker.check_value_info(vi)
 
+    def test_make_tensor_value_info_with_max_string_length(self) -> None:
+        vi = helper.make_tensor_value_info(
+            "X", TensorProto.STRING, (2, 4), max_string_length=64
+        )
+        self.assertEqual(vi.type.tensor_type.max_string_length, 64)
+        checker.check_value_info(vi)
+
+        # max_string_length is only allowed for string tensors
+        with self.assertRaises(ValueError):
+            helper.make_tensor_value_info(
+                "X", TensorProto.FLOAT, (2, 4), max_string_length=64
+            )
+
+        # max_string_length must be positive
+        with self.assertRaises(ValueError):
+            helper.make_tensor_value_info(
+                "X", TensorProto.STRING, (2, 4), max_string_length=0
+            )
+
     def test_make_sparse_tensor_value_info(self) -> None:
         vi = helper.make_sparse_tensor_value_info("X", TensorProto.FLOAT, (2, 3))
         checker.check_value_info(vi)

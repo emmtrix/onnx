@@ -365,6 +365,20 @@ Common::Status OnnxParser::Parse(TypeProto& typeProto) {
     tensortype->set_elem_type(dtype);
     tensortype->clear_shape();
     // Grammar:
+    // string ( max-string-length ) indicates a length-bounded string type.
+    if (Matches('(')) {
+      if (dtype != TensorProto::STRING) {
+        return ParseError("A string length bound is only allowed for the string type.");
+      }
+      int64_t max_string_length = 0;
+      PARSE_TOKEN(max_string_length);
+      if (max_string_length <= 0) {
+        return ParseError("A string length bound must be a positive value.");
+      }
+      tensortype->set_max_string_length(max_string_length);
+      MATCH(')');
+    }
+    // Grammar:
     // float indicates scalar (rank 0)
     // float [] indicates unknown rank tensor (not a zero rank tensor)
     // float [one-or-more-dimensions] indicates tensor of known rank > 0.

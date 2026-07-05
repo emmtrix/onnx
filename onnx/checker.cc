@@ -85,6 +85,17 @@ void check_value_info(const ValueInfoProto& value_info, const CheckerContext& ct
       const auto& type = value_info.type().tensor_type();
       enforce_has_field(type, elem_type);
       enforce_has_field(type, shape);
+      if (type.has_max_string_length()) {
+        if (type.elem_type() != TensorProto::STRING) {
+          fail_check(
+              "Field 'max_string_length' (value_info name: ",
+              value_info.name(),
+              ") is only allowed when elem_type is STRING.");
+        }
+        if (type.max_string_length() <= 0) {
+          fail_check("Field 'max_string_length' (value_info name: ", value_info.name(), ") must be a positive value.");
+        }
+      }
     } break;
     case TypeProto::kOptionalType: {
       const auto& type = value_info.type().optional_type();

@@ -174,6 +174,9 @@ void ProtoPrinter::print(const TensorShapeProto& shape) {
 
 void ProtoPrinter::print(const TypeProto_Tensor& tensortype) {
   output_ << PrimitiveTypeNameMap::ToString(tensortype.elem_type());
+  if (tensortype.has_max_string_length()) {
+    output_ << "(" << tensortype.max_string_length() << ")";
+  }
   if (tensortype.has_shape()) {
     if (tensortype.shape().dim_size() > 0) {
       print(tensortype.shape());

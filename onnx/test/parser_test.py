@@ -63,6 +63,44 @@ class TestBasicFunctions(unittest.TestCase):
             onnx.parser.ParseError, lambda: onnx.parser.parse_graph(input)
         )
 
+    def test_parse_graph_with_max_string_length(self) -> None:
+        input = """
+           agraph (string(64)[N] X) => (string(64)[N] Y)
+           {
+              Y = Identity(X)
+           }
+           """
+        graph = onnx.parser.parse_graph(input)
+        self.assertEqual(graph.input[0].type.tensor_type.max_string_length, 64)
+        self.assertEqual(graph.input[0].type.tensor_type.elem_type, TensorProto.STRING)
+        self.assertEqual(graph.output[0].type.tensor_type.max_string_length, 64)
+        # Round-trip through the printer preserves the bound.
+        text = onnx.printer.to_text(graph)
+        graph2 = onnx.parser.parse_graph(text)
+        self.assertEqual(graph2.input[0].type.tensor_type.max_string_length, 64)
+
+    def test_parse_max_string_length_error(self) -> None:
+        # A string length bound is only allowed for the string type.
+        input = """
+           agraph (float(64)[N] X) => (float(64)[N] Y)
+           {
+              Y = Identity(X)
+           }
+           """
+        self.assertRaises(
+            onnx.parser.ParseError, lambda: onnx.parser.parse_graph(input)
+        )
+        # A string length bound must be positive.
+        input = """
+           agraph (string(0)[N] X) => (string(0)[N] Y)
+           {
+              Y = Identity(X)
+           }
+           """
+        self.assertRaises(
+            onnx.parser.ParseError, lambda: onnx.parser.parse_graph(input)
+        )
+
     def test_parse_model_error(self) -> None:
         input = """
            <

@@ -52,7 +52,9 @@ The grammar below describes the syntax:
    quotable-id-list ::= quotable-id (',' quotable-id)*
    tensor-dim ::= '?' | quotable-id | int-constant
    tensor-dims ::= tensor-dim (',' tensor-dim)*
-   tensor-type ::= prim-type | prim-type '[' ']' | prim-type '[' tensor-dims ']'
+   max-string-length ::= '(' int-constant ')'
+   tensor-elem-type ::= prim-type | 'string' max-string-length
+   tensor-type ::= tensor-elem-type | tensor-elem-type '[' ']' | tensor-elem-type '[' tensor-dims ']'
    type ::= tensor-type | 'seq' '(' type ')' | 'map' '(' prim-type ',' type ')'
             | 'optional' '(' type ')' | 'sparse_tensor' '(' tensor-type ')'
    value-info ::= type quotable-id

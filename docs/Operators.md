@@ -113,7 +113,7 @@ For an operator input/output's differentiability, it can be differentiable,
 |<a href="#RNN">RNN</a>|<a href="Changelog.md#RNN-22">22</a>, <a href="Changelog.md#RNN-14">14</a>, <a href="Changelog.md#RNN-7">7</a>, <a href="Changelog.md#RNN-1">1</a>|
 |<a href="#RandomNormal">RandomNormal</a>|<a href="Changelog.md#RandomNormal-22">22</a>, <a href="Changelog.md#RandomNormal-1">1</a>|
 |<a href="#RandomNormalLike">RandomNormalLike</a>|<a href="Changelog.md#RandomNormalLike-22">22</a>, <a href="Changelog.md#RandomNormalLike-1">1</a>|
-|<a href="#RandomUniform">RandomUniform</a>|<a href="Changelog.md#RandomUniform-22">22</a>, <a href="Changelog.md#RandomUniform-1">1</a>|
+|<a href="#RandomUniform">RandomUniform</a>|<a href="Changelog.md#RandomUniform-28">28</a>, <a href="Changelog.md#RandomUniform-22">22</a>, <a href="Changelog.md#RandomUniform-1">1</a>|
 |<a href="#RandomUniformLike">RandomUniformLike</a>|<a href="Changelog.md#RandomUniformLike-22">22</a>, <a href="Changelog.md#RandomUniformLike-1">1</a>|
 |<a href="#Reciprocal">Reciprocal</a>|<a href="Changelog.md#Reciprocal-13">13</a>, <a href="Changelog.md#Reciprocal-6">6</a>, <a href="Changelog.md#Reciprocal-1">1</a>|
 |<a href="#ReduceMax">ReduceMax</a>|<a href="Changelog.md#ReduceMax-20">20</a>, <a href="Changelog.md#ReduceMax-18">18</a>, <a href="Changelog.md#ReduceMax-13">13</a>, <a href="Changelog.md#ReduceMax-12">12</a>, <a href="Changelog.md#ReduceMax-11">11</a>, <a href="Changelog.md#ReduceMax-1">1</a>|
@@ -27515,23 +27515,74 @@ Other versions of this operator: <a href="Changelog.md#RandomNormalLike-1">1</a>
   be one of the data types specified in the 'DataType' enum field in the
   TensorProto message.
 
+  The `generator` attribute selects the pseudo-random number generator algorithm.
+  With the default value "unspecified", the choice of generator is left to the
+  implementation and no determinism guarantee is given: results may differ across
+  implementations and even across runs of the same implementation, even when
+  `seed` is specified. An implementation may produce reproducible results in this
+  mode (for example for a fixed `seed`), but it is not required to. Setting
+  `generator` to "philox4x32_10" fully specifies the generated values: given
+  the same `seed`, every conforming implementation must produce bit-identical
+  results, which makes the operator deterministic and testable. More algorithms
+  may be added in future opset versions.
+
+  When `generator` is "philox4x32_10", the `seed` attribute must be specified and
+  the output is computed with the Philox-4x32 counter-based generator with 10
+  rounds (Salmon et al., "Parallel random numbers: as easy as 1, 2, 3", SC'11),
+  using the standard constants M0 = 0xD2511F53, M1 = 0xCD9E8D57, W0 = 0x9E3779B9,
+  W1 = 0xBB67AE85. All arithmetic on counter, key, and output words is unsigned
+  32-bit modular arithmetic:
+  1. The key is derived from `seed`, truncated toward zero and converted to an
+     unsigned 64-bit integer (modulo 2^64): `key0 = seed & 0xFFFFFFFF` and
+     `key1 = (seed >> 32) & 0xFFFFFFFF`.
+  2. Counter block `b` (a 64-bit block index) is the 128-bit counter
+     `(c0, c1, c2, c3) = (b & 0xFFFFFFFF, (b >> 32) & 0xFFFFFFFF, 0, 0)`. It is
+     encrypted to four 32-bit output words `w0, w1, w2, w3` by applying the
+     Philox round function 10 times with round keys `(k0, k1)`, starting at
+     `(key0, key1)` and incremented by `(W0, W1)` before every round except the
+     first. One round maps `(c0, c1, c2, c3)` to
+     `(hi1 XOR c1 XOR k0, lo1, hi0 XOR c3 XOR k1, lo0)`, where `hi0` and `lo0`
+     are the high and low 32 bits of the 64-bit product `M0 * c0`, and `hi1` and
+     `lo1` are those of `M1 * c2`.
+  3. Output element `i` (in row-major order) draws a value `r` in the interval
+     [0, 1) whose resolution matches the precision of `dtype`. Let `p` be the
+     number of significand bits of `dtype`, including the implicit bit (8 for
+     bfloat16, 11 for float16, 24 for float, 53 for double):
+     - If `dtype` is double, element `i` uses words `a = w(2 * (i mod 2))` and
+       `b = w(2 * (i mod 2) + 1)` of block `floor(i / 2)` and forms
+       `r = (floor(a / 2^5) * 2^26 + floor(b / 2^6)) / 2^53`.
+     - Otherwise, element `i` uses word `a = w(i mod 4)` of block `floor(i / 4)`
+       and forms `r = floor(a / 2^(32-p)) / 2^p`, which is exactly representable
+       in `dtype`.
+  4. The element value is `low + r * (high - low)`, where `low` and `high` are
+     first converted to `dtype` and the subtraction, multiplication, and
+     addition are performed in `dtype` with IEEE 754 round-to-nearest-even
+     semantics. Note that due to this rounding, the result may equal `high` for
+     low-precision types.
+
+  Because Philox is counter-based, each output element depends only on `seed`
+  and its position `i`: elements can be computed independently, in any order,
+  or in parallel.
+
 #### Version
 
-This version of the operator has been available since version 22 of the default ONNX operator set.
+This version of the operator has been available since version 28 of the default ONNX operator set.
 
-Other versions of this operator: <a href="Changelog.md#RandomUniform-1">1</a>
+Other versions of this operator: <a href="Changelog.md#RandomUniform-1">1</a>, <a href="Changelog.md#RandomUniform-22">22</a>
 
 #### Attributes
 
 <dl>
 <dt><tt>dtype</tt> : int (default is 1)</dt>
 <dd>The data type for the elements of the output tensor. If not specified, default is TensorProto::FLOAT.</dd>
+<dt><tt>generator</tt> : string (default is unspecified)</dt>
+<dd>(Optional) The pseudo-random number generator algorithm. "unspecified" leaves the choice of generator to the implementation and provides no determinism guarantee: results may differ across implementations and even across runs of the same implementation, even when `seed` is specified (an implementation may produce reproducible results, but is not required to). "philox4x32_10" selects the fully specified Philox-4x32-10 counter-based algorithm described in the operator documentation, making the output deterministic for a given `seed`. More algorithms may be added in future opset versions.</dd>
 <dt><tt>high</tt> : float (default is 1.0)</dt>
 <dd>Upper boundary of the output values.</dd>
 <dt><tt>low</tt> : float (default is 0.0)</dt>
 <dd>Lower boundary of the output values.</dd>
 <dt><tt>seed</tt> : float</dt>
-<dd>(Optional) Seed to the random generator, if not specified we will auto generate one.</dd>
+<dd>(Optional) Seed to the random generator, if not specified we will auto generate one. Must be specified when `generator` is "philox4x32_10".</dd>
 <dt><tt>shape</tt> : list of ints (required)</dt>
 <dd>The shape of the output tensor.</dd>
 </dl>
@@ -27552,6 +27603,112 @@ Other versions of this operator: <a href="Changelog.md#RandomUniform-1">1</a>
 <dt><tt>T</tt> : tensor(bfloat16), tensor(float16), tensor(float), tensor(double)</dt>
 <dd>Constrain output types to float tensors.</dd>
 </dl>
+
+
+#### Examples
+
+<details>
+<summary>randomuniform_philox</summary>
+
+```python
+node = onnx.helper.make_node(
+    "RandomUniform",
+    inputs=[],
+    outputs=["y"],
+    shape=[3, 4],
+    seed=42.0,
+    generator="philox4x32_10",
+)
+
+y = philox_uniform(42, (3, 4), np.float32)
+expect(
+    node,
+    inputs=[],
+    outputs=[y],
+    name="test_randomuniform_philox",
+)
+```
+
+</details>
+
+
+<details>
+<summary>randomuniform_philox_double</summary>
+
+```python
+node = onnx.helper.make_node(
+    "RandomUniform",
+    inputs=[],
+    outputs=["y"],
+    dtype=onnx.TensorProto.DOUBLE,
+    shape=[2, 4],
+    seed=123.0,
+    generator="philox4x32_10",
+)
+
+y = philox_uniform(123, (2, 4), np.float64)
+expect(
+    node,
+    inputs=[],
+    outputs=[y],
+    name="test_randomuniform_philox_double",
+)
+```
+
+</details>
+
+
+<details>
+<summary>randomuniform_philox_float16</summary>
+
+```python
+node = onnx.helper.make_node(
+    "RandomUniform",
+    inputs=[],
+    outputs=["y"],
+    dtype=onnx.TensorProto.FLOAT16,
+    shape=[10],
+    seed=7.0,
+    generator="philox4x32_10",
+)
+
+y = philox_uniform(7, (10,), np.float16)
+expect(
+    node,
+    inputs=[],
+    outputs=[y],
+    name="test_randomuniform_philox_float16",
+)
+```
+
+</details>
+
+
+<details>
+<summary>randomuniform_philox_low_high</summary>
+
+```python
+node = onnx.helper.make_node(
+    "RandomUniform",
+    inputs=[],
+    outputs=["y"],
+    low=5.0,
+    high=10.0,
+    shape=[2, 3],
+    seed=0.0,
+    generator="philox4x32_10",
+)
+
+y = philox_uniform(0, (2, 3), np.float32, low=5.0, high=10.0)
+expect(
+    node,
+    inputs=[],
+    outputs=[y],
+    name="test_randomuniform_philox_low_high",
+)
+```
+
+</details>
 
 
 ### <a name="RandomUniformLike"></a><a name="randomuniformlike">**RandomUniformLike**</a>

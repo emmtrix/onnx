@@ -6,7 +6,7 @@
 * [Overall Test Coverage](#overall-test-coverage)
 # Node Test Coverage
 ## Summary
-Node tests have covered 189/201 (94.03%, 5 generators excluded) common operators.
+Node tests have covered 190/202 (94.06%, 4 generators excluded) common operators.
 
 Node tests have covered 1/1 (100.00%, 0 generators excluded) experimental operators.
 
@@ -19846,6 +19846,106 @@ expect(
 </details>
 
 
+### RandomUniform
+There are 4 test cases, listed as following:
+<details>
+<summary>randomuniform_philox</summary>
+
+```python
+node = onnx.helper.make_node(
+    "RandomUniform",
+    inputs=[],
+    outputs=["y"],
+    shape=[3, 4],
+    seed=42.0,
+    generator="philox4x32_10",
+)
+
+y = philox_uniform(42, (3, 4), np.float32)
+expect(
+    node,
+    inputs=[],
+    outputs=[y],
+    name="test_randomuniform_philox",
+)
+```
+
+</details>
+<details>
+<summary>randomuniform_philox_double</summary>
+
+```python
+node = onnx.helper.make_node(
+    "RandomUniform",
+    inputs=[],
+    outputs=["y"],
+    dtype=onnx.TensorProto.DOUBLE,
+    shape=[2, 4],
+    seed=123.0,
+    generator="philox4x32_10",
+)
+
+y = philox_uniform(123, (2, 4), np.float64)
+expect(
+    node,
+    inputs=[],
+    outputs=[y],
+    name="test_randomuniform_philox_double",
+)
+```
+
+</details>
+<details>
+<summary>randomuniform_philox_float16</summary>
+
+```python
+node = onnx.helper.make_node(
+    "RandomUniform",
+    inputs=[],
+    outputs=["y"],
+    dtype=onnx.TensorProto.FLOAT16,
+    shape=[10],
+    seed=7.0,
+    generator="philox4x32_10",
+)
+
+y = philox_uniform(7, (10,), np.float16)
+expect(
+    node,
+    inputs=[],
+    outputs=[y],
+    name="test_randomuniform_philox_float16",
+)
+```
+
+</details>
+<details>
+<summary>randomuniform_philox_low_high</summary>
+
+```python
+node = onnx.helper.make_node(
+    "RandomUniform",
+    inputs=[],
+    outputs=["y"],
+    low=5.0,
+    high=10.0,
+    shape=[2, 3],
+    seed=0.0,
+    generator="philox4x32_10",
+)
+
+y = philox_uniform(0, (2, 3), np.float32, low=5.0, high=10.0)
+expect(
+    node,
+    inputs=[],
+    outputs=[y],
+    name="test_randomuniform_philox_low_high",
+)
+```
+
+</details>
+
+
 ### Range
 There are 4 test cases, listed as following:
 <details>
@@ -30719,9 +30819,6 @@ expect(node, inputs=[x, y], outputs=[z], name="test_xor_bcast4v4d")
 
 
 ### RandomNormalLike (random generator operator)
-
-
-### RandomUniform (random generator operator)
 
 
 ### RandomUniformLike (random generator operator)

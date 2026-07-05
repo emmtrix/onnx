@@ -150,16 +150,28 @@ ONNX_OPERATOR_SET_SCHEMA(
 
 ONNX_OPERATOR_SET_SCHEMA(
     RandomUniform,
-    22,
+    28,
     OpSchema()
-        .SetDoc(kDoc_RandomUniform_ver1)
+        .SetDoc(kDoc_RandomUniform_ver28)
         .Attr("low", "Lower boundary of the output values.", AttributeProto::FLOAT, 0.0f)
         .Attr("high", "Upper boundary of the output values.", AttributeProto::FLOAT, 1.0f)
         .Attr(
             "seed",
-            "(Optional) Seed to the random generator, if not specified we will auto generate one.",
+            "(Optional) Seed to the random generator, if not specified we will auto generate one. "
+            "Must be specified when `generator` is \"philox4x32_10\".",
             AttributeProto::FLOAT,
             OPTIONAL_VALUE)
+        .Attr(
+            "generator",
+            "(Optional) The pseudo-random number generator algorithm. \"unspecified\" leaves the choice of "
+            "generator to the implementation and provides no determinism guarantee: results may differ "
+            "across implementations and even across runs of the same implementation, even when `seed` is "
+            "specified (an implementation may produce reproducible results, but is not required to). "
+            "\"philox4x32_10\" selects the fully specified Philox-4x32-10 counter-based algorithm described "
+            "in the operator documentation, making the output deterministic for a given `seed`. More "
+            "algorithms may be added in future opset versions.",
+            AttributeProto::STRING,
+            std::string("unspecified"))
         .Attr(
             "dtype",
             "The data type for the elements of the output tensor. If not specified, default is TensorProto::FLOAT.",
@@ -170,6 +182,17 @@ ONNX_OPERATOR_SET_SCHEMA(
         .TypeConstraint("T", OpSchema::all_float_types_ir4(), "Constrain output types to float tensors.")
         .SetNodeDeterminism(OpSchema::NodeDeterminism::NonDeterministic)
         .TypeAndShapeInferenceFunction([](InferenceContext& ctx) {
+          const auto* generator_attr = ctx.getAttribute("generator");
+          if (generator_attr != nullptr) {
+            const std::string& generator = generator_attr->s();
+            if (generator != "unspecified" && generator != "philox4x32_10") {
+              fail_shape_inference(
+                  "Attribute 'generator' must be one of 'unspecified' or 'philox4x32_10', got '", generator, "'.");
+            }
+            if (generator != "unspecified" && ctx.getAttribute("seed") == nullptr) {
+              fail_shape_inference("Attribute 'seed' must be specified when 'generator' is '", generator, "'.");
+            }
+          }
           propagateElemTypeFromAttributeToOutput(ctx, "dtype", 0, TensorProto::FLOAT);
           propagateShapeFromAttributeToOutput(ctx, "shape", 0);
         }));

@@ -216,13 +216,14 @@ order, or in parallel. The block index occupies counter words `c0`/`c1` and the
 offset occupies `c2`/`c3`, so the streams of different offsets never overlap,
 regardless of the output size.
 
-The optional `next_offset` output returns `offset + 1` (wrapping around on
-unsigned 64-bit overflow, independent of `generator`). A model run is a pure
-function of its inputs: with a constant (or absent) `offset`, every run draws
-the same values, which makes the operator testable. For streaming inference,
-feed `next_offset` of one run as `offset` of the next run — each run then draws
-a fresh, disjoint stream while remaining individually deterministic and
-replayable.
+A model run is a pure function of its inputs: with a constant (or absent)
+`offset`, every run draws the same values, which makes the operator testable.
+For streaming inference, feed a different `offset` in every run — since every
+offset value selects an independent stream, any non-repeating scheme works,
+such as a step counter maintained by the host, stored as an initializer and
+advanced at checkpoint time, or carried through a Loop and incremented in the
+graph. Each run then draws a fresh, disjoint stream while remaining
+individually deterministic and replayable.
 )DOC";
 
 const char kDoc_DequantizeLinear_ver24[] = R"DOC(

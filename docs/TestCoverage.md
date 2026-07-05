@@ -20055,15 +20055,14 @@ expect(
 
 ```python
 """Intent: streaming support — the offset input keys counter words
-c2/c3, selecting a stream disjoint from offset 0, and next_offset
-must return offset + 1 so consecutive runs can be chained (feeding
-next_offset back as offset) to draw fresh, yet reproducible, values
-per run.
+c2/c3, selecting a stream disjoint from offset 0 (and from every
+other offset value). Feeding a different offset per run (e.g. a step
+counter) draws fresh, yet reproducible, values in every run.
 """
 node = onnx.helper.make_node(
     "RandomUniform",
     inputs=["offset"],
-    outputs=["y", "next_offset"],
+    outputs=["y"],
     shape=[2, 3],
     seed=42.0,
     generator="philox4x32_10",
@@ -20071,11 +20070,10 @@ node = onnx.helper.make_node(
 
 offset = np.array(5, dtype=np.int64)
 y = philox_uniform(42, (2, 3), np.float32, offset=5)
-next_offset = np.array(6, dtype=np.int64)
 expect(
     node,
     inputs=[offset],
-    outputs=[y, next_offset],
+    outputs=[y],
     name="test_randomuniform_philox_offset",
 )
 ```

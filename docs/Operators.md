@@ -27569,13 +27569,14 @@ Other versions of this operator: <a href="Changelog.md#RandomNormalLike-1">1</a>
   offset occupies `c2`/`c3`, so the streams of different offsets never overlap,
   regardless of the output size.
 
-  The optional `next_offset` output returns `offset + 1` (wrapping around on
-  unsigned 64-bit overflow, independent of `generator`). A model run is a pure
-  function of its inputs: with a constant (or absent) `offset`, every run draws
-  the same values, which makes the operator testable. For streaming inference,
-  feed `next_offset` of one run as `offset` of the next run — each run then draws
-  a fresh, disjoint stream while remaining individually deterministic and
-  replayable.
+  A model run is a pure function of its inputs: with a constant (or absent)
+  `offset`, every run draws the same values, which makes the operator testable.
+  For streaming inference, feed a different `offset` in every run — since every
+  offset value selects an independent stream, any non-repeating scheme works,
+  such as a step counter maintained by the host, stored as an initializer and
+  advanced at checkpoint time, or carried through a Loop and incremented in the
+  graph. Each run then draws a fresh, disjoint stream while remaining
+  individually deterministic and replayable.
 
 #### Version
 
@@ -27604,16 +27605,14 @@ Other versions of this operator: <a href="Changelog.md#RandomUniform-1">1</a>, <
 
 <dl>
 <dt><tt>offset</tt> (optional) : T2</dt>
-<dd>(Optional) Scalar 64-bit stream offset, 0 if not provided. Each offset value selects an independent random stream: with `generator` = "philox4x32_10" it is placed in the counter words `c2`/`c3` (its two's complement bits interpreted as unsigned), so the streams of different offsets never overlap, regardless of the output size. For streaming inference, feed `next_offset` of one run as `offset` of the next run to draw fresh, yet reproducible, values in every run; feed a constant (or omit the input) to draw the same values in every run. When `generator` is "unspecified", the effect of `offset` on the generated values is implementation-defined.</dd>
+<dd>(Optional) Scalar 64-bit stream offset, 0 if not provided. Each offset value selects an independent random stream: with `generator` = "philox4x32_10" it is placed in the counter words `c2`/`c3` (its two's complement bits interpreted as unsigned), so the streams of different offsets never overlap, regardless of the output size. For streaming inference, feed a different offset in every run (any non-repeating scheme works, e.g. a step counter maintained by the host or computed in the graph) to draw fresh, yet reproducible, values per run; feed a constant (or omit the input) to draw the same values in every run. When `generator` is "unspecified", the effect of `offset` on the generated values is implementation-defined.</dd>
 </dl>
 
-#### Outputs (1 - 2)
+#### Outputs
 
 <dl>
 <dt><tt>output</tt> : T</dt>
 <dd>Output tensor of random values drawn from uniform distribution</dd>
-<dt><tt>next_offset</tt> (optional) : T2</dt>
-<dd>(Optional) Scalar offset for a subsequent run: `offset + 1`, wrapping around on unsigned 64-bit overflow. Chaining runs through this value yields a disjoint random stream per run while each individual run remains deterministic and replayable.</dd>
 </dl>
 
 #### Type Constraints
@@ -27849,15 +27848,14 @@ expect(
 
 ```python
 """Intent: streaming support — the offset input keys counter words
-c2/c3, selecting a stream disjoint from offset 0, and next_offset
-must return offset + 1 so consecutive runs can be chained (feeding
-next_offset back as offset) to draw fresh, yet reproducible, values
-per run.
+c2/c3, selecting a stream disjoint from offset 0 (and from every
+other offset value). Feeding a different offset per run (e.g. a step
+counter) draws fresh, yet reproducible, values in every run.
 """
 node = onnx.helper.make_node(
     "RandomUniform",
     inputs=["offset"],
-    outputs=["y", "next_offset"],
+    outputs=["y"],
     shape=[2, 3],
     seed=42.0,
     generator="philox4x32_10",
@@ -27865,11 +27863,10 @@ node = onnx.helper.make_node(
 
 offset = np.array(5, dtype=np.int64)
 y = philox_uniform(42, (2, 3), np.float32, offset=5)
-next_offset = np.array(6, dtype=np.int64)
 expect(
     node,
     inputs=[offset],
-    outputs=[y, next_offset],
+    outputs=[y],
     name="test_randomuniform_philox_offset",
 )
 ```

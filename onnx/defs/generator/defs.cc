@@ -185,21 +185,14 @@ ONNX_OPERATOR_SET_SCHEMA(
             "independent random stream: with `generator` = \"philox4x32_10\" it is placed in the counter "
             "words `c2`/`c3` (its two's complement bits interpreted as unsigned), so the streams of "
             "different offsets never overlap, regardless of the output size. For streaming inference, "
-            "feed `next_offset` of one run as `offset` of the next run to draw fresh, yet reproducible, "
-            "values in every run; feed a constant (or omit the input) to draw the same values in every "
-            "run. When `generator` is \"unspecified\", the effect of `offset` on the generated values is "
+            "feed a different offset in every run (any non-repeating scheme works, e.g. a step counter "
+            "maintained by the host or computed in the graph) to draw fresh, yet reproducible, values per "
+            "run; feed a constant (or omit the input) to draw the same values in every run. When "
+            "`generator` is \"unspecified\", the effect of `offset` on the generated values is "
             "implementation-defined.",
             "T2",
             OpSchema::Optional)
         .Output(0, "output", "Output tensor of random values drawn from uniform distribution", "T")
-        .Output(
-            1,
-            "next_offset",
-            "(Optional) Scalar offset for a subsequent run: `offset + 1`, wrapping around on unsigned "
-            "64-bit overflow. Chaining runs through this value yields a disjoint random stream per run "
-            "while each individual run remains deterministic and replayable.",
-            "T2",
-            OpSchema::Optional)
         .TypeConstraint("T", OpSchema::all_float_types_ir4(), "Constrain output types to float tensors.")
         .TypeConstraint("T2", {types::Int64}, "Constrain the stream offset to int64.")
         .SetNodeDeterminism(OpSchema::NodeDeterminism::NonDeterministic)
@@ -217,11 +210,6 @@ ONNX_OPERATOR_SET_SCHEMA(
           }
           propagateElemTypeFromAttributeToOutput(ctx, "dtype", 0, TensorProto::FLOAT);
           propagateShapeFromAttributeToOutput(ctx, "shape", 0);
-          if (ctx.getNumOutputs() > 1) {
-            updateOutputElemType(ctx, 1, TensorProto::INT64);
-            // next_offset is a scalar
-            ctx.getOutputType(1)->mutable_tensor_type()->mutable_shape();
-          }
         }));
 
 ONNX_OPERATOR_SET_SCHEMA(

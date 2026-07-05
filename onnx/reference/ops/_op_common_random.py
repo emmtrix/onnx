@@ -191,11 +191,3 @@ class _CommonRandom(OpRun):
             precision = ml_dtypes.finfo(dtype).nmant + 1
             res = state.random_res(num, precision)
         return res.reshape(shape).astype(dtype)
-
-    @staticmethod
-    def _next_offset(offset: int) -> np.ndarray:
-        """Scalar int64 ``offset + 1``, wrapping on unsigned 64-bit overflow."""
-        nxt = (int(offset) + 1) & 0xFFFFFFFFFFFFFFFF
-        if nxt >= 0x8000000000000000:
-            nxt -= 0x10000000000000000
-        return np.array(nxt, dtype=np.int64)

@@ -33156,13 +33156,14 @@ This version of the operator has been available since version 28 of the default 
   offset occupies `c2`/`c3`, so the streams of different offsets never overlap,
   regardless of the output size.
 
-  The optional `next_offset` output returns `offset + 1` (wrapping around on
-  unsigned 64-bit overflow, independent of `generator`). A model run is a pure
-  function of its inputs: with a constant (or absent) `offset`, every run draws
-  the same values, which makes the operator testable. For streaming inference,
-  feed `next_offset` of one run as `offset` of the next run — each run then draws
-  a fresh, disjoint stream while remaining individually deterministic and
-  replayable.
+  A model run is a pure function of its inputs: with a constant (or absent)
+  `offset`, every run draws the same values, which makes the operator testable.
+  For streaming inference, feed a different `offset` in every run — since every
+  offset value selects an independent stream, any non-repeating scheme works,
+  such as a step counter maintained by the host, stored as an initializer and
+  advanced at checkpoint time, or carried through a Loop and incremented in the
+  graph. Each run then draws a fresh, disjoint stream while remaining
+  individually deterministic and replayable.
 
 #### Version
 
@@ -33189,16 +33190,14 @@ This version of the operator has been available since version 28 of the default 
 
 <dl>
 <dt><tt>offset</tt> (optional) : T2</dt>
-<dd>(Optional) Scalar 64-bit stream offset, 0 if not provided. Each offset value selects an independent random stream: with `generator` = "philox4x32_10" it is placed in the counter words `c2`/`c3` (its two's complement bits interpreted as unsigned), so the streams of different offsets never overlap, regardless of the output size. For streaming inference, feed `next_offset` of one run as `offset` of the next run to draw fresh, yet reproducible, values in every run; feed a constant (or omit the input) to draw the same values in every run. When `generator` is "unspecified", the effect of `offset` on the generated values is implementation-defined.</dd>
+<dd>(Optional) Scalar 64-bit stream offset, 0 if not provided. Each offset value selects an independent random stream: with `generator` = "philox4x32_10" it is placed in the counter words `c2`/`c3` (its two's complement bits interpreted as unsigned), so the streams of different offsets never overlap, regardless of the output size. For streaming inference, feed a different offset in every run (any non-repeating scheme works, e.g. a step counter maintained by the host or computed in the graph) to draw fresh, yet reproducible, values per run; feed a constant (or omit the input) to draw the same values in every run. When `generator` is "unspecified", the effect of `offset` on the generated values is implementation-defined.</dd>
 </dl>
 
-#### Outputs (1 - 2)
+#### Outputs
 
 <dl>
 <dt><tt>output</tt> : T</dt>
 <dd>Output tensor of random values drawn from uniform distribution</dd>
-<dt><tt>next_offset</tt> (optional) : T2</dt>
-<dd>(Optional) Scalar offset for a subsequent run: `offset + 1`, wrapping around on unsigned 64-bit overflow. Chaining runs through this value yields a disjoint random stream per run while each individual run remains deterministic and replayable.</dd>
 </dl>
 
 #### Type Constraints

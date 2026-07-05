@@ -155,76 +155,22 @@ ONNX_OPERATOR_SET_SCHEMA(
         .SetDoc(kDoc_RandomUniform_ver28)
         .Attr("low", "Lower boundary of the output values.", AttributeProto::FLOAT, 0.0f)
         .Attr("high", "Upper boundary of the output values.", AttributeProto::FLOAT, 1.0f)
-        .Attr(
-            "seed",
-            "(Optional) Seed to the random generator, if not specified we will auto generate one. "
-            "Used only when `generator` is \"unspecified\" (with implementation-defined effect); must not "
-            "be specified together with a deterministic generator, which uses `seed_int64` instead.",
-            AttributeProto::FLOAT,
-            OPTIONAL_VALUE)
-        .Attr(
-            "seed_int64",
-            "(Optional) 64-bit seed for the fully specified generators; its two's complement bits are "
-            "interpreted as an unsigned 64-bit integer. Must be specified when `generator` is "
-            "\"philox4x32_10\" (the float `seed` attribute is not used in that case). When `generator` is "
-            "\"unspecified\", the effect of `seed_int64` is implementation-defined.",
-            AttributeProto::INT,
-            OPTIONAL_VALUE)
-        .Attr(
-            "generator",
-            "(Optional) The pseudo-random number generator algorithm. \"unspecified\" leaves the choice of "
-            "generator to the implementation and provides no determinism guarantee: results may differ "
-            "across implementations and even across runs of the same implementation, even when a seed is "
-            "specified (an implementation may produce reproducible results, but is not required to). "
-            "\"philox4x32_10\" selects the fully specified Philox-4x32-10 counter-based algorithm described "
-            "in the operator documentation, making the output deterministic for a given `seed_int64`. More "
-            "algorithms may be added in future opset versions.",
-            AttributeProto::STRING,
-            std::string("unspecified"))
+        .Attr("seed", kRandomGeneratorSeedAttrDoc, AttributeProto::FLOAT, OPTIONAL_VALUE)
+        .Attr("seed_int64", kRandomGeneratorSeedInt64AttrDoc, AttributeProto::INT, OPTIONAL_VALUE)
+        .Attr("generator", kRandomGeneratorAttrDoc, AttributeProto::STRING, std::string("unspecified"))
         .Attr(
             "dtype",
             "The data type for the elements of the output tensor. If not specified, default is TensorProto::FLOAT.",
             AttributeProto::INT,
             static_cast<int64_t>(TensorProto::FLOAT))
         .Attr("shape", "The shape of the output tensor.", AttributeProto::INTS)
-        .Input(
-            0,
-            "offset",
-            "(Optional) Scalar 64-bit stream offset, 0 if not provided. Each offset value selects an "
-            "independent random stream: with `generator` = \"philox4x32_10\" it is placed in the counter "
-            "words `c2`/`c3` (its two's complement bits interpreted as unsigned), so the streams of "
-            "different offsets never overlap, regardless of the output size. For streaming inference, "
-            "feed a different offset in every run (any non-repeating scheme works, e.g. a step counter "
-            "maintained by the host or computed in the graph) to draw fresh, yet reproducible, values per "
-            "run; feed a constant (or omit the input) to draw the same values in every run. When "
-            "`generator` is \"unspecified\", the effect of `offset` on the generated values is "
-            "implementation-defined.",
-            "T2",
-            OpSchema::Optional)
+        .Input(0, "offset", kRandomGeneratorOffsetInputDoc, "T2", OpSchema::Optional)
         .Output(0, "output", "Output tensor of random values drawn from uniform distribution", "T")
         .TypeConstraint("T", OpSchema::all_float_types_ir4(), "Constrain output types to float tensors.")
         .TypeConstraint("T2", {types::Int64}, "Constrain the stream offset to int64.")
         .SetNodeDeterminism(OpSchema::NodeDeterminism::NonDeterministic)
         .TypeAndShapeInferenceFunction([](InferenceContext& ctx) {
-          const auto* generator_attr = ctx.getAttribute("generator");
-          if (generator_attr != nullptr) {
-            const std::string& generator = generator_attr->s();
-            if (generator != "unspecified" && generator != "philox4x32_10") {
-              fail_shape_inference(
-                  "Attribute 'generator' must be one of 'unspecified' or 'philox4x32_10', got '", generator, "'.");
-            }
-            if (generator != "unspecified") {
-              if (ctx.getAttribute("seed_int64") == nullptr) {
-                fail_shape_inference("Attribute 'seed_int64' must be specified when 'generator' is '", generator, "'.");
-              }
-              if (ctx.getAttribute("seed") != nullptr) {
-                fail_shape_inference(
-                    "Attribute 'seed' must not be specified when 'generator' is '",
-                    generator,
-                    "'; use 'seed_int64' instead.");
-              }
-            }
-          }
+          ValidateRandomGeneratorAttributes(ctx, 0);
           propagateElemTypeFromAttributeToOutput(ctx, "dtype", 0, TensorProto::FLOAT);
           propagateShapeFromAttributeToOutput(ctx, "shape", 0);
         }));

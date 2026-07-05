@@ -4461,6 +4461,23 @@ class TestShapeInference(TestShapeInferenceHelper):
             graph, [make_tensor_value_info("out", TensorProto.FLOAT, (3, 4))]
         )
 
+    def test_random_uniform_offset_non_scalar_fails(self) -> None:
+        graph = self._make_graph(
+            [("offset", TensorProto.INT64, (2, 3))],
+            [
+                make_node(
+                    "RandomUniform",
+                    ["offset"],
+                    ["out"],
+                    shape=(3, 4),
+                    seed_int64=0,
+                    generator="philox4x32_10",
+                )
+            ],
+            [],
+        )
+        self.assertRaises(onnx.shape_inference.InferenceError, self._inferred, graph)
+
     def test_random_uniform_unknown_generator_fails(self) -> None:
         graph = self._make_graph(
             [],

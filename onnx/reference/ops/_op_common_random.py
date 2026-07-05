@@ -72,20 +72,25 @@ class _Philox4x32:
             c3.astype(np.uint32),
         )
 
-    def _blocks(self, num_blocks: int):
-        """Output words of counter blocks 0 .. num_blocks-1.
+    def _words(self, num: int, words_per_element: int) -> np.ndarray:
+        """Output words of enough counter blocks for `num` elements.
 
         Block ``b`` uses the counter ``(lo32(b), hi32(b), lo32(offset),
-        hi32(offset))``.
+        hi32(offset))``. Returns the words as an array of shape
+        ``(num_blocks, 4)`` in block order.
         """
+        num_blocks = (num * words_per_element + 3) // 4
         b = np.arange(num_blocks, dtype=np.uint64)
-        return self.philox4x32_10(
-            b & np.uint64(0xFFFFFFFF),
-            b >> np.uint64(32),
-            np.full(num_blocks, self._offset0, dtype=np.uint64),
-            np.full(num_blocks, self._offset1, dtype=np.uint64),
-            self._key0,
-            self._key1,
+        return np.stack(
+            self.philox4x32_10(
+                b & np.uint64(0xFFFFFFFF),
+                b >> np.uint64(32),
+                np.uint64(self._offset0),
+                np.uint64(self._offset1),
+                self._key0,
+                self._key1,
+            ),
+            axis=1,
         )
 
     def random_res53(self, num: int) -> np.ndarray:
@@ -94,10 +99,9 @@ class _Philox4x32:
         Element `i` combines words ``2*(i mod 2)`` and ``2*(i mod 2) + 1`` of
         block ``i // 2`` as ``(floor(a / 2^5) * 2^26 + floor(b / 2^6)) / 2^53``.
         """
-        num_blocks = (num + 1) // 2
-        w0, w1, w2, w3 = self._blocks(num_blocks)
-        a = np.stack([w0, w2], axis=1).reshape(-1)[:num] >> np.uint32(5)
-        b = np.stack([w1, w3], axis=1).reshape(-1)[:num] >> np.uint32(6)
+        w = self._words(num, 2)
+        a = w[:, [0, 2]].reshape(-1)[:num] >> np.uint32(5)
+        b = w[:, [1, 3]].reshape(-1)[:num] >> np.uint32(6)
         return (a.astype(np.float64) * 67108864.0 + b.astype(np.float64)) * (
             1.0 / 9007199254740992.0
         )
@@ -106,14 +110,13 @@ class _Philox4x32:
         """Draw `num` values in [0, 1) with `precision` significand bits.
 
         Element `i` uses word ``i mod 4`` of block ``i // 4``:
-        ``(w >> (32 - p)) / 2^p``. The results are exactly representable in
-        any binary float type with at least `precision` significand bits.
+        ``(w >> (32 - p)) / 2^p``. Each value has at most 24 significand
+        bits, so the float32 result is exact and representable in any binary
+        float type with at least `precision` significand bits.
         """
-        num_blocks = (num + 3) // 4
-        w0, w1, w2, w3 = self._blocks(num_blocks)
-        words = np.stack([w0, w1, w2, w3], axis=1).reshape(-1)[:num]
-        scale = 1.0 / (1 << precision)
-        return (words >> np.uint32(32 - precision)).astype(np.float64) * scale
+        words = self._words(num, 1).reshape(-1)[:num]
+        scale = np.float32(1.0 / (1 << precision))
+        return (words >> np.uint32(32 - precision)).astype(np.float32) * scale
 
 
 class _CommonRandom(OpRun):
@@ -162,27 +165,36 @@ class _CommonRandom(OpRun):
         return state
 
     @staticmethod
-    def _deterministic_uniform(generator, seed_int64, shape, dtype, offset=0):
-        """Draw uniform values in [0, 1) with the fully specified generator.
+    def _deterministic_uniform(
+        generator, seed, seed_int64, shape, dtype, low, high, offset
+    ):
+        """Compute the fully specified deterministic uniform output.
 
-        Unlike the "unspecified" generator, the result is bit-identical across
+        Validates the generator attributes, draws values in [0, 1) with a
+        resolution matching the precision of `dtype` (double combines two
+        32-bit output words per element, all other float types use one word
+        per element, keeping every value exactly representable in `dtype`),
+        and evaluates ``low + r * (high - low)`` in `dtype`. Unlike the
+        "unspecified" generator, the result is bit-identical across
         implementations for a given seed_int64 and offset (see the operator
-        specification). The resolution of the values matches the precision of
-        `dtype`: double combines two 32-bit output words per element, all
-        other float types use one word per element, keeping every value
-        exactly representable in `dtype`.
+        specification).
         """
         if generator != "philox4x32_10":
             raise ValueError(
-                f"Unsupported value {generator!r} for attribute 'generator' "
-                f"(expected 'unspecified' or 'philox4x32_10')."
+                f"Unsupported value {generator!r} for attribute 'generator'."
             )
         if seed_int64 is None:
             raise ValueError(
                 "Attribute 'seed_int64' must be specified when 'generator' is "
-                "'philox4x32_10'."
+                f"{generator!r}."
             )
-        state = _Philox4x32(int(seed_int64), offset)
+        if seed is not None:
+            raise ValueError(
+                "Attribute 'seed' must not be specified when 'generator' is "
+                f"{generator!r}; use 'seed_int64' instead."
+            )
+        offset_value = 0 if offset is None else int(np.asarray(offset).item())
+        state = _Philox4x32(int(seed_int64), offset_value)
         num = int(np.prod(shape))
         if np.dtype(dtype) == np.float64:
             res = state.random_res53(num)
@@ -190,4 +202,8 @@ class _CommonRandom(OpRun):
             # ml_dtypes.finfo also covers non-native types such as bfloat16
             precision = ml_dtypes.finfo(dtype).nmant + 1
             res = state.random_res(num, precision)
-        return res.reshape(shape).astype(dtype)
+        res = res.reshape(shape).astype(dtype, copy=False)
+        # low + r * (high - low), evaluated in the target data type
+        low_t = np.asarray(low, dtype=dtype)
+        high_t = np.asarray(high, dtype=dtype)
+        return res * (high_t - low_t) + low_t

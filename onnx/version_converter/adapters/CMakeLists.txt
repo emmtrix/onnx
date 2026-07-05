@@ -24,7 +24,7 @@ target_sources(onnx PRIVATE
     no_previous_version.h
     pad_10_11.h
     q_dq_21_20.h
-    random_uniform_28_27.h
+    random_generator_28_27.h
     remove_consumed_inputs.h
     reshape_4_5.h
     reshape_5_4.h

@@ -33176,7 +33176,7 @@ This version of the operator has been available since version 28 of the default 
 <dt><tt>dtype</tt> : int (default is 1)</dt>
 <dd>The data type for the elements of the output tensor. If not specified, default is TensorProto::FLOAT.</dd>
 <dt><tt>generator</tt> : string (default is unspecified)</dt>
-<dd>(Optional) The pseudo-random number generator algorithm. "unspecified" leaves the choice of generator to the implementation and provides no determinism guarantee: results may differ across implementations and even across runs of the same implementation, even when a seed is specified (an implementation may produce reproducible results, but is not required to). "philox4x32_10" selects the fully specified Philox-4x32-10 counter-based algorithm described in the operator documentation, making the output deterministic for a given `seed_int64`. More algorithms may be added in future opset versions.</dd>
+<dd>(Optional) The pseudo-random number generator algorithm: "unspecified" leaves the choice of generator to the implementation and provides no determinism guarantee, even when a seed is specified; "philox4x32_10" selects the fully specified Philox-4x32-10 counter-based algorithm described in the operator documentation, making the output deterministic for a given `seed_int64`. More algorithms may be added in future opset versions.</dd>
 <dt><tt>high</tt> : float (default is 1.0)</dt>
 <dd>Upper boundary of the output values.</dd>
 <dt><tt>low</tt> : float (default is 0.0)</dt>
@@ -33193,7 +33193,7 @@ This version of the operator has been available since version 28 of the default 
 
 <dl>
 <dt><tt>offset</tt> (optional) : T2</dt>
-<dd>(Optional) Scalar 64-bit stream offset, 0 if not provided. Each offset value selects an independent random stream: with `generator` = "philox4x32_10" it is placed in the counter words `c2`/`c3` (its two's complement bits interpreted as unsigned), so the streams of different offsets never overlap, regardless of the output size. For streaming inference, feed a different offset in every run (any non-repeating scheme works, e.g. a step counter maintained by the host or computed in the graph) to draw fresh, yet reproducible, values per run; feed a constant (or omit the input) to draw the same values in every run. When `generator` is "unspecified", the effect of `offset` on the generated values is implementation-defined.</dd>
+<dd>(Optional) Scalar 64-bit stream offset, 0 if not provided. Each offset value selects an independent random stream (see the operator documentation for the exact semantics): feed a different offset in every run (any non-repeating scheme works, e.g. a step counter) to draw fresh, yet reproducible, values per run, or feed a constant (or omit the input) to draw the same values in every run. When `generator` is "unspecified", the effect of `offset` on the generated values is implementation-defined.</dd>
 </dl>
 
 #### Outputs

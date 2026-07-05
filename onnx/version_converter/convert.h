@@ -38,7 +38,7 @@
 #include "onnx/version_converter/adapters/no_previous_version.h"
 #include "onnx/version_converter/adapters/pad_10_11.h"
 #include "onnx/version_converter/adapters/q_dq_21_20.h"
-#include "onnx/version_converter/adapters/random_uniform_28_27.h"
+#include "onnx/version_converter/adapters/random_generator_28_27.h"
 #include "onnx/version_converter/adapters/range_27_26.h"
 #include "onnx/version_converter/adapters/reshape_4_5.h"
 #include "onnx/version_converter/adapters/reshape_5_4.h"
@@ -989,8 +989,9 @@ class DefaultVersionConverter : public BaseVersionConverter {
     const std::vector<TensorProto_DataType> celu_28_unallowed_types = {
         TensorProto_DataType_FLOAT16, TensorProto_DataType_BFLOAT16, TensorProto_DataType_DOUBLE};
     registerAdapter(std::make_unique<TypeRestriction>("Celu", OpSetID(28), OpSetID(27), celu_28_unallowed_types));
-    // RandomUniform v28 added the generator attribute; only generator="unspecified" can be downgraded.
-    registerAdapter(std::make_unique<RandomUniform_28_27>());
+    // RandomUniform v28 added the generator/seed_int64 attributes and the offset input;
+    // only generator="unspecified" without seed_int64 and offset can be downgraded.
+    registerAdapter(std::make_unique<RandomGenerator_28_27>("RandomUniform", 0));
   }
 
   ModelProto convert_version(const ModelProto& mp_in, const OpSetID& initial_version, const OpSetID& target_version)

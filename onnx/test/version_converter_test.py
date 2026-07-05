@@ -2942,6 +2942,21 @@ class TestVersionConverter(unittest.TestCase):
             lambda: self._randomuniform_converted(28, 27, seed_int64=5),
         )
 
+    # RandomUniform 28 -> 27: an omitted optional offset input, spelled as an
+    # empty string, must not block the downgrade (the placeholder is dropped)
+    def test_randomuniform_28_27_empty_offset_placeholder(self) -> None:
+        node = helper.make_node("RandomUniform", [""], ["Y"], shape=[2, 3], seed=1.0)
+        graph = helper.make_graph(
+            [node],
+            "randomuniform_empty_offset",
+            [],
+            [helper.make_tensor_value_info("Y", TensorProto.FLOAT, [2, 3])],
+        )
+        converted = self._converted(graph, helper.make_operatorsetid("", 28), 27)
+        assert converted.opset_import[0].version == 27
+        ru = next(n for n in converted.graph.node if n.op_type == "RandomUniform")
+        assert not [i for i in ru.input if i]
+
     # RandomUniform 28 -> 27: the offset input cannot be expressed in older
     # opsets and must be rejected
     def test_randomuniform_28_27_offset_fails(self) -> None:

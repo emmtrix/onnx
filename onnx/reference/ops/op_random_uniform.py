@@ -3,8 +3,6 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
-import numpy as np
-
 from onnx.reference.ops._op_common_random import _CommonRandom
 
 
@@ -21,15 +19,12 @@ class RandomUniform(_CommonRandom):
         shape=None,
     ):
         dtype = self._dtype(dtype=dtype)
-        offset_value = 0 if offset is None else int(np.asarray(offset).item())
         if generator not in (None, "unspecified"):
-            res = self._deterministic_uniform(
-                generator, seed_int64, shape, dtype, offset_value
+            return (
+                self._deterministic_uniform(
+                    generator, seed, seed_int64, shape, dtype, low, high, offset
+                ),
             )
-            # low + r * (high - low), evaluated in the target data type
-            low_t = np.asarray(low, dtype=dtype)
-            high_t = np.asarray(high, dtype=dtype)
-            return (res * (high_t - low_t) + low_t,)
         # The effect of offset on the values is implementation-defined for
         # the "unspecified" generator; it is ignored here.
         state = self._get_state(seed)

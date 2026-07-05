@@ -1646,6 +1646,25 @@ class TestReferenceEvaluator(unittest.TestCase):
         with self.assertRaises(ValueError):
             sess.run(None, {})
 
+    def test_onnxt_runtime_random_uniform_philox_float_seed_raises(self):
+        # The float seed attribute is forbidden alongside a deterministic
+        # generator; the reference must enforce this like shape inference.
+        Y = make_tensor_value_info("Y", TensorProto.FLOAT, [None])
+        node1 = make_node(
+            "RandomUniform",
+            [],
+            ["Y"],
+            shape=[2, 3],
+            seed=0.0,
+            seed_int64=0,
+            generator="philox4x32_10",
+        )
+        graph = make_graph([node1], "g", [], [Y])
+        onnx_model = make_model(graph)
+        sess = ReferenceEvaluator(onnx_model)
+        with self.assertRaises(ValueError):
+            sess.run(None, {})
+
     def test_philox4x32_10_known_answer_vectors(self):
         # Known-answer vectors from the Random123 distribution
         # (tests/kat_vectors, "philox4x32 10" entries): counter and key words

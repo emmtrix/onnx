@@ -7953,7 +7953,7 @@ for from_type, to_type in test_cases:
 
 This version of the operator has been available since version 27 of the default ONNX operator set.
 
-Determinism: **unknown** (context-dependent function body)
+Determinism: **unknown** (cannot be statically determined)
 
 #### Attributes
 
@@ -19217,7 +19217,7 @@ Determinism: **deterministic**
 
 This version of the operator has been available since version 27 of the default ONNX operator set.
 
-Determinism: **unknown** (context-dependent function body)
+Determinism: **unknown** (cannot be statically determined)
 
 #### Attributes
 
@@ -27909,7 +27909,7 @@ This version of the operator has been available since version 27 of the default 
 
 Other versions of this operator: <a href="Changelog.md#Range-11">11</a>
 
-Determinism: **unknown** (context-dependent function body)
+Determinism: **unknown** (cannot be statically determined)
 
 #### Attributes
 

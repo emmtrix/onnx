@@ -34071,7 +34071,7 @@ Determinism: **deterministic**
 
 This version of the operator has been available since version 27 of the default ONNX operator set.
 
-Determinism: **unknown** (context-dependent function body)
+Determinism: **unknown** (cannot be statically determined)
 
 #### Attributes
 
@@ -34140,7 +34140,7 @@ Determinism: **unknown** (context-dependent function body)
 
 This version of the operator has been available since version 27 of the default ONNX operator set.
 
-Determinism: **unknown** (context-dependent function body)
+Determinism: **unknown** (cannot be statically determined)
 
 #### Attributes
 
@@ -34228,7 +34228,7 @@ Determinism: **unknown** (context-dependent function body)
 
 This version of the operator has been available since version 27 of the default ONNX operator set.
 
-Determinism: **unknown** (context-dependent function body)
+Determinism: **unknown** (cannot be statically determined)
 
 #### Attributes
 

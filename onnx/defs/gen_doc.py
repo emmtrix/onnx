@@ -147,7 +147,7 @@ def display_schema(
     elif schema.node_determinism == OpSchema.NodeDeterminism.Deterministic:
         determinism = "**deterministic**"
     else:
-        determinism = "**unknown** (context-dependent function body)"
+        determinism = "**unknown** (cannot be statically determined)"
     s += f"\nDeterminism: {determinism}\n"
 
     # attributes

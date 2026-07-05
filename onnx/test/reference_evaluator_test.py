@@ -1560,6 +1560,36 @@ class TestReferenceEvaluator(unittest.TestCase):
         )
         assert_allclose(got.astype(np.float32), expected, rtol=0, atol=0)
 
+    def test_onnxt_runtime_random_uniform_philox_element_independence(self):
+        # Intent: Philox is counter-based, so element i depends only on
+        # (seed, i) — never on how many elements are generated. The row-major
+        # values of a smaller tensor must therefore be a prefix of any larger
+        # tensor with the same seed, across counter-block boundaries (4 words
+        # per block; 26 elements span 7 blocks, the last one partially).
+        def run_philox(shape, seed):
+            node1 = make_node(
+                "RandomUniform",
+                [],
+                ["Y"],
+                seed=seed,
+                shape=shape,
+                generator="philox4x32_10",
+            )
+            Y = make_tensor_value_info("Y", TensorProto.FLOAT, [None])
+            graph = make_graph([node1], "g", [], [Y])
+            onnx_model = make_model(graph)
+            check_model(onnx_model)
+            return ReferenceEvaluator(onnx_model).run(None, {})[0].ravel()
+
+        small = run_philox([3], 99.0)
+        medium = run_philox([2, 3], 99.0)
+        large = run_philox([13, 2], 99.0)
+        assert_allclose(medium[:3], small, rtol=0, atol=0)
+        assert_allclose(large[:6], medium, rtol=0, atol=0)
+        # A different seed keys every block differently.
+        other_seed = run_philox([13, 2], 100.0)
+        self.assertFalse(np.array_equal(large, other_seed))
+
     def test_onnxt_runtime_random_uniform_philox_no_seed_raises(self):
         Y = make_tensor_value_info("Y", TensorProto.FLOAT, [None])
         node1 = make_node(

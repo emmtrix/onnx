@@ -63,6 +63,10 @@ def philox_uniform(seed, shape, dtype, low=0.0, high=1.0):
 class RandomUniform(Base):
     @staticmethod
     def export_randomuniform_philox() -> None:
+        """Intent: base case for the deterministic generator — default range
+        [0, 1), default dtype (float32), 12 elements spanning three full
+        Philox counter blocks.
+        """
         node = onnx.helper.make_node(
             "RandomUniform",
             inputs=[],
@@ -81,7 +85,64 @@ class RandomUniform(Base):
         )
 
     @staticmethod
+    def export_randomuniform_philox_multi_block() -> None:
+        """Intent: stress the counter-block logic — 35 elements span nine
+        Philox blocks, with the last block only partially consumed (35 = 8*4
+        + 3), so incorrect block increments, word ordering, or padding
+        handling become visible.
+        """
+        node = onnx.helper.make_node(
+            "RandomUniform",
+            inputs=[],
+            outputs=["y"],
+            shape=[5, 7],
+            seed=2024.0,
+            generator="philox4x32_10",
+        )
+
+        y = philox_uniform(2024, (5, 7), np.float32)
+        expect(
+            node,
+            inputs=[],
+            outputs=[y],
+            name="test_randomuniform_philox_multi_block",
+        )
+
+    @staticmethod
+    def export_randomuniform_philox_nd_shape() -> None:
+        """Intent: non-trivial output shape — a 4-D shape with a singleton
+        dimension and a negative `low` checks that the row-major element
+        ordering is independent of the tensor's rank and that sign handling
+        in low + r * (high - low) is correct. (A dynamic output shape is not
+        expressible for RandomUniform: `shape` is a required attribute and
+        the operator has no inputs; data-dependent shapes are the domain of
+        RandomUniformLike.)
+        """
+        node = onnx.helper.make_node(
+            "RandomUniform",
+            inputs=[],
+            outputs=["y"],
+            low=-1.0,
+            high=1.0,
+            shape=[2, 3, 1, 5],
+            seed=11.0,
+            generator="philox4x32_10",
+        )
+
+        y = philox_uniform(11, (2, 3, 1, 5), np.float32, low=-1.0, high=1.0)
+        expect(
+            node,
+            inputs=[],
+            outputs=[y],
+            name="test_randomuniform_philox_nd_shape",
+        )
+
+    @staticmethod
     def export_randomuniform_philox_low_high() -> None:
+        """Intent: non-default range — verifies that low + r * (high - low)
+        is evaluated in the target data type (float32) with the specified
+        rounding, not in double precision.
+        """
         node = onnx.helper.make_node(
             "RandomUniform",
             inputs=[],
@@ -103,6 +164,11 @@ class RandomUniform(Base):
 
     @staticmethod
     def export_randomuniform_philox_double() -> None:
+        """Intent: the double path — each element combines two output words
+        of the same block via the res53 scheme (words 0/1 for even, 2/3 for
+        odd elements), unlike the one-word-per-element mapping of the other
+        types.
+        """
         node = onnx.helper.make_node(
             "RandomUniform",
             inputs=[],
@@ -123,6 +189,10 @@ class RandomUniform(Base):
 
     @staticmethod
     def export_randomuniform_philox_bfloat16() -> None:
+        """Intent: lowest-precision type — r uses only the top 8 bits of an
+        output word (p=8) and every value must be exactly representable in
+        bfloat16.
+        """
         node = onnx.helper.make_node(
             "RandomUniform",
             inputs=[],
@@ -143,6 +213,10 @@ class RandomUniform(Base):
 
     @staticmethod
     def export_randomuniform_philox_float16() -> None:
+        """Intent: reduced-precision type — r uses the top 11 bits of an
+        output word (p=11) and every value must be exactly representable in
+        float16.
+        """
         node = onnx.helper.make_node(
             "RandomUniform",
             inputs=[],

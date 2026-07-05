@@ -2,6 +2,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+#include <limits>
 #include <string>
 
 #include "onnx/defs/schema.h"
@@ -29,6 +30,21 @@ ONNX_OPERATOR_SET_SCHEMA(
         .SetDoc(StringConcat_doc)
         .TypeAndShapeInferenceFunction([](InferenceContext& ctx) {
           propagateElemTypeFromInputToOutput(ctx, 0, 0);
+          // Each output string is the concatenation of the corresponding input
+          // strings, so its length is bounded by the sum of the input bounds
+          // (not their maximum, as inferred by the generic propagation).
+          auto* output_tensor_type = ctx.getOutputType(0)->mutable_tensor_type();
+          output_tensor_type->clear_max_string_length();
+          const auto* x_type = ctx.getInputType(0);
+          const auto* y_type = ctx.getInputType(1);
+          if (x_type != nullptr && y_type != nullptr && x_type->tensor_type().has_max_string_length() &&
+              y_type->tensor_type().has_max_string_length()) {
+            const int64_t x_bound = x_type->tensor_type().max_string_length();
+            const int64_t y_bound = y_type->tensor_type().max_string_length();
+            if (x_bound <= std::numeric_limits<int64_t>::max() - y_bound) {
+              output_tensor_type->set_max_string_length(x_bound + y_bound);
+            }
+          }
           if (hasNInputShapes(ctx, 2))
             bidirectionalBroadcastShapeInference(
                 ctx.getInputType(0)->tensor_type().shape(),

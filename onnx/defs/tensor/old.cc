@@ -562,6 +562,7 @@ ONNX_OPERATOR_SET_SCHEMA(
             "Constrain output types. Casting to complex is not supported.")
         .TypeAndShapeInferenceFunction([](InferenceContext& ctx) {
           propagateElemTypeFromInputToOutput(ctx, 1, 0);
+          adjustMaxStringLengthForCastLike(ctx);
           if (hasNInputShapes(ctx, 1)) {
             propagateShapeFromInputToOutput(ctx, 0, 0);
           }
@@ -627,6 +628,7 @@ ONNX_OPERATOR_SET_SCHEMA(
             "Constrain output types. Casting to complex is not supported.")
         .TypeAndShapeInferenceFunction([](InferenceContext& ctx) {
           propagateElemTypeFromInputToOutput(ctx, 1, 0);
+          adjustMaxStringLengthForCastLike(ctx);
           if (hasNInputShapes(ctx, 1)) {
             propagateShapeFromInputToOutput(ctx, 0, 0);
           }
@@ -692,6 +694,7 @@ ONNX_OPERATOR_SET_SCHEMA(
             "Constrain output types. Casting to complex is not supported.")
         .TypeAndShapeInferenceFunction([](InferenceContext& ctx) {
           propagateElemTypeFromInputToOutput(ctx, 1, 0);
+          adjustMaxStringLengthForCastLike(ctx);
           if (hasNInputShapes(ctx, 1)) {
             propagateShapeFromInputToOutput(ctx, 0, 0);
           }
@@ -791,6 +794,7 @@ ONNX_OPERATOR_SET_SCHEMA(
             "Constrain output types. Casting to complex is not supported.")
         .TypeAndShapeInferenceFunction([](InferenceContext& ctx) {
           propagateElemTypeFromInputToOutput(ctx, 1, 0);
+          adjustMaxStringLengthForCastLike(ctx);
           if (hasNInputShapes(ctx, 1)) {
             propagateShapeFromInputToOutput(ctx, 0, 0);
           }
@@ -874,6 +878,7 @@ ONNX_OPERATOR_SET_SCHEMA(
             "Constrain output types. Casting to complex is not supported.")
         .TypeAndShapeInferenceFunction([](InferenceContext& ctx) {
           propagateElemTypeFromInputToOutput(ctx, 1, 0);
+          adjustMaxStringLengthForCastLike(ctx);
           if (hasNInputShapes(ctx, 1)) {
             propagateShapeFromInputToOutput(ctx, 0, 0);
           }

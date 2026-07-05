@@ -308,6 +308,35 @@ ONNX_API void propagateElemTypeFromInputToOutput(InferenceContext& ctx, size_t i
 
 ONNX_API void propagateElemTypeFromTensorInputToOutput(InferenceContext& ctx, size_t inputIndex, size_t outputIndex);
 
+// If the output at outputIndex is a string tensor, sets its max_string_length
+// to the largest bound found among the node's inputs, provided every input
+// that can carry string values declares such a bound. This is a sound upper
+// bound for any operation whose output strings are drawn from the values of
+// its inputs; operations that construct longer strings (e.g. StringConcat)
+// or convert non-string values to strings (e.g. CastLike) must override the
+// result.
+ONNX_API void propagateMaxStringLengthFromInputs(InferenceContext& ctx, size_t outputIndex);
+
+// CastLike converts the values of input 0 to the element type of input 1. A
+// string length bound propagated from the target-type input does not apply to
+// the converted values, so keep a bound only when the values being cast are
+// themselves length-bounded strings.
+inline void adjustMaxStringLengthForCastLike(InferenceContext& ctx) {
+  auto* output_type = ctx.getOutputType(0);
+  if (output_type == nullptr || output_type->value_case() != TypeProto::kTensorType ||
+      !output_type->tensor_type().has_max_string_length()) {
+    return;
+  }
+  const auto* input_type = ctx.getInputType(0);
+  if (input_type != nullptr && input_type->value_case() == TypeProto::kTensorType &&
+      input_type->tensor_type().elem_type() == TensorProto::STRING &&
+      input_type->tensor_type().has_max_string_length()) {
+    output_type->mutable_tensor_type()->set_max_string_length(input_type->tensor_type().max_string_length());
+  } else {
+    output_type->mutable_tensor_type()->clear_max_string_length();
+  }
+}
+
 inline void propagateElemTypeFromDtypeToOutput(
     InferenceContext& ctx,
     const int data_type,

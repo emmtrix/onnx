@@ -152,6 +152,14 @@ void mergeShapesAndTypes(const TypeProto_Tensor& inferred_type, TypeProto_Tensor
     existing_type->set_elem_type(inferred_type.elem_type());
   }
 
+  // Both the inferred and the declared string length bound are valid upper
+  // bounds, so keep the tighter one.
+  if (inferred_type.has_max_string_length() &&
+      (!existing_type->has_max_string_length() ||
+       inferred_type.max_string_length() < existing_type->max_string_length())) {
+    existing_type->set_max_string_length(inferred_type.max_string_length());
+  }
+
   if (!inferred_type.has_shape()) {
     return;
   }

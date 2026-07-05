@@ -4,6 +4,7 @@
 
 #include "onnx/defs/shape_inference.h"
 
+#include <algorithm>
 #include <limits>
 #include <string>
 #include <utility>
@@ -45,6 +46,64 @@ void propagateElemTypeFromTensorInputToOutput(InferenceContext& ctx, size_t inpu
     // This is not expected to happen
     fail_type_inference(
         "Output ", outputIndex, " expected to have tensor or sparse tensor type. Got: ", output_value_case);
+  }
+  if (input_elem_type == TensorProto::STRING) {
+    propagateMaxStringLengthFromInputs(ctx, outputIndex);
+  }
+}
+
+// Returns an upper bound on the length of the string values that a value of
+// the given type can contain: 0 if the type cannot contain strings, -1 if it
+// can contain strings of unbounded (or unknown) length, and a positive value
+// if all its string content is bounded by that value.
+static int64_t getStringLengthBound(const TypeProto& type) {
+  switch (type.value_case()) {
+    case TypeProto::kTensorType:
+      if (type.tensor_type().elem_type() != TensorProto::STRING) {
+        return 0;
+      }
+      return type.tensor_type().has_max_string_length() ? type.tensor_type().max_string_length() : -1;
+    case TypeProto::kSparseTensorType:
+      // Sparse tensor types do not carry a string length bound.
+      return (type.sparse_tensor_type().elem_type() == TensorProto::STRING) ? -1 : 0;
+    case TypeProto::kSequenceType:
+      return type.sequence_type().has_elem_type() ? getStringLengthBound(type.sequence_type().elem_type()) : -1;
+    case TypeProto::kOptionalType:
+      return type.optional_type().has_elem_type() ? getStringLengthBound(type.optional_type().elem_type()) : -1;
+    case TypeProto::kMapType: {
+      if (type.map_type().key_type() == TensorProto::STRING) {
+        return -1;
+      }
+      return type.map_type().has_value_type() ? getStringLengthBound(type.map_type().value_type()) : -1;
+    }
+    default:
+      // An unknown type may contain strings of any length.
+      return -1;
+  }
+}
+
+void propagateMaxStringLengthFromInputs(InferenceContext& ctx, size_t outputIndex) {
+  auto* output_type = ctx.getOutputType(outputIndex);
+  if (output_type == nullptr || output_type->value_case() != TypeProto::kTensorType ||
+      output_type->tensor_type().elem_type() != TensorProto::STRING) {
+    return;
+  }
+  int64_t bound = 0;
+  for (size_t i = 0, n = ctx.getNumInputs(); i < n; ++i) {
+    const auto* input_type = ctx.getInputType(i);
+    if (input_type == nullptr) {
+      // Missing optional input: contributes no string values.
+      continue;
+    }
+    const int64_t input_bound = getStringLengthBound(*input_type);
+    if (input_bound < 0) {
+      // Some input may contain strings of unbounded (or unknown) length.
+      return;
+    }
+    bound = std::max(bound, input_bound);
+  }
+  if (bound > 0) {
+    output_type->mutable_tensor_type()->set_max_string_length(bound);
   }
 }
 
@@ -278,6 +337,18 @@ void UnionTypeInfo(const TypeProto& source_type, TypeProto& target_type) {
     }
 
     UnionShapeInfo(source_type.tensor_type(), *target_type.mutable_tensor_type());
+
+    // The union of two length-bounded string types is bounded by the larger
+    // bound; the union with an unbounded string type is unbounded.
+    auto* target_tensor_type = target_type.mutable_tensor_type();
+    if (target_tensor_type->has_max_string_length()) {
+      if (source_type.tensor_type().has_max_string_length()) {
+        target_tensor_type->set_max_string_length(
+            std::max(source_type.tensor_type().max_string_length(), target_tensor_type->max_string_length()));
+      } else {
+        target_tensor_type->clear_max_string_length();
+      }
+    }
   } else if (target_case == TypeProto::ValueCase::kSparseTensorType) {
     auto source_elem_type = source_type.sparse_tensor_type().elem_type();
     auto target_elem_type = target_type.sparse_tensor_type().elem_type();

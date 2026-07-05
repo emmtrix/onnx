@@ -4404,6 +4404,113 @@ class TestShapeInference(TestShapeInferenceHelper):
             graph, [make_tensor_value_info("out", TensorProto.DOUBLE, (3, 4, 5))]
         )
 
+    def test_random_uniform_philox(self) -> None:
+        graph = self._make_graph(
+            [],
+            [
+                make_node(
+                    "RandomUniform",
+                    [],
+                    ["out"],
+                    dtype=TensorProto.DOUBLE,
+                    shape=(3, 4),
+                    seed_int64=42,
+                    generator="philox4x32_10",
+                )
+            ],
+            [],
+        )
+        self._assert_inferred(
+            graph, [make_tensor_value_info("out", TensorProto.DOUBLE, (3, 4))]
+        )
+
+    def test_random_uniform_philox_with_float_seed_fails(self) -> None:
+        graph = self._make_graph(
+            [],
+            [
+                make_node(
+                    "RandomUniform",
+                    [],
+                    ["out"],
+                    shape=(3, 4),
+                    seed=42.0,
+                    seed_int64=42,
+                    generator="philox4x32_10",
+                )
+            ],
+            [],
+        )
+        self.assertRaises(onnx.shape_inference.InferenceError, self._inferred, graph)
+
+    def test_random_uniform_offset(self) -> None:
+        graph = self._make_graph(
+            [("offset", TensorProto.INT64, ())],
+            [
+                make_node(
+                    "RandomUniform",
+                    ["offset"],
+                    ["out"],
+                    shape=(3, 4),
+                    seed_int64=0,
+                    generator="philox4x32_10",
+                )
+            ],
+            [],
+        )
+        self._assert_inferred(
+            graph, [make_tensor_value_info("out", TensorProto.FLOAT, (3, 4))]
+        )
+
+    def test_random_uniform_offset_non_scalar_fails(self) -> None:
+        graph = self._make_graph(
+            [("offset", TensorProto.INT64, (2, 3))],
+            [
+                make_node(
+                    "RandomUniform",
+                    ["offset"],
+                    ["out"],
+                    shape=(3, 4),
+                    seed_int64=0,
+                    generator="philox4x32_10",
+                )
+            ],
+            [],
+        )
+        self.assertRaises(onnx.shape_inference.InferenceError, self._inferred, graph)
+
+    def test_random_uniform_unknown_generator_fails(self) -> None:
+        graph = self._make_graph(
+            [],
+            [
+                make_node(
+                    "RandomUniform",
+                    [],
+                    ["out"],
+                    shape=(3, 4),
+                    seed=0.0,
+                    generator="xorshift",
+                )
+            ],
+            [],
+        )
+        self.assertRaises(onnx.shape_inference.InferenceError, self._inferred, graph)
+
+    def test_random_uniform_philox_without_seed_fails(self) -> None:
+        graph = self._make_graph(
+            [],
+            [
+                make_node(
+                    "RandomUniform",
+                    [],
+                    ["out"],
+                    shape=(3, 4),
+                    generator="philox4x32_10",
+                )
+            ],
+            [],
+        )
+        self.assertRaises(onnx.shape_inference.InferenceError, self._inferred, graph)
+
     def test_random_normal_like(self) -> None:
         graph = self._make_graph(
             [("X", TensorProto.FLOAT, (2, 3, 4))],

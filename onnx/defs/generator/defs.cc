@@ -150,26 +150,27 @@ ONNX_OPERATOR_SET_SCHEMA(
 
 ONNX_OPERATOR_SET_SCHEMA(
     RandomUniform,
-    22,
+    28,
     OpSchema()
-        .SetDoc(kDoc_RandomUniform_ver1)
+        .SetDoc(kDoc_RandomUniform_ver28)
         .Attr("low", "Lower boundary of the output values.", AttributeProto::FLOAT, 0.0f)
         .Attr("high", "Upper boundary of the output values.", AttributeProto::FLOAT, 1.0f)
-        .Attr(
-            "seed",
-            "(Optional) Seed to the random generator, if not specified we will auto generate one.",
-            AttributeProto::FLOAT,
-            OPTIONAL_VALUE)
+        .Attr("seed", kRandomGeneratorSeedAttrDoc, AttributeProto::FLOAT, OPTIONAL_VALUE)
+        .Attr("seed_int64", kRandomGeneratorSeedInt64AttrDoc, AttributeProto::INT, OPTIONAL_VALUE)
+        .Attr("generator", kRandomGeneratorAttrDoc, AttributeProto::STRING, std::string("unspecified"))
         .Attr(
             "dtype",
             "The data type for the elements of the output tensor. If not specified, default is TensorProto::FLOAT.",
             AttributeProto::INT,
             static_cast<int64_t>(TensorProto::FLOAT))
         .Attr("shape", "The shape of the output tensor.", AttributeProto::INTS)
+        .Input(0, "offset", kRandomGeneratorOffsetInputDoc, "T2", OpSchema::Optional)
         .Output(0, "output", "Output tensor of random values drawn from uniform distribution", "T")
         .TypeConstraint("T", OpSchema::all_float_types_ir4(), "Constrain output types to float tensors.")
+        .TypeConstraint("T2", {types::Int64}, "Constrain the stream offset to int64.")
         .SetNodeDeterminism(OpSchema::NodeDeterminism::NonDeterministic)
         .TypeAndShapeInferenceFunction([](InferenceContext& ctx) {
+          ValidateRandomGeneratorAttributes(ctx, 0);
           propagateElemTypeFromAttributeToOutput(ctx, "dtype", 0, TensorProto::FLOAT);
           propagateShapeFromAttributeToOutput(ctx, "shape", 0);
         }));

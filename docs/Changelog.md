@@ -33093,6 +33093,125 @@ This version of the operator has been available since version 28 of the default 
 <dd>Constrain input and output types to float tensors.</dd>
 </dl>
 
+### <a name="RandomUniform-28"></a>**RandomUniform-28**</a>
+
+  Generate a tensor with random values drawn from a uniform distribution. The shape
+  of the tensor is specified by the `shape` argument and the range by `low` and `high`.
+
+  The data type is specified by the 'dtype' argument. The 'dtype' argument must
+  be one of the data types specified in the 'DataType' enum field in the
+  TensorProto message.
+
+  The `generator` attribute selects the pseudo-random number generator algorithm.
+  With the default value "unspecified", the choice of generator is left to the
+  implementation and no determinism guarantee is given: results may differ across
+  implementations and even across runs of the same implementation, even when a
+  seed is specified. An implementation may produce reproducible results in this
+  mode (for example for a fixed `seed`), but it is not required to. Setting
+  `generator` to "philox4x32_10" fully specifies the generated values: given
+  the same `seed_int64`, every conforming implementation must produce bit-identical
+  results, which makes the operator deterministic and testable. More algorithms
+  may be added in future opset versions.
+
+  When `generator` is "philox4x32_10", the `seed_int64` attribute must be specified
+  (the float `seed` attribute must not be used) and the output is computed with
+  the Philox-4x32 counter-based generator with 10 rounds (Salmon et al.,
+  "Parallel random numbers: as easy as 1, 2, 3", SC'11), using the standard
+  constants M0 = 0xD2511F53, M1 = 0xCD9E8D57, W0 = 0x9E3779B9, W1 = 0xBB67AE85.
+  All arithmetic on counter, key, and output words is unsigned 32-bit modular
+  arithmetic:
+  1. The key is the value of `seed_int64` with its two's complement bits interpreted
+     as an unsigned 64-bit integer: `key0 = seed_int64 & 0xFFFFFFFF` and
+     `key1 = (seed_int64 >> 32) & 0xFFFFFFFF`.
+  2. Counter block `b` (a 64-bit block index) is the 128-bit counter
+     `(c0, c1, c2, c3) = (b & 0xFFFFFFFF, (b >> 32) & 0xFFFFFFFF,
+     offset & 0xFFFFFFFF, (offset >> 32) & 0xFFFFFFFF)`, where `offset` is the
+     value of the optional `offset` input (0 if not provided) with its two's
+     complement bits interpreted as an unsigned 64-bit integer. The counter is
+     encrypted to four 32-bit output words `w0, w1, w2, w3` by applying the
+     Philox round function 10 times with round keys `(k0, k1)`, starting at
+     `(key0, key1)` and incremented by `(W0, W1)` before every round except the
+     first. One round maps `(c0, c1, c2, c3)` to
+     `(hi1 XOR c1 XOR k0, lo1, hi0 XOR c3 XOR k1, lo0)`, where `hi0` and `lo0`
+     are the high and low 32 bits of the 64-bit product `M0 * c0`, and `hi1` and
+     `lo1` are those of `M1 * c2`.
+  3. Output element `i` (in row-major order) draws a value `r` in the interval
+     [0, 1) whose resolution matches the precision of `dtype`. Let `p` be the
+     number of significand bits of `dtype`, including the implicit bit (8 for
+     bfloat16, 11 for float16, 24 for float, 53 for double):
+     - If `dtype` is double, element `i` uses words `a = w(2 * (i mod 2))` and
+       `b = w(2 * (i mod 2) + 1)` of block `floor(i / 2)` and forms
+       `r = (floor(a / 2^5) * 2^26 + floor(b / 2^6)) / 2^53`.
+     - Otherwise, element `i` uses word `a = w(i mod 4)` of block `floor(i / 4)`
+       and forms `r = floor(a / 2^(32-p)) / 2^p`, which is exactly representable
+       in `dtype`.
+  4. The element value is `low + r * (high - low)`, where `low` and `high` are
+     first converted to `dtype` and the subtraction, multiplication, and
+     addition are performed in `dtype` with IEEE 754 round-to-nearest-even
+     semantics. Note that due to this rounding, the result may equal `high` for
+     low-precision types.
+
+  Because Philox is counter-based, each output element depends only on `seed_int64`,
+  `offset`, and its position `i`: elements can be computed independently, in any
+  order, or in parallel. The block index occupies counter words `c0`/`c1` and the
+  offset occupies `c2`/`c3`, so the streams of different offsets never overlap,
+  regardless of the output size.
+
+  A model run is a pure function of its inputs: with a constant (or absent)
+  `offset`, every run draws the same values, which makes the operator testable.
+  For streaming inference, feed a different `offset` in every run — since every
+  offset value selects an independent stream, any non-repeating scheme works,
+  such as a step counter maintained by the host, stored as an initializer and
+  advanced at checkpoint time, or carried through a Loop and incremented in the
+  graph. Each run then draws a fresh, disjoint stream while remaining
+  individually deterministic and replayable.
+
+#### Version
+
+This version of the operator has been available since version 28 of the default ONNX operator set.
+
+#### Attributes
+
+<dl>
+<dt><tt>dtype</tt> : int (default is 1)</dt>
+<dd>The data type for the elements of the output tensor. If not specified, default is TensorProto::FLOAT.</dd>
+<dt><tt>generator</tt> : string (default is unspecified)</dt>
+<dd>(Optional) The pseudo-random number generator algorithm: "unspecified" leaves the choice of generator to the implementation and provides no determinism guarantee, even when a seed is specified; "philox4x32_10" selects the fully specified Philox-4x32-10 counter-based algorithm described in the operator documentation, making the output deterministic for a given `seed_int64`. More algorithms may be added in future opset versions.</dd>
+<dt><tt>high</tt> : float (default is 1.0)</dt>
+<dd>Upper boundary of the output values.</dd>
+<dt><tt>low</tt> : float (default is 0.0)</dt>
+<dd>Lower boundary of the output values.</dd>
+<dt><tt>seed</tt> : float</dt>
+<dd>(Optional) Seed to the random generator, if not specified we will auto generate one. Used only when `generator` is "unspecified" (with implementation-defined effect); must not be specified together with a deterministic generator, which uses `seed_int64` instead.</dd>
+<dt><tt>seed_int64</tt> : int</dt>
+<dd>(Optional) 64-bit seed for the fully specified generators; its two's complement bits are interpreted as an unsigned 64-bit integer. Must be specified when `generator` is "philox4x32_10" (the float `seed` attribute is not used in that case). When `generator` is "unspecified", the effect of `seed_int64` is implementation-defined.</dd>
+<dt><tt>shape</tt> : list of ints (required)</dt>
+<dd>The shape of the output tensor.</dd>
+</dl>
+
+#### Inputs (0 - 1)
+
+<dl>
+<dt><tt>offset</tt> (optional) : T2</dt>
+<dd>(Optional) Scalar 64-bit stream offset, 0 if not provided. Each offset value selects an independent random stream (see the operator documentation for the exact semantics): feed a different offset in every run (any non-repeating scheme works, e.g. a step counter) to draw fresh, yet reproducible, values per run, or feed a constant (or omit the input) to draw the same values in every run. When `generator` is "unspecified", the effect of `offset` on the generated values is implementation-defined.</dd>
+</dl>
+
+#### Outputs
+
+<dl>
+<dt><tt>output</tt> : T</dt>
+<dd>Output tensor of random values drawn from uniform distribution</dd>
+</dl>
+
+#### Type Constraints
+
+<dl>
+<dt><tt>T</tt> : tensor(bfloat16), tensor(float16), tensor(float), tensor(double)</dt>
+<dd>Constrain output types to float tensors.</dd>
+<dt><tt>T2</tt> : tensor(int64)</dt>
+<dd>Constrain the stream offset to int64.</dd>
+</dl>
+
 # ai.onnx.preview
 ## Version 1 of the 'ai.onnx.preview' operator set
 ### <a name="ai.onnx.preview.FlexAttention-1"></a>**ai.onnx.preview.FlexAttention-1**</a>

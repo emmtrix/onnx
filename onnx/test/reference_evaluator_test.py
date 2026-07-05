@@ -1477,6 +1477,249 @@ class TestReferenceEvaluator(unittest.TestCase):
         self.assertGreater(got.min(), 0)
         self.assertLess(got.max(), 1)
 
+    def test_onnxt_runtime_random_uniform_philox(self):
+        Y = make_tensor_value_info("Y", TensorProto.FLOAT, [None])
+        node1 = make_node(
+            "RandomUniform",
+            [],
+            ["Y"],
+            seed_int64=42,
+            shape=[2, 3],
+            generator="philox4x32_10",
+        )
+        graph = make_graph([node1], "g", [], [Y])
+        onnx_model = make_model(graph)
+        check_model(onnx_model)
+        sess = ReferenceEvaluator(onnx_model)
+        got = sess.run(None, {})[0]
+        # For float32, element i uses word (i mod 4) of Philox-4x32-10 block
+        # (i // 4) with key (42, 0): r = (w >> 8) / 2^24. Word stream produced
+        # by the canonical Random123 implementation.
+        expected = np.array(
+            [
+                [0.61295986, 0.4685865, 0.0732317],
+                [0.3408615, 0.98771864, 0.32706332],
+            ],
+            dtype=np.float32,
+        )
+        assert_allclose(got, expected, rtol=0, atol=0)
+        self.assertEqual(got.dtype, np.float32)
+        # A second run must produce bit-identical values.
+        assert_allclose(sess.run(None, {})[0], expected, rtol=0, atol=0)
+
+    def test_onnxt_runtime_random_uniform_philox_low_high(self):
+        Y = make_tensor_value_info("Y", TensorProto.DOUBLE, [None])
+        node1 = make_node(
+            "RandomUniform",
+            [],
+            ["Y"],
+            seed_int64=42,
+            low=5.0,
+            high=10.0,
+            dtype=TensorProto.DOUBLE,
+            shape=[3],
+            generator="philox4x32_10",
+        )
+        graph = make_graph([node1], "g", [], [Y])
+        onnx_model = make_model(graph)
+        check_model(onnx_model)
+        sess = ReferenceEvaluator(onnx_model)
+        got = sess.run(None, {})[0]
+        # For double, element i combines words 2*(i mod 2) and 2*(i mod 2)+1
+        # of Philox-4x32-10 block (i // 2) with key (42, 0) via
+        # r = ((a >> 5) * 2^26 + (b >> 6)) / 2^53.
+        expected = 5.0 + np.array(
+            [0.6129598801477738, 0.07323173687503892, 0.9877186516453577],
+            dtype=np.float64,
+        ) * (10.0 - 5.0)
+        assert_allclose(got, expected, rtol=0, atol=0)
+        self.assertEqual(got.dtype, np.float64)
+
+    def test_onnxt_runtime_random_uniform_philox_bfloat16(self):
+        Y = make_tensor_value_info("Y", TensorProto.BFLOAT16, [None])
+        node1 = make_node(
+            "RandomUniform",
+            [],
+            ["Y"],
+            seed_int64=3,
+            dtype=TensorProto.BFLOAT16,
+            shape=[4],
+            generator="philox4x32_10",
+        )
+        graph = make_graph([node1], "g", [], [Y])
+        onnx_model = make_model(graph)
+        check_model(onnx_model)
+        sess = ReferenceEvaluator(onnx_model)
+        got = sess.run(None, {})[0]
+        # For bfloat16 (p=8), element i uses word (i mod 4) of Philox-4x32-10
+        # block (i // 4) with key (3, 0): r = (w >> 24) / 2^8. Word stream
+        # produced by the canonical Random123 implementation; every value is
+        # exactly representable in bfloat16 (and in float32).
+        expected = np.array(
+            [0.81640625, 0.11328125, 0.65234375, 0.76171875], dtype=np.float32
+        )
+        assert_allclose(got.astype(np.float32), expected, rtol=0, atol=0)
+
+    def test_onnxt_runtime_random_uniform_philox_element_independence(self):
+        # Intent: Philox is counter-based, so element i depends only on
+        # (seed_int64, i) — never on how many elements are generated. The
+        # row-major values of a smaller tensor must therefore be a prefix of
+        # any larger tensor with the same seed, across counter-block
+        # boundaries (4 words per block; 26 elements span 7 blocks, the last
+        # one partially).
+        def run_philox(shape, seed_int64):
+            node1 = make_node(
+                "RandomUniform",
+                [],
+                ["Y"],
+                seed_int64=seed_int64,
+                shape=shape,
+                generator="philox4x32_10",
+            )
+            Y = make_tensor_value_info("Y", TensorProto.FLOAT, [None])
+            graph = make_graph([node1], "g", [], [Y])
+            onnx_model = make_model(graph)
+            check_model(onnx_model)
+            return ReferenceEvaluator(onnx_model).run(None, {})[0].ravel()
+
+        small = run_philox([3], 99)
+        medium = run_philox([2, 3], 99)
+        large = run_philox([13, 2], 99)
+        assert_allclose(medium[:3], small, rtol=0, atol=0)
+        assert_allclose(large[:6], medium, rtol=0, atol=0)
+        # A different seed keys every block differently.
+        other_seed = run_philox([13, 2], 100)
+        self.assertFalse(np.array_equal(large, other_seed))
+
+    def test_onnxt_runtime_random_uniform_philox_offset_streaming(self):
+        # Intent: streaming — feeding a different offset per run (e.g. a step
+        # counter maintained by the host) must yield a fresh, disjoint stream
+        # per run, while each run individually stays deterministic and
+        # replayable; omitting the offset input must equal offset = 0.
+        offset_in = make_tensor_value_info("offset", TensorProto.INT64, [])
+        Y = make_tensor_value_info("Y", TensorProto.FLOAT, [None])
+        node1 = make_node(
+            "RandomUniform",
+            ["offset"],
+            ["Y"],
+            seed_int64=42,
+            shape=[2, 3],
+            generator="philox4x32_10",
+        )
+        graph = make_graph([node1], "g", [offset_in], [Y])
+        onnx_model = make_model(graph)
+        check_model(onnx_model)
+        sess = ReferenceEvaluator(onnx_model)
+
+        # The host advances the offset between runs (step counter).
+        y0 = sess.run(None, {"offset": np.array(0, dtype=np.int64)})[0]
+        y1 = sess.run(None, {"offset": np.array(1, dtype=np.int64)})[0]
+        # Different offsets select disjoint streams: no value reappears.
+        self.assertFalse(np.intersect1d(y0, y1).size)
+        # Each run is individually replayable.
+        y0_again = sess.run(None, {"offset": np.array(0, dtype=np.int64)})[0]
+        assert_allclose(y0_again, y0, rtol=0, atol=0)
+
+        # A model without the offset input behaves like offset = 0.
+        node2 = make_node(
+            "RandomUniform",
+            [],
+            ["Y"],
+            seed_int64=42,
+            shape=[2, 3],
+            generator="philox4x32_10",
+        )
+        graph2 = make_graph([node2], "g", [], [Y])
+        model2 = make_model(graph2)
+        check_model(model2)
+        y_default = ReferenceEvaluator(model2).run(None, {})[0]
+        assert_allclose(y_default, y0, rtol=0, atol=0)
+
+    def test_onnxt_runtime_random_uniform_philox_scalar_shape(self):
+        # An empty shape attribute produces a scalar output, which is fully
+        # specified for the deterministic generator: the single element uses
+        # word 0 of block 0.
+        Y = make_tensor_value_info("Y", TensorProto.FLOAT, [])
+        node1 = make_node(
+            "RandomUniform", [], ["Y"], seed_int64=42, generator="philox4x32_10"
+        )
+        node1.attribute.append(
+            onnx.helper.make_attribute("shape", [], attr_type=AttributeProto.INTS)
+        )
+        graph = make_graph([node1], "g", [], [Y])
+        onnx_model = make_model(graph)
+        check_model(onnx_model)
+        got = ReferenceEvaluator(onnx_model).run(None, {})[0]
+        self.assertEqual(got.shape, ())
+        self.assertEqual(got.dtype, np.float32)
+        assert_allclose(got, np.float32(0.61295986), rtol=0, atol=0)
+
+    def test_onnxt_runtime_random_uniform_philox_no_seed_raises(self):
+        Y = make_tensor_value_info("Y", TensorProto.FLOAT, [None])
+        node1 = make_node(
+            "RandomUniform", [], ["Y"], shape=[2, 3], generator="philox4x32_10"
+        )
+        graph = make_graph([node1], "g", [], [Y])
+        onnx_model = make_model(graph)
+        sess = ReferenceEvaluator(onnx_model)
+        with self.assertRaises(ValueError):
+            sess.run(None, {})
+
+    def test_onnxt_runtime_random_uniform_philox_float_seed_raises(self):
+        # The float seed attribute is forbidden alongside a deterministic
+        # generator; the reference must enforce this like shape inference.
+        Y = make_tensor_value_info("Y", TensorProto.FLOAT, [None])
+        node1 = make_node(
+            "RandomUniform",
+            [],
+            ["Y"],
+            shape=[2, 3],
+            seed=0.0,
+            seed_int64=0,
+            generator="philox4x32_10",
+        )
+        graph = make_graph([node1], "g", [], [Y])
+        onnx_model = make_model(graph)
+        sess = ReferenceEvaluator(onnx_model)
+        with self.assertRaises(ValueError):
+            sess.run(None, {})
+
+    def test_philox4x32_10_known_answer_vectors(self):
+        # Known-answer vectors from the Random123 distribution
+        # (tests/kat_vectors, "philox4x32 10" entries): counter and key words
+        # followed by the expected four output words.
+        from onnx.reference.ops._op_common_random import (  # noqa: PLC0415
+            _Philox4x32,
+        )
+
+        kat_vectors = [
+            (
+                (0x00000000, 0x00000000, 0x00000000, 0x00000000),
+                (0x00000000, 0x00000000),
+                (0x6627E8D5, 0xE169C58D, 0xBC57AC4C, 0x9B00DBD8),
+            ),
+            (
+                (0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF),
+                (0xFFFFFFFF, 0xFFFFFFFF),
+                (0x408F276D, 0x41C83B0E, 0xA20BC7C6, 0x6D5451FD),
+            ),
+            (
+                (0x243F6A88, 0x85A308D3, 0x13198A2E, 0x03707344),
+                (0xA4093822, 0x299F31D0),
+                (0xD16CFE09, 0x94FDCCEB, 0x5001E420, 0x24126EA1),
+            ),
+        ]
+        for counter, key, expected in kat_vectors:
+            out = _Philox4x32.philox4x32_10(
+                np.uint32([counter[0]]),
+                np.uint32([counter[1]]),
+                np.uint32([counter[2]]),
+                np.uint32([counter[3]]),
+                key[0],
+                key[1],
+            )
+            self.assertEqual(tuple(int(w[0]) for w in out), expected)
+
     def test_onnxt_runtime_random_uniform_like(self):
         X = make_tensor_value_info("X", TensorProto.FLOAT, [None])
         Y = make_tensor_value_info("Y", TensorProto.FLOAT, [None])

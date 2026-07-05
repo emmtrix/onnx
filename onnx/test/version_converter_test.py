@@ -2900,3 +2900,108 @@ class TestVersionConverter(unittest.TestCase):
     )
     def test_celu_28_27_unsupported_type_fails(self, _: str, dtype: int) -> None:
         self.assertRaises(RuntimeError, lambda: self._celu_converted(dtype, 28, 27))
+
+    def _randomuniform_converted(self, src: int, dst: int, **attrs) -> ModelProto:
+        node = helper.make_node("RandomUniform", [], ["Y"], shape=[2, 3], **attrs)
+        graph = helper.make_graph(
+            [node],
+            "randomuniform",
+            [],
+            [helper.make_tensor_value_info("Y", TensorProto.FLOAT, [2, 3])],
+        )
+        return self._converted(graph, helper.make_operatorsetid("", src), dst)
+
+    # RandomUniform 27 -> 28: CompatibleAdapter (generator attribute has a default)
+    def test_randomuniform_27_28(self) -> None:
+        converted = self._randomuniform_converted(27, 28, seed=0.0)
+        assert converted.opset_import[0].version == 28
+
+    # RandomUniform 28 -> 27: generator="unspecified" matches the old
+    # implementation-defined behavior, so the attribute is dropped on downgrade
+    def test_randomuniform_28_27_unspecified_generator_removed(self) -> None:
+        converted = self._randomuniform_converted(28, 27, generator="unspecified")
+        assert converted.opset_import[0].version == 27
+        node = next(n for n in converted.graph.node if n.op_type == "RandomUniform")
+        assert not any(a.name == "generator" for a in node.attribute)
+
+    # RandomUniform 28 -> 27: a deterministic generator cannot be expressed in
+    # older opsets and must be rejected
+    def test_randomuniform_28_27_philox_fails(self) -> None:
+        self.assertRaises(
+            RuntimeError,
+            lambda: self._randomuniform_converted(
+                28, 27, generator="philox4x32_10", seed_int64=42
+            ),
+        )
+
+    # RandomUniform 28 -> 27: the seed_int64 attribute cannot be expressed in
+    # older opsets and must be rejected
+    def test_randomuniform_28_27_seed_int64_fails(self) -> None:
+        self.assertRaises(
+            RuntimeError,
+            lambda: self._randomuniform_converted(28, 27, seed_int64=5),
+        )
+
+    # RandomUniform 28 -> 27: an omitted optional offset input, spelled as an
+    # empty string, must not block the downgrade (the placeholder is dropped)
+    def test_randomuniform_28_27_empty_offset_placeholder(self) -> None:
+        node = helper.make_node("RandomUniform", [""], ["Y"], shape=[2, 3], seed=1.0)
+        graph = helper.make_graph(
+            [node],
+            "randomuniform_empty_offset",
+            [],
+            [helper.make_tensor_value_info("Y", TensorProto.FLOAT, [2, 3])],
+        )
+        converted = self._converted(graph, helper.make_operatorsetid("", 28), 27)
+        assert converted.opset_import[0].version == 27
+        ru = next(n for n in converted.graph.node if n.op_type == "RandomUniform")
+        assert not [i for i in ru.input if i]
+
+    # RandomUniform 28 -> 27: the offset input cannot be expressed in older
+    # opsets and must be rejected
+    def test_randomuniform_28_27_offset_fails(self) -> None:
+        node = helper.make_node(
+            "RandomUniform", ["offset"], ["Y"], shape=[2, 3], seed=1.0
+        )
+        graph = helper.make_graph(
+            [node],
+            "randomuniform_offset",
+            [helper.make_tensor_value_info("offset", TensorProto.INT64, [])],
+            [helper.make_tensor_value_info("Y", TensorProto.FLOAT, [2, 3])],
+        )
+        self.assertRaises(
+            RuntimeError,
+            lambda: self._converted(graph, helper.make_operatorsetid("", 28), 27),
+        )
+
+    def _randomuniform_offset_initializer(self, offset_value: int) -> ModelProto:
+        node = helper.make_node(
+            "RandomUniform", ["offset"], ["Y"], shape=[2, 3], seed=1.0
+        )
+        graph = helper.make_graph(
+            [node],
+            "randomuniform_offset_initializer",
+            [],
+            [helper.make_tensor_value_info("Y", TensorProto.FLOAT, [2, 3])],
+            initializer=[
+                helper.make_tensor("offset", TensorProto.INT64, [], [offset_value])
+            ],
+        )
+        return self._converted(graph, helper.make_operatorsetid("", 28), 27)
+
+    # RandomUniform 28 -> 27: a constant offset of 0 — the documented pattern
+    # for storing the stream position in the model — matches the default and
+    # is dropped together with its initializer
+    def test_randomuniform_28_27_constant_zero_offset_removed(self) -> None:
+        converted = self._randomuniform_offset_initializer(0)
+        assert converted.opset_import[0].version == 27
+        ru = next(n for n in converted.graph.node if n.op_type == "RandomUniform")
+        assert not [i for i in ru.input if i]
+        assert not [i for i in converted.graph.initializer if i.name == "offset"]
+
+    # RandomUniform 28 -> 27: a non-zero constant offset selects a stream that
+    # older opsets cannot express and must be rejected
+    def test_randomuniform_28_27_constant_nonzero_offset_fails(self) -> None:
+        self.assertRaises(
+            RuntimeError, lambda: self._randomuniform_offset_initializer(5)
+        )

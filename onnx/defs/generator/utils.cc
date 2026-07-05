@@ -108,4 +108,27 @@ void ConstantOpInference(InferenceContext& ctx) {
       "this line should never be reached.");
 }
 
+void ValidateRandomGeneratorAttributes(InferenceContext& ctx, int offset_input_index) {
+  const auto* generator_attr = ctx.getAttribute("generator");
+  if (generator_attr != nullptr) {
+    const std::string& generator = generator_attr->s();
+    if (generator != "unspecified" && generator != "philox4x32_10") {
+      fail_shape_inference(
+          "Attribute 'generator' must be one of 'unspecified' or 'philox4x32_10', got '", generator, "'.");
+    }
+    if (generator != "unspecified") {
+      if (ctx.getAttribute("seed_int64") == nullptr) {
+        fail_shape_inference("Attribute 'seed_int64' must be specified when 'generator' is '", generator, "'.");
+      }
+      if (ctx.getAttribute("seed") != nullptr) {
+        fail_shape_inference(
+            "Attribute 'seed' must not be specified when 'generator' is '", generator, "'; use 'seed_int64' instead.");
+      }
+    }
+  }
+  if (offset_input_index >= 0) {
+    checkInputRank(ctx, static_cast<size_t>(offset_input_index), 0);
+  }
+}
+
 } // namespace ONNX_NAMESPACE

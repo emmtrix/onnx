@@ -231,6 +231,32 @@ ONNX_OPERATOR_SET_SCHEMA(
 
 ONNX_OPERATOR_SET_SCHEMA(
     RandomUniform,
+    22,
+    OpSchema()
+        .SetDoc(kDoc_RandomUniform_ver1)
+        .Attr("low", "Lower boundary of the output values.", AttributeProto::FLOAT, 0.0f)
+        .Attr("high", "Upper boundary of the output values.", AttributeProto::FLOAT, 1.0f)
+        .Attr(
+            "seed",
+            "(Optional) Seed to the random generator, if not specified we will auto generate one.",
+            AttributeProto::FLOAT,
+            OPTIONAL_VALUE)
+        .Attr(
+            "dtype",
+            "The data type for the elements of the output tensor. If not specified, default is TensorProto::FLOAT.",
+            AttributeProto::INT,
+            static_cast<int64_t>(TensorProto::FLOAT))
+        .Attr("shape", "The shape of the output tensor.", AttributeProto::INTS)
+        .Output(0, "output", "Output tensor of random values drawn from uniform distribution", "T")
+        .TypeConstraint("T", OpSchema::all_float_types_ir4(), "Constrain output types to float tensors.")
+        .SetNodeDeterminism(OpSchema::NodeDeterminism::NonDeterministic)
+        .TypeAndShapeInferenceFunction([](InferenceContext& ctx) {
+          propagateElemTypeFromAttributeToOutput(ctx, "dtype", 0, TensorProto::FLOAT);
+          propagateShapeFromAttributeToOutput(ctx, "shape", 0);
+        }));
+
+ONNX_OPERATOR_SET_SCHEMA(
+    RandomUniform,
     1,
     OpSchema()
         .SetDoc(kDoc_RandomUniform_ver1)
